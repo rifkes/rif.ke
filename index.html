@@ -161,7 +161,8 @@
         const ctx = videoCanvas.getContext('2d');
         var mycamvas = new camvas(ctx);
 				init();
-				setTimeout(animate, 20000);
+				animate();
+				// setTimeout(animate, 20000);
       })
 
 			function init() {
@@ -174,17 +175,6 @@
 				camera.target = new THREE.Vector3( 0, 0, 0 );
 
 				var light = new THREE.AmbientLight( 0xffffff, 0.9 );
-
-				// var r = "textures/cube/Bridge2/";
-				// var urls = [ r + "posx.jpg", r + "negx.jpg",
-				// 			 r + "posy.jpg", r + "negy.jpg",
-				// 			 r + "posz.jpg", r + "negz.jpg" ];
-
-				// textureCube = new THREE.CubeTextureLoader().load( urls );
-				// textureCube.format = THREE.RGBFormat;
-				// textureCube.mapping = THREE.CubeReflectionMapping;
-				// textureCube.encoding = THREE.sRGBEncoding;
-
 
 				scene = new THREE.Scene();
 				scene.add(cubeCamera);
