@@ -71,38 +71,8 @@
 	</head>
 	<body>
 
-		<p>Helleaux friends and welcome to my world of love and laughter 💋</p>
-		<div>------------------</div>
-		<p>Find me on <a href="https://instagram.com/rifffke/" target="_blank">Instagram</a>, <a target="_blank" href="https://twitter.com/Rifkes">Twitter</a> or <a target="_blank" href="https://github.com/rifkes">Github</a><p>
-
-		<div>------------------</div>
-  	<p>I co-direct <a target="_blank" href="http://dxr.zone/" target="_blank">DXR Zone</a>, a joint digital practice with <a href="http://baragwan.earth/" target="_blank">Dan Bara</a>. <a target="_blank" href="https://instagram.com/dxr_zone/">Love</a> us, like us, <a target="_blank" href="https://ih1.redbubble.net/image.74010243.4660/mwo,x1000,ipad_2_snap-pad,1000x1000,f8f8f8.u5.jpg">hate</a> us or <a href="mailto:enquiries@dxr.zone" target="_blank">email us</a> <3</p>
-
-		<div>------------------</div>
-		<p>If you want to see my work your best bet is probably <a href="https://instagram.com/rifffke/" target="_blank">Instagram</a></p>
-
-		<div>------------------</div>
-		<p>
-			Digital design and art direction
-		</p>
-		<p>
-			HTML, JavaScript, CSS/SCSS, React, Apache, Nginx, Node.js, PHP, Python
-		</p>
-		<p>Illustration sometimes for lols</p>
-
-		<div>------------------</div>
-		<p>I do a bit of teaching and I’ve made a few creative coding learning resources, here are some links</p>
-  	<ul>
-  		<li><a href="https://iocoding.club/" target="_blank">IoCoding Club</a></li>
-  		<li><a href="https://www.introduction-to-creative-coding.com/" target="_blank">Introduction to Creative Coding workshop</a></li>
-  		<li><a href="https://www.instagram.com/rifffke/channel/" target="_blank">IGTV</a></li>
-		</ul>
-		<div>------------------</div>
-		<p>If you miss my old sites don’t be sad! They are still up at <a href="https://rifke.world/" target="_blank">rifke.world</a> and <a href="https://rifke.space/" target="_blank">rifke.space</a></p>
-
-		<div>------------------</div>
-
-		<p>Bye!</p>
+		<div id="contentWrapper">
+		</div>
 
 		<div id="container" style="position: fixed; top: 0; left: 0; z-index: 2;"></div>
 
@@ -111,63 +81,85 @@
 			import * as THREE from './dist/three.module.js';
 			import { MarchingCubes } from './dist/MarchingCubes.js';
 
-                function camvas(ctx, callback) {
-                  var self = this
-                  // this.ctx = ctx
-                  this.callback = callback
+			const fetchCockpitData = (singletonOrCollectionName, callback, isCollection) => {
+				const apiKey = 'f5b8a538a288a7c95eb154d44bbf25';
+				const cockpitUrl = 'https://cms.rif.ke/';
+				fetch(`${cockpitUrl}api/${isCollection === true ? 'collections' : 'singletons'}/get/${singletonOrCollectionName}?token=${apiKey}`)
+				.then(response => response.json())
+				.then(response => {
+					callback(response)
+				})
+				.catch(error => {
+					console.log(error);
+				})
+			}
 
-                  // We can't `new Video()` yet, so we'll resort to the vintage
-                  // "hidden div" hack for dynamic loading.
-                  var streamContainer = document.createElement('div');
-                  streamContainer.classList.add('stream__container');
-                  this.video = document.createElement('video')
-                  this.video.classList.add('stream');
+			const handleFetchContent = (response) => {
+				const wrapper = document.querySelector('#contentWrapper');
+				if (response.text && wrapper) {
+					wrapper.innerHTML = response.text;
+				}
+			}
 
-                  // If we don't do this, the stream will not be played.
-                  // By the way, the play and pause controls work as usual
-                  // for streamed videos.
-                  this.video.setAttribute('autoplay', '1')
-                  this.video.setAttribute('playsinline', '1') // important for iPhones
+			const loadContent = () => {
+				fetchCockpitData('text', handleFetchContent, false);
+			}
 
-                  // The video should fill out all of the canvas
-                  this.video.setAttribute('width', 0.5)
-                  this.video.setAttribute('height', 0.5)
+			function camvas(ctx, callback) {
+				var self = this
+				// this.ctx = ctx
+				this.callback = callback
 
-                  streamContainer.appendChild(this.video)
-                  document.body.appendChild(streamContainer)
+				// We can't `new Video()` yet, so we'll resort to the vintage
+				// "hidden div" hack for dynamic loading.
+				var streamContainer = document.createElement('div');
+				streamContainer.classList.add('stream__container');
+				this.video = document.createElement('video')
+				this.video.classList.add('stream');
 
-                  // The callback happens when we are starting to stream the video.
-                  navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
-                    // Yay, now our webcam input is treated as a normal video and
-                    // we can start having fun
-                    self.video.srcObject = stream
-                    // Let's start drawing the canvas!
-                    self.update()
-                  }, function(err) {
-                    throw err
-                  }).catch( (error) => {
-										console.log(error);
-									})
+				// If we don't do this, the stream will not be played.
+				// By the way, the play and pause controls work as usual
+				// for streamed videos.
+				this.video.setAttribute('autoplay', '1')
+				this.video.setAttribute('playsinline', '1') // important for iPhones
 
-                  // As soon as we can draw a new frame on the canvas, we call the `draw` function
-                  // we passed as a parameter.
-                  this.update = function() {
-                  var self = this
-                    var last = Date.now()
-                    var loop = function() {
-                      // For some effects, you might want to know how much time is passed
-                      // since the last frame; that's why we pass along a Delta time `dt`
-                      // variable (expressed in milliseconds)
-                      var dt = Date.now() - last
-                      // self.callback(self.video, dt)
-                      last = Date.now()
-                      requestAnimationFrame(loop)
-                    }
-                    requestAnimationFrame(loop)
-                  }
-                }
+				// The video should fill out all of the canvas
+				this.video.setAttribute('width', 0.5)
+				this.video.setAttribute('height', 0.5)
 
+				streamContainer.appendChild(this.video)
+				document.body.appendChild(streamContainer)
 
+				// The callback happens when we are starting to stream the video.
+				navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
+					// Yay, now our webcam input is treated as a normal video and
+					// we can start having fun
+					self.video.srcObject = stream
+					// Let's start drawing the canvas!
+					self.update()
+				}, function(err) {
+					throw err
+				}).catch( (error) => {
+					console.log(error);
+				})
+
+				// As soon as we can draw a new frame on the canvas, we call the `draw` function
+				// we passed as a parameter.
+				this.update = function() {
+				var self = this
+					var last = Date.now()
+					var loop = function() {
+						// For some effects, you might want to know how much time is passed
+						// since the last frame; that's why we pass along a Delta time `dt`
+						// variable (expressed in milliseconds)
+						var dt = Date.now() - last
+						// self.callback(self.video, dt)
+						last = Date.now()
+						requestAnimationFrame(loop)
+					}
+					requestAnimationFrame(loop)
+				}
+			}
 
 			var camera, scene, renderer;
 			var video;
@@ -231,6 +223,7 @@
         videoCanvas.setAttribute('id',videoCanvas);
         const ctx = videoCanvas.getContext('2d');
         var mycamvas = new camvas(ctx);
+				loadContent();
 				init();
 				animate();
       })
