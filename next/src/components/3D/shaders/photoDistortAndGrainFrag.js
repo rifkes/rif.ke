@@ -1,5 +1,8 @@
 const frag = `
+  precision highp float;
+
   varying vec2 vUv;
+  varying vec3 viewZ;
   uniform float u_ratio;
   uniform float u_time;
   uniform vec2 u_mouse;
@@ -20,7 +23,7 @@ const frag = `
       3.0, -1.0, 2.0, -2.0
   );
 
-  const float PIXEL_FACTOR = 320.; // Lower num - bigger pixels (this will be the screen width)
+  const float PIXEL_FACTOR = 32.; // Lower num - bigger pixels (this will be the screen width)
 
   vec4 dither ( vec2 coords, vec4 color ) {                  
     // Reduce pixels            
@@ -82,12 +85,8 @@ const frag = `
   }
 
   void main() {
-    // vec2 st = vUv;
-    
-    vec2 size = PIXEL_FACTOR * u_resolution.xy/u_resolution.x;
-    vec2 coor = floor( gl_FragCoord.xy/u_resolution.xy * size) ;
-    vec2 st = coor / size;
-    vec2 uv = st;  
+    vec2 st = vUv;
+    vec2 uv = vUv;  
 
     vec2 mouse = st * 2. - u_mouse.xy;
     mouse.x *= u_ratio * 2.;
@@ -112,18 +111,33 @@ const frag = `
     vec3 color = mix(vec3(0.0, 0.0, 0.0), vec3(.0, .0, .0), smoothstep(.01, .98, touch));
 
 
-    uv = vec2(uv - 0.5);
+    // uv = vec2(uv - 0.5);
+
+    float size = 1.5;
+
+    float d = distance(uv, mouse.xy);
+    float amnt;
+    amnt = (mod(d, size) / size) * 200.0;
+    float rot = radians(sin(mouse.x * 0.5) * amnt);
+    // float rot = .17;
+    uv-=.5;
+    mat2 m = mat2(cos(rot), -sin(rot), sin(rot), cos(rot));
+    uv  = m * uv;
+    uv+=.5;
+    vec4 texture1PixelColor = texture2D(u_texture_1, uv);
+
+
 
     float wave = noise;
     float strength = smoothstep(0.0, 2.0, 4.) - smoothstep(3.0, 4.0, 4.) * (1.0 - sin(u_mouse.x) * 0.45);
     float distortion = mix(1.0, 1.0 + (strength * u_distortion_amount), wave);
 
     // expansion value from the centre (lower value, larger image)
-    uv *= distortion * 1.;
+    // uv *= distortion;
 
-    uv += .5;
+    // uv += .5;
 
-    vec4 texture1PixelColor = texture2D(u_texture_1, uv);
+    // vec4 texture1PixelColor = texture2D(u_texture_1, uv);
     vec4 texture2PixelColor = texture2D(u_texture_2, uv);
 
     vec4 transparentVersion1 = vec4(texture1PixelColor.rgb, 0.0);
@@ -133,22 +147,20 @@ const frag = `
     vec4 mixed2 = mix(texture2PixelColor, transparentVersion2, 1.0 - touch);
     // vec4 mixed2 = mix(texture2PixelColor, transparentVersion2, 1.0 - touch2);
 
-    vec4 mixedColor = mix(mixed1, mixed2, u_transition_amount);
+    // vec4 mixedColor = mix(mixed1, mixed2, u_transition_amount);
+    vec4 mixedColor = mix(texture1PixelColor, texture2PixelColor, u_transition_amount);
 
     // increase transparency
-    mixedColor.a *= 0.6;
+    mixedColor.a *= 0.4;
 
     // add noise
-    // mixedColor.r -= 0.4 * random(vec2(mixedColor.r, vUv.x * vUv.y));
-    // mixedColor.g -= 0.4 * random(vec2(mixedColor.g, vUv.x * vUv.y));
-    // mixedColor.b -= 0.4 * random(vec2(mixedColor.b, vUv.x * vUv.y));
+    mixedColor.r += 0.6 * random(vec2(mixedColor.r, vUv.x * vUv.y));
+    mixedColor.g += 0.6 * random(vec2(mixedColor.g, vUv.x * vUv.y));
+    mixedColor.b += 0.6 * random(vec2(mixedColor.b, vUv.x * vUv.y));
 
 
-    vec2 fc = gl_FragCoord.xy;
-    fc.x = fc.x + touch * 20.0;
 
-    vec4 dithered = dither( vec2(fc.xy), mixedColor );
-    gl_FragColor = dithered;
+    gl_FragColor = mixedColor;
 }
 `;
 

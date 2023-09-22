@@ -10,15 +10,13 @@ import useWindowSize from '@/hooks/useWindowSize.jsx';
 const vert = `
   varying vec2 vUv;
   uniform sampler2D u_texture_2;
+  varying vec3 viewZ;
 
   void main() {
     vUv = uv;
-    vec4 pixel = texture2D(u_texture_2, vUv);
-    float raised = pixel.r - 0.5;
-
-    vec3 newPosition = position;
+    viewZ = -(modelViewMatrix * vec4(position.xyz, 1.)).xyz;
     
-    gl_Position = vec4(newPosition, 0.5);
+    gl_Position = vec4(position, 0.5);
   }
 `;
 
@@ -436,6 +434,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
             texture2CanvasCtx.current.drawImage(video, 0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
 
             texture1CanvasCtx.current.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
+            texture2CanvasCtx.current.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, texture2Canvas.current.width, texture2Canvas.current.height);
             texture1.current.needsUpdate = true;
             texture2.current.needsUpdate = true;
 						raf = requestAnimationFrame(loop)
@@ -491,8 +490,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
   return (
     <mesh
       ref={ mesh }
-      position={[0, 0, 1000]}
-      scale={[0.01, 0.01, 0.01]}
+      position={[0, 0, -200]}
     >
       <planeGeometry args={ [ 1, 1 ] } />
       <gradientMaterial
@@ -501,6 +499,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
         attach="material"
         side={ THREE.DoubleSide }
         transparent={ true }
+        depthWrite={ false }
+        depthTest={ false }
       />
     </mesh>
   );
