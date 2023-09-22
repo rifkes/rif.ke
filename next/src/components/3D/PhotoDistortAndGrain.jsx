@@ -39,8 +39,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   const config = useRef({
     dotsNumber: 12,
-    dotsBaseRadius: window.innerHeight * .2,
-    tailSpring: .15,
+    dotsBaseRadius: window.innerHeight * .1,
+    tailSpring: .915,
     tailGravity: window.innerHeight * .05,  
     tailGravityBonds: [window.innerHeight * .005, window.innerHeight * .01],
     tailFriction: .15,
@@ -324,12 +324,19 @@ const PhotoDistortAndGrain = ({ stage }) => {
       });
       img.src = backgroundImageHistory.current[0];
     }
-  }, [windowWidth, windowHeight]);
+  }, [ windowWidth, windowHeight ]);
+  
+  useEffect(() => {
+
+
+
+
+  }, []);
 
   // update touchCanvas
   const updateTrail = useCallback(() => {
     if (!touchCanvasCtx.current || !touchTexture.current) return;
-    touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .1)';
+    touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .01)';
     touchCanvasCtx.current.fillRect(0, 0, touchCanvas.current.width, touchCanvas.current.height);
 
     touchTrail.current.forEach((p, pIdx) => {
@@ -349,7 +356,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
       }
 
       const grd = touchCanvasCtx.current.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-      grd.addColorStop(0, `rgba(${ color },${ p.intensity })`);
+      grd.addColorStop(0, `rgba(${ color },${ 0.1 })`);
       grd.addColorStop(1, `rgba(${ color }, 0)`);
 
       touchCanvasCtx.current.beginPath();

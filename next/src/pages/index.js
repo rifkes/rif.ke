@@ -5,7 +5,9 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24`}
     >
-      hello
+      <div className='fixed top-0 left-0'>
+        hello
+      </div>
     </main>
   )
 }

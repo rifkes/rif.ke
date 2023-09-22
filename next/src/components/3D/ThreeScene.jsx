@@ -14,8 +14,8 @@ const ThreeScene = () => {
           />
         </meshBasicMaterial>
       </mesh> */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={ [ 300, 300, 64 ] } />
+      {/* <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={ [ 400, 400, 64 ] } />
         <meshPhysicalMaterial
           displacementScale={0.2}
           // transmission={0.99}
@@ -36,7 +36,7 @@ const ThreeScene = () => {
             mapping={ THREE.EquirectangularRefractionMapping }
           />
         </meshPhysicalMaterial>
-      </mesh>
+      </mesh> */}
     </group>
   );
 };

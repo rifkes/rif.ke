@@ -111,33 +111,18 @@ const frag = `
     vec3 color = mix(vec3(0.0, 0.0, 0.0), vec3(.0, .0, .0), smoothstep(.01, .98, touch));
 
 
-    // uv = vec2(uv - 0.5);
+    uv = vec2(uv - 0.5);
 
-    float size = 1.5;
-
-    float d = distance(uv, mouse.xy);
-    float amnt;
-    amnt = (mod(d, size) / size) * 200.0;
-    float rot = radians(sin(mouse.x * 0.5) * amnt);
-    // float rot = .17;
-    uv-=.5;
-    mat2 m = mat2(cos(rot), -sin(rot), sin(rot), cos(rot));
-    uv  = m * uv;
-    uv+=.5;
-    vec4 texture1PixelColor = texture2D(u_texture_1, uv);
-
-
-
-    float wave = noise;
-    float strength = smoothstep(0.0, 2.0, 4.) - smoothstep(3.0, 4.0, 4.) * (1.0 - sin(u_mouse.x) * 0.45);
+    float wave = noise * 2.;
+    float strength = smoothstep(0.0, 2.0, 4.) - smoothstep(3.0, 4.0, 4.) * (1.0 - sin( 5.) * 0.45);
     float distortion = mix(1.0, 1.0 + (strength * u_distortion_amount), wave);
 
     // expansion value from the centre (lower value, larger image)
-    // uv *= distortion;
+    uv *= distortion;
 
-    // uv += .5;
+    uv += .5;
 
-    // vec4 texture1PixelColor = texture2D(u_texture_1, uv);
+    vec4 texture1PixelColor = texture2D(u_texture_1, uv);
     vec4 texture2PixelColor = texture2D(u_texture_2, uv);
 
     vec4 transparentVersion1 = vec4(texture1PixelColor.rgb, 0.0);
@@ -157,8 +142,6 @@ const frag = `
     mixedColor.r += 0.6 * random(vec2(mixedColor.r, vUv.x * vUv.y));
     mixedColor.g += 0.6 * random(vec2(mixedColor.g, vUv.x * vUv.y));
     mixedColor.b += 0.6 * random(vec2(mixedColor.b, vUv.x * vUv.y));
-
-
 
     gl_FragColor = mixedColor;
 }
