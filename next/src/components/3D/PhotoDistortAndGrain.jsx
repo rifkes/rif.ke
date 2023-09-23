@@ -7,6 +7,7 @@ import { lerp } from 'three/src/math/MathUtils';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext.jsx';
 import useWindowSize from '@/hooks/useWindowSize.jsx';
 import TouchCanvas from './TouchCanvas.jsx';
+import VignetteCanvas from './VignetteCanvas.jsx';
 
 const vert = `
   varying vec2 vUv;
@@ -21,7 +22,7 @@ const vert = `
   }
 `;
 
-const GradientMaterial = shaderMaterial(
+const DistortionMaterial = shaderMaterial(
   { u_time: 0 },
   // vertex shader
   /*glsl*/`${ vert }`,
@@ -29,7 +30,7 @@ const GradientMaterial = shaderMaterial(
   /*glsl*/`${ frag }`,
 );
 
-extend({ GradientMaterial });
+extend({ DistortionMaterial });
 
 const PhotoDistortAndGrain = ({ stage }) => {
 
@@ -49,6 +50,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
   });
 
   const [ noiseSeed ] = useState(Math.random() * 12);
+  const [ targetVignetteOpacity, setTargetVignetteOpacity ] = useState(1.0);
   const mesh = useRef();
   const touchPoint = useRef(new THREE.Vector2(.5, .65));
   const targetTouchPoint = useRef(new THREE.Vector2(.5, .65));
@@ -141,14 +143,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
     texture2CanvasCtx.current = newTexture2Canvas.getContext('2d');
     texture2.current = new THREE.CanvasTexture(texture2Canvas.current);
 
-    const newVignetteCanvas = document.createElement('canvas');
-    newVignetteCanvas.width = window.innerWidth;
-    newVignetteCanvas.height = window.innerHeight;
-    vignetteCanvas.current = newVignetteCanvas;
-    vignetteCanvas.current.width = 512;
-    vignetteCanvas.current.height = 512;
-    vignetteCanvasCtx.current = newVignetteCanvas.getContext('2d');
-
     texture1CanvasCtx.current.fillStyle = 'red';
     texture1CanvasCtx.current.fillRect(0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
     texture2CanvasCtx.current.fillStyle = 'red';
@@ -164,17 +158,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
     // document.body.appendChild(texture1Canvas.current);
     // document.body.appendChild(texture2Canvas.current);
     // document.body.appendChild(touchCanvas.current);
-
-    const vignette = vignetteCanvasCtx.current.createRadialGradient(
-      512 / 2, 512 / 2, Math.min(512, 512) / 3,
-      512 / 2, 512 / 2, Math.min(512, 512) / 2,
-    );
-
-    vignette.addColorStop(0, `rgba(255, 255, 255, ${ 0 })`);
-    vignette.addColorStop(1, `rgba(255, 255, 255, ${ vignetteOpacity.current })`);
-
-    vignetteCanvasCtx.current.fillStyle = vignette;
-    vignetteCanvasCtx.current.fillRect(0, 0, 512, 512);
   }, [ handleDrawImage ]);
 
 
@@ -373,8 +356,10 @@ const PhotoDistortAndGrain = ({ stage }) => {
       if (amount === 1.0) {
         amount = 0.0;
         activeTextureIndex.current = 1;
+        setTargetVignetteOpacity(0.0);
       } else {
         amount = 1.0;
+        setTargetVignetteOpacity(1.0);
       }
       targetDistortionAmount.current = amount;
     }
@@ -404,26 +389,27 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   return (
     <>
-    <mesh
-      ref={ mesh }
-      position={[0, 0, -200]}
-    >
-      <planeGeometry args={ [ 1, 1 ] } />
-      <gradientMaterial
-        ref={ material }
-        uniforms={ uniforms.current }
-        attach="material"
-        side={ THREE.DoubleSide }
-        transparent={ true }
-        depthWrite={ false }
-        depthTest={ false }
-      />
+      <mesh
+        ref={ mesh }
+        position={[0, 0, -200]}
+      >
+        <planeGeometry args={ [ 1, 1 ] } />
+        <distortionMaterial
+          ref={ material }
+          uniforms={ uniforms.current }
+          attach="material"
+          side={ THREE.DoubleSide }
+          transparent={ true }
+          depthWrite={ false }
+          depthTest={ false }
+        />
       </mesh>
       <TouchCanvas { ...{
         touchTrail, touchCanvasPoint, config, touchTexture, touchCanvas,
         touchCanvasCtx, material, touchPoint, targetTouchPoint, targetDistortionAmount,
         texture1, texture2,
       } } />
+      <VignetteCanvas { ...{ vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity, } } />
     </>
   );
 }

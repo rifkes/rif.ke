@@ -2,8 +2,9 @@ import { useFrame } from '@react-three/fiber';
 import { useCallback, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const TouchCanvas = ({ touchTrail, touchCanvasPoint, config, touchTexture, touchCanvas, touchCanvasCtx, material, touchPoint,
-  targetTouchPoint, targetDistortionAmount, texture1, texture2
+const TouchCanvas = ({
+  touchTrail, touchCanvasPoint, config, touchTexture, touchCanvas, touchCanvasCtx,
+  material, touchPoint, targetTouchPoint, targetDistortionAmount, texture1, texture2,
  }) => {
 
   const color = '255, 255, 255';
