@@ -230,7 +230,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     u_texture_1: { type: 't', value: texture1.current },
     u_texture_2: { type: 't', value: texture2.current },
     u_mouse: { type: 'v2', value: new THREE.Vector2(0, 0) },
-    u_alpha: { type: 'f', value: 0.8 },
+    u_alpha: { type: 'f', value: 1.0 },
     u_resolution: { type: 'v2', value: new THREE.Vector2(0, 0) },
     u_time: { type: 'f', value: 0 },
     u_transition_amount: { type: 'f', value: 0 },
