@@ -16,8 +16,9 @@ canvas {
   image-rendering: pixelated;
 }
 
-body {
-
+html, body {
+ position: fixed;
+  overflow: hidden;
 }
 
 * {
