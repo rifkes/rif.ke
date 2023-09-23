@@ -17,7 +17,7 @@ canvas {
 }
 
 html, body {
- position: fixed;
+  position: fixed;
   overflow: hidden;
 }
 
