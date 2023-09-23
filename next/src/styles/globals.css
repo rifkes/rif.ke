@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Neue Haas Unica Pro';
+    src: url('/fonts/NeueHaasUnicaPro-Bold.woff2') format('woff2'),
+        url('/fonts/NeueHaasUnicaPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 canvas {
   display: block;
   image-rendering: pixelated;
@@ -12,5 +21,11 @@ body {
 }
 
 * {
-  font-family: 'honiton';
+  font-family: 'Neue Haas Unica Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  letter-spacing: 0.02em;
+  font-size: 11pt;
+}
+
+h1 {
+  text-transform: uppercase;
 }

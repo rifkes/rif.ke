@@ -6,6 +6,7 @@ const frag = `
   uniform float u_ratio;
   uniform float u_time;
   uniform vec2 u_mouse;
+  uniform float u_alpha;
   uniform sampler2D u_touch_texture;
   uniform float u_noise_seed;
   uniform sampler2D u_texture_1;
@@ -99,11 +100,13 @@ const frag = `
     // Add noise to the base shape
     vec2 noise_pos = vec2(st * u_mouse * 2.).xy;
 
-    float noise = snoise(noise_pos + vec2(0., u_time + u_noise_seed * 0.1)) * .5 + .5;
+    float speed = 0.1;
+
+    float noise = snoise(noise_pos + vec2(0., u_time * speed + u_noise_seed * 0.1)) * .5 + .5;
     noise += snoise(noise_pos * touch) * 1.75 + 0.1;
     touch *= touch;
 
-    float noise2 = snoise(noise_pos + vec2(0., u_time + u_noise_seed * 0.1 + 0.1)) * .5 + .5;
+    float noise2 = snoise(noise_pos + vec2(0., u_time * speed + u_noise_seed * 0.1 + 0.1)) * .5 + .5;
     noise2 += snoise(noise_pos * u_mouse.y * 3. * touch2) * 1.75 + 0.1;
     touch2 *= touch2;
 
@@ -136,7 +139,7 @@ const frag = `
     vec4 mixedColor = mix(texture1PixelColor, texture2PixelColor, u_transition_amount);
 
     // increase transparency
-    mixedColor.a *= 0.4;
+    mixedColor.a *= u_alpha;
 
     // add noise
     mixedColor.r += 0.6 * random(vec2(mixedColor.r, vUv.x * vUv.y));

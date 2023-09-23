@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { lerp } from 'three/src/math/MathUtils';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext.jsx';
 import useWindowSize from '@/hooks/useWindowSize.jsx';
+import WebcamTexture from './WebcamTexture.jsx';
 
 const vert = `
   varying vec2 vUv;
@@ -32,10 +33,8 @@ extend({ GradientMaterial });
 
 const PhotoDistortAndGrain = ({ stage }) => {
 
-  // const { backgroundImage } = useSiteGlobals();
+  const { backgroundImage, setBackgroundImage } = useSiteGlobals();
   const { windowWidth, windowHeight } = useWindowSize();
-
-  const [ backgroundImage ] = useState('/assets/stunning-vista.png');
 
   const config = useRef({
     dotsNumber: 12,
@@ -114,8 +113,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
 
     if (textureToChange === 2) {
-      // activeTextureIndex.current = 1;
-      // targetFadeAmount.current = 0;
+      activeTextureIndex.current = 1;
+      targetFadeAmount.current = 0;
 
       if (texture2.current) {
         texture2.current = new THREE.CanvasTexture(texture2Canvas.current);
@@ -125,8 +124,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
         material.current.uniformsNeedUpdate = true;
       }
     } else {
-      // activeTextureIndex.current = 0;
-      // targetFadeAmount.current = 1;
+      activeTextureIndex.current = 0;
+      targetFadeAmount.current = 1;
       
       if (texture1.current) {
         texture1.current = new THREE.CanvasTexture(texture1Canvas.current);
@@ -261,12 +260,14 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
   }, [ backgroundImage ]);
 
+
+  // update the background image canvases
   useEffect(() => {
     const img = document.createElement('img');
     const visualCanvas = texture1Canvas.current;
     const visualCtx = texture1CanvasCtx.current;
 
-    if (backgroundImage) {
+    if (backgroundImage !== 'webcam') {
       img.crossOrigin = 'anonymous';
       img.addEventListener('load', () => {
         activeTextureIndex.current = 1;
@@ -275,7 +276,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
       });
       img.src = backgroundImage;
     }
-  }, [ backgroundImageTexture1, handleDrawImage ]);
+  }, [ backgroundImage, backgroundImageTexture1, handleDrawImage ]);
 
   useEffect(() => {
     const img = document.createElement('img');
@@ -283,13 +284,15 @@ const PhotoDistortAndGrain = ({ stage }) => {
     const visualCtx = texture2CanvasCtx.current;
 
     if (backgroundImageTexture2) {
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
-        activeTextureIndex.current = 0;
-        handleDrawImage(img, visualCanvas, visualCtx, 2);
-        targetFadeAmount.current = 1;
-      });
-      img.src = backgroundImageTexture2;
+      if (backgroundImageTexture2 !== 'webcam') {
+        img.crossOrigin = 'anonymous';
+        img.addEventListener('load', () => {
+          activeTextureIndex.current = 0;
+          handleDrawImage(img, visualCanvas, visualCtx, 2);
+          targetFadeAmount.current = 1;
+        });
+        img.src = backgroundImageTexture2;
+      }
     }
 
   }, [ backgroundImageTexture2, handleDrawImage ]);
@@ -302,37 +305,34 @@ const PhotoDistortAndGrain = ({ stage }) => {
     texture2Canvas.current.width = 512;
     texture2Canvas.current.height = windowHeight / windowWidth * 512;
 
-    if (backgroundImageHistory.current[1]) {
-      const img = document.createElement('img');
-      const visualCanvas = texture2Canvas.current;
-      const visualCtx = texture2CanvasCtx.current;
+    if (backgroundImageHistory.current[ 1 ]) {
+      if (backgroundImageHistory.current[ 1 ] !== 'webcam') {
+        const img = document.createElement('img');
+        const visualCanvas = texture2Canvas.current;
+        const visualCtx = texture2CanvasCtx.current;
       
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
-        handleDrawImage(img, visualCanvas, visualCtx, 1);
-      });
-      img.src = backgroundImageHistory.current[1];
+        img.crossOrigin = 'anonymous';
+        img.addEventListener('load', () => {
+          handleDrawImage(img, visualCanvas, visualCtx, 1);
+        });
+        img.src = backgroundImageHistory.current[ 1 ];
+      }
     }
 
-    if (backgroundImageHistory.current[0]) {
-      const img = document.createElement('img');
-      const visualCanvas = texture1Canvas.current;
-      const visualCtx = texture1CanvasCtx.current;
+    if (backgroundImageHistory.current[ 0 ]) {
+      if (backgroundImageHistory.current[ 0 ] !== 'webcam') {
+        const img = document.createElement('img');
+        const visualCanvas = texture1Canvas.current;
+        const visualCtx = texture1CanvasCtx.current;
       
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
-        handleDrawImage(img, visualCanvas, visualCtx, 2);
-      });
-      img.src = backgroundImageHistory.current[0];
+        img.crossOrigin = 'anonymous';
+        img.addEventListener('load', () => {
+          handleDrawImage(img, visualCanvas, visualCtx, 2);
+        });
+        img.src = backgroundImageHistory.current[ 0 ];
+      }
     }
   }, [ windowWidth, windowHeight ]);
-  
-  useEffect(() => {
-
-
-
-
-  }, []);
 
   // update touchCanvas
   const updateTrail = useCallback(() => {
@@ -375,6 +375,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     texture2.current.needsUpdate = true;
   }, [ color ]);
 
+
   useFrame(({ clock }) => {
     touchPoint.current.x += (targetTouchPoint.current.x - touchPoint.current.x) * config.current.catchingSpeed;
     touchPoint.current.y += (targetTouchPoint.current.y - touchPoint.current.y) * config.current.catchingSpeed;
@@ -405,71 +406,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
   });
 
-  
-
-  // start recording from the webcam
-  useEffect(() => {
-    let raf;
-    
-				// We can't `new Video()` yet, so we'll resort to the vintage
-				// "hidden div" hack for dynamic loading.
-				var streamContainer = document.createElement('div');
-				streamContainer.classList.add('stream__container');
-				const video = document.createElement('video')
-				video.classList.add('stream');
-
-				// If we don't do this, the stream will not be played.
-				// By the way, the play and pause controls work as usual
-				// for streamed videos.
-				video.setAttribute('autoplay', '1')
-				video.setAttribute('playsinline', '1') // important for iPhones
-
-				// The video should fill out all of the canvas
-				video.setAttribute('width', 0.5)
-				video.setAttribute('height', 0.5)
-
-				// streamContainer.appendChild(video)
-				// document.body.appendChild(streamContainer)
-
-				// As soon as we can draw a new frame on the canvas, we call the `draw` function
-				// we passed as a parameter.
-				const update = function() {
-					var last = Date.now()
-					const loop = () => {
-						// For some effects, you might want to know how much time is passed
-						// since the last frame; that's why we pass along a Delta time `dt`
-						// variable (expressed in milliseconds)
-						var dt = Date.now() - last
-						// self.callback(self.video, dt)
-            last = Date.now()
-            texture1CanvasCtx.current.drawImage(video, 0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
-            texture2CanvasCtx.current.drawImage(video, 0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
-
-            texture1CanvasCtx.current.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
-            texture2CanvasCtx.current.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, texture2Canvas.current.width, texture2Canvas.current.height);
-            texture1.current.needsUpdate = true;
-            texture2.current.needsUpdate = true;
-						raf = requestAnimationFrame(loop)
-					}
-					raf = requestAnimationFrame(loop)
-				}
-
-				// The callback happens when we are starting to stream the video.
-				navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
-					// Yay, now our webcam input is treated as a normal video and
-					// we can start having fun
-          video.srcObject = stream;
-          update();
-				}, function(err) {
-					throw err
-				}).catch( (error) => {
-					console.log(error);
-				})
-
-    return () => {
-      cancelAnimationFrame(raf);
-    }
-  }, []);
 
   useEffect(() => {
 
@@ -483,8 +419,10 @@ const PhotoDistortAndGrain = ({ stage }) => {
         activeTextureIndex.current = 1;
       } else {
         amount = 1.0;
+        activeTextureIndex.current = 0;
       }
       targetDistortionAmount.current = amount;
+      setBackgroundImage('/assets/stunning-vista.png');
     }
 
     window.addEventListener('click', handleClick);
@@ -492,7 +430,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     return () => {
       window.removeEventListener('click', handleClick);
     }
-  }, []);
+  }, [ setBackgroundImage ]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -511,6 +449,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
   }, []);
 
   return (
+    <>
     <mesh
       ref={ mesh }
       position={[0, 0, -200]}
@@ -525,7 +464,11 @@ const PhotoDistortAndGrain = ({ stage }) => {
         depthWrite={ false }
         depthTest={ false }
       />
-    </mesh>
+      </mesh>
+      <WebcamTexture { ...{
+        texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas, texture1, texture2
+      } } />
+    </>
   );
 }
 
