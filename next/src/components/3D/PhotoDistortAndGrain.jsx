@@ -108,9 +108,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
     visualCtx.drawImage(img, x, y, w, h);
 
-    if (targetDistortionAmount.current !== 0) {
-      visualCtx.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, cw, ch);
-    }
+    visualCtx.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, cw, ch);
 
     if (textureToChange === 2) {
       if (texture2.current) {
@@ -305,7 +303,9 @@ const PhotoDistortAndGrain = ({ stage }) => {
       if (amount === 1.0) {
         amount = 0.0;
         setTargetVignetteOpacity(0.0);
+        // setTargetVignetteOpacity(1.0);
       } else {
+        console.log('turning distortion on');
         amount = 1.0;
         setTargetVignetteOpacity(1.0);
       }
@@ -358,7 +358,9 @@ const PhotoDistortAndGrain = ({ stage }) => {
         touchCanvasCtx, material, touchPoint, targetTouchPoint, targetDistortionAmount,
         texture1, texture2, currentDistortionAmount,
       } } />
-      <VignetteCanvas { ...{ vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity, } } />
+      <VignetteCanvas { ...{
+        vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity,
+      } } />
       <WebcamTexture { ...{
         backgroundImageTexture1, backgroundImageTexture2, activeTextureIndex, targetFadeAmount,
         texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas, handleDrawImage, video,
