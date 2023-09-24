@@ -24,31 +24,6 @@ const frag = `
       3.0, -1.0, 2.0, -2.0
   );
 
-  const float PIXEL_FACTOR = 32.; // Lower num - bigger pixels (this will be the screen width)
-
-  vec4 dither ( vec2 coords, vec4 color ) {                  
-    // Reduce pixels            
-
-    const float COLOR_FACTOR = 12.;   // Higher num - higher colors quality
-    vec2 size = PIXEL_FACTOR * u_resolution.xy/u_resolution.x;
-    vec2 coor = floor( coords/u_resolution.xy * size) ;
-    vec2 uv = coor / size;   
-                
-    // Get source color
-    vec3 col = texture(u_texture_2, vUv).xyz;     
-
-    // Dither
-    col += ditherTable[int( coor.x ) % 4][int( coor.y ) % 4] * 0.005; // last number is dithering strength
-
-    // Reduce colors    
-    col = floor(col * COLOR_FACTOR) / COLOR_FACTOR;    
-  
-    // Output to screen
-    // col.xyz = clamp(col.xyz + 0.6, 0.3, 0.9);
-    return vec4(col.xyz, 1.);
-  }
-
-
   // --------------------------------
   // 2D noise
 

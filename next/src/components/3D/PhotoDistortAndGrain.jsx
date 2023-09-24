@@ -183,7 +183,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   // assign each background image in the array so it reflects what’s on canvas 1 and 2
   useEffect(() => {
-    if (activeTextureIndex.current === 1) {
+    if (activeTextureIndex.current === 0) {
       backgroundImageHistory.current[1] = backgroundImage;
       setBackgroundImageTexture2(backgroundImage);
     } else {
@@ -273,7 +273,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
   }, [ windowWidth, windowHeight ]);
 
   useFrame(({ clock }) => {
-    // console.log(targetDistortionAmount.current)
     const time = clock.getElapsedTime();
     currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.025);
     if (Math.abs(currentDistortionAmount.current - targetDistortionAmount.current) > 0.001) {
@@ -292,12 +291,11 @@ const PhotoDistortAndGrain = ({ stage }) => {
   useEffect(() => {
 
     let amount = 0;
-
     let index = 0;
 
     const handleClick = () => {
       index++;
-      if (index % 2 === 0) {
+      if (index % 2 === 1) {
         setBackgroundImage('/assets/stunning-vista.png');
       } else {
         setBackgroundImage('webcam');
@@ -306,15 +304,12 @@ const PhotoDistortAndGrain = ({ stage }) => {
       clearTimeout(distortionAmountTimeout.current);
       if (amount === 1.0) {
         amount = 0.0;
-        activeTextureIndex.current = 1;
         setTargetVignetteOpacity(0.0);
       } else {
         amount = 1.0;
         setTargetVignetteOpacity(1.0);
       }
       targetDistortionAmount.current = amount;
-
-
     }
 
     window.addEventListener('click', handleClick);

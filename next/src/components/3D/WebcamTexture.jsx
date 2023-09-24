@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2,
+const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2, activeTextureIndex, targetFadeAmount,
   texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas, handleDrawImage, video
 }) => {
 
