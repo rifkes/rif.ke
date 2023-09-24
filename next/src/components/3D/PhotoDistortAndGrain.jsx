@@ -7,7 +7,6 @@ import { lerp } from 'three/src/math/MathUtils';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext.jsx';
 import useWindowSize from '@/hooks/useWindowSize.jsx';
 import TouchCanvas from './TouchCanvas.jsx';
-import VignetteCanvas from './VignetteCanvas.jsx';
 import WebcamTexture from './WebcamTexture.jsx';
 
 const vert = `
@@ -62,8 +61,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
   const texture1CanvasCtx = useRef(null);
   const texture2Canvas = useRef(null);
   const texture2CanvasCtx = useRef(null);
-  const vignetteCanvas = useRef(null);
-  const vignetteCanvasCtx = useRef(null);
   const touchTexture = useRef(null);
   const video = useRef(document.createElement('video'));
   const texture1 = useRef(null);
@@ -75,12 +72,11 @@ const PhotoDistortAndGrain = ({ stage }) => {
   const [ backgroundImageTexture2, setBackgroundImageTexture2 ] = useState(backgroundImage);
   const currentStage = useRef(stage);
   
+  const activeTextureIndex = useRef(1);
+  const currentFadeAmount = useRef(1);
+  const targetFadeAmount = useRef(1);
 
-  const activeTextureIndex = useRef(0);
-  const currentFadeAmount = useRef(0);
-  const targetFadeAmount = useRef(0);
-
-  const targetDistortionAmount = useRef(1.0);
+  const targetDistortionAmount = useRef(0.0);
   const currentDistortionAmount = useRef(1.0);
   const distortionAmountTimeout = useRef(null);
   
@@ -108,8 +104,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
     visualCtx.drawImage(img, x, y, w, h);
 
-    visualCtx.drawImage(vignetteCanvas.current, 0, 0, vignetteCanvas.current.width, vignetteCanvas.current.height, 0, 0, cw, ch);
-
     if (textureToChange === 2) {
       if (texture2.current) {
         texture2.current = new THREE.CanvasTexture(texture2Canvas.current);
@@ -128,7 +122,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
       }
     }
   }, []);
-
+  
   // initialise the image canvases
   useEffect(() => {
     const newTexture1Canvas = document.createElement('canvas');
@@ -194,19 +188,22 @@ const PhotoDistortAndGrain = ({ stage }) => {
   useEffect(() => {
     const img = document.createElement('img');
 
+    console.log('1 changed');
+
     if (backgroundImageTexture1) {
       const visualCanvas = texture1Canvas.current;
       const visualCtx = texture1CanvasCtx.current;
       if (backgroundImageTexture1 !== 'webcam') {
         img.crossOrigin = 'anonymous';
         img.addEventListener('load', () => {
-          activeTextureIndex.current = 1;
+          activeTextureIndex.current = 0;
           handleDrawImage(img, visualCanvas, visualCtx, 1);
           targetFadeAmount.current = 0;
         });
         img.src = backgroundImageTexture1;
       } else {
-        activeTextureIndex.current = 1;
+        // console.log('1 webcam');
+        activeTextureIndex.current = 0;
         targetFadeAmount.current = 0;
       }
     }
@@ -217,19 +214,23 @@ const PhotoDistortAndGrain = ({ stage }) => {
   useEffect(() => {
     const img = document.createElement('img');
 
+    console.log('2 changed');
+
     if (backgroundImageTexture2) {
       const visualCanvas = texture2Canvas.current;
       const visualCtx = texture2CanvasCtx.current;
       if (backgroundImageTexture2 !== 'webcam') {
         img.crossOrigin = 'anonymous';
         img.addEventListener('load', () => {
-          activeTextureIndex.current = 0;
+          // console.log('2 loaded');
+          activeTextureIndex.current = 1;
           handleDrawImage(img, visualCanvas, visualCtx, 2);
           targetFadeAmount.current = 1;
         });
         img.src = backgroundImageTexture2;
       } else {
-        activeTextureIndex.current = 0;
+        // console.log('2 webcam');
+        activeTextureIndex.current = 1;
         targetFadeAmount.current = 1;
       }
     }
@@ -255,6 +256,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
         handleDrawImage(img, visualCanvas, visualCtx, 1);
       });
       img.src = backgroundImageHistory.current[1];
+    } else if (backgroundImageHistory.current[ 1 ] && backgroundImageHistory.current[ 1 ] === 'webcam') {
+      handleDrawImage(video.current, texture2Canvas.current, texture2CanvasCtx.current, 1, true);
     }
 
     if (backgroundImageHistory.current[0] && backgroundImageHistory.current[0] !== 'webcam') {
@@ -267,17 +270,21 @@ const PhotoDistortAndGrain = ({ stage }) => {
         handleDrawImage(img, visualCanvas, visualCtx, 2);
       });
       img.src = backgroundImageHistory.current[0];
+    } else if (backgroundImageHistory.current[ 1 ] && backgroundImageHistory.current[ 1 ] === 'webcam') {
+      handleDrawImage(video.current, texture2Canvas.current, texture2CanvasCtx.current, 1, true);
     }
+
   }, [ windowWidth, windowHeight ]);
 
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
-    currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.025);
+    currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.05);
     if (Math.abs(currentDistortionAmount.current - targetDistortionAmount.current) > 0.001) {
       currentDistortionAmount.current = lerp(currentDistortionAmount.current, targetDistortionAmount.current, 0.05);
     } else {
       currentDistortionAmount.current = targetDistortionAmount.current;
     }
+    // console.log(currentFadeAmount.current, targetFadeAmount.current)
     if (material.current?.uniforms) {
       material.current.uniforms.u_transition_amount.value = currentFadeAmount.current;
       material.current.uniforms.u_time.value = time;
@@ -285,16 +292,17 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
   });
 
+  const index = useRef(5);
+
   // dev
   useEffect(() => {
 
-    let amount = 0;
-    let index = 0;
+    let amount = 1.0;
 
     const handleClick = () => {
-      index++;
-      if (index % 2 === 1) {
-        setBackgroundImage('/assets/stunning-vista.png');
+      index.current++;
+      if (index.current % 5 !== 4) {
+        setBackgroundImage(`/assets/image-${index.current % 5}.jpg`);
       } else {
         setBackgroundImage('webcam');
       }
@@ -302,12 +310,10 @@ const PhotoDistortAndGrain = ({ stage }) => {
       clearTimeout(distortionAmountTimeout.current);
       if (amount === 1.0) {
         amount = 0.0;
-        setTargetVignetteOpacity(0.0);
-        // setTargetVignetteOpacity(1.0);
+      //   setTargetVignetteOpacity(0.0);
       } else {
-        console.log('turning distortion on');
         amount = 1.0;
-        setTargetVignetteOpacity(1.0);
+      //   setTargetVignetteOpacity(1.0);
       }
       targetDistortionAmount.current = amount;
     }
@@ -358,12 +364,9 @@ const PhotoDistortAndGrain = ({ stage }) => {
         touchCanvasCtx, material, touchPoint, targetTouchPoint, targetDistortionAmount,
         texture1, texture2, currentDistortionAmount,
       } } />
-      <VignetteCanvas { ...{
-        vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity,
-      } } />
       <WebcamTexture { ...{
         backgroundImageTexture1, backgroundImageTexture2, activeTextureIndex, targetFadeAmount,
-        texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas, handleDrawImage, video,
+        texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, handleDrawImage, video,
       } } />
     </>
   );

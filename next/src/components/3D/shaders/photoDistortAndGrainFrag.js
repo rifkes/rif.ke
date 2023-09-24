@@ -102,6 +102,14 @@ const frag = `
 
     vec4 texture1PixelColor = texture2D(u_texture_1, uv);
     vec4 texture2PixelColor = texture2D(u_texture_2, uv);
+    
+    // pop a little vignette around the edges so we don't get that weird stretching/stripy stuff at the edges
+    // this is only necessary if we're distorting the image so let’s base it on the distortion amount
+    float vignette = ((distance(uv - .5, vec2(0.0)) * 4.) - 1.5) * u_distortion_amount;
+    float vignettePixel = clamp(vignette, 0.0, 1.0);
+
+    texture1PixelColor.rgb += vignettePixel;
+    texture2PixelColor.rgb += vignettePixel;
 
     vec4 transparentVersion1 = vec4(texture1PixelColor.rgb, 0.0);
     vec4 transparentVersion2 = vec4(texture2PixelColor.rgb, 0.0);

@@ -6,12 +6,12 @@ const VignetteCanvas = ({ vignetteCanvas, vignetteCanvasCtx, targetVignetteOpaci
   const vignetteOpacity = useRef(targetVignetteOpacity);
 
   const drawVignette = useCallback(() => {
+    vignetteCanvasCtx.current.clearRect(0, 0, 512, 512);
     const vignette = vignetteCanvasCtx.current.createRadialGradient(
       512 / 2, 512 / 2, Math.min(512, 512) / 3,
       512 / 2, 512 / 2, Math.min(512, 512) / 2,
     );
 
-    vignetteCanvasCtx.current.clearRect(0, 0, 512, 512);
     
     vignette.addColorStop(0, `rgba(255, 255, 255, ${ 0 })`);
     vignette.addColorStop(1, `rgba(255, 255, 255, ${ vignetteOpacity.current })`);
