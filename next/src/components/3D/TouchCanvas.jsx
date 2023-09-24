@@ -4,7 +4,7 @@ import * as THREE from 'three';
 
 const TouchCanvas = ({
   touchTrail, touchCanvasPoint, config, touchTexture, touchCanvas, touchCanvasCtx,
-  material, touchPoint, targetTouchPoint, targetDistortionAmount, texture1, texture2,
+  material, touchPoint, targetTouchPoint, targetDistortionAmount, texture1, texture2, currentDistortionAmount,
  }) => {
 
   const color = '255, 255, 255';
@@ -62,15 +62,12 @@ const TouchCanvas = ({
 
   }, [ touchCanvas, touchCanvasCtx, touchCanvasPoint, touchTexture, touchTrail, config ]);
 
-
-
-
-
   // update touchCanvas
   const updateTrail = useCallback(() => {
     if (!touchCanvasCtx.current || !touchTexture.current) return;
-    if (targetDistortionAmount
-      .current === 0) {
+    if (currentDistortionAmount.current === 0) {
+      touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
+    }  else if (targetDistortionAmount.current === 0) {
       touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .1)';
     } else {
       touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .01)';

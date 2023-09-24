@@ -82,7 +82,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   const targetDistortionAmount = useRef(1.0);
   const currentDistortionAmount = useRef(1.0);
-  const distortionAmountTimout = useRef(null);
+  const distortionAmountTimeout = useRef(null);
   
   useEffect(() => {
     currentStage.current = stage;
@@ -273,9 +273,14 @@ const PhotoDistortAndGrain = ({ stage }) => {
   }, [ windowWidth, windowHeight ]);
 
   useFrame(({ clock }) => {
+    // console.log(targetDistortionAmount.current)
     const time = clock.getElapsedTime();
     currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.025);
-    currentDistortionAmount.current = lerp(currentDistortionAmount.current, targetDistortionAmount.current, 0.05);
+    if (Math.abs(currentDistortionAmount.current - targetDistortionAmount.current) > 0.001) {
+      currentDistortionAmount.current = lerp(currentDistortionAmount.current, targetDistortionAmount.current, 0.05);
+    } else {
+      currentDistortionAmount.current = targetDistortionAmount.current;
+    }
     if (material.current?.uniforms) {
       material.current.uniforms.u_transition_amount.value = currentFadeAmount.current;
       material.current.uniforms.u_time.value = time;
@@ -298,16 +303,16 @@ const PhotoDistortAndGrain = ({ stage }) => {
         setBackgroundImage('webcam');
       }
       // turn distortion off on team section and back on on other sections
-      // clearTimeout(distortionAmountTimout.current);
-      // if (amount === 1.0) {
-      //   amount = 0.0;
-      //   activeTextureIndex.current = 1;
-      //   setTargetVignetteOpacity(0.0);
-      // } else {
-      //   amount = 1.0;
-      //   setTargetVignetteOpacity(1.0);
-      // }
-      // targetDistortionAmount.current = amount;
+      clearTimeout(distortionAmountTimeout.current);
+      if (amount === 1.0) {
+        amount = 0.0;
+        activeTextureIndex.current = 1;
+        setTargetVignetteOpacity(0.0);
+      } else {
+        amount = 1.0;
+        setTargetVignetteOpacity(1.0);
+      }
+      targetDistortionAmount.current = amount;
 
 
     }
@@ -356,7 +361,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
       <TouchCanvas { ...{
         touchTrail, touchCanvasPoint, config, touchTexture, touchCanvas,
         touchCanvasCtx, material, touchPoint, targetTouchPoint, targetDistortionAmount,
-        texture1, texture2,
+        texture1, texture2, currentDistortionAmount,
       } } />
       <VignetteCanvas { ...{ vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity, } } />
       <WebcamTexture { ...{

@@ -142,9 +142,9 @@ const frag = `
     mixedColor.a *= u_alpha;
 
     // add noise
-    mixedColor.r += 0.6 * random(vec2(mixedColor.r, vUv.x * vUv.y));
-    mixedColor.g += 0.6 * random(vec2(mixedColor.g, vUv.x * vUv.y));
-    mixedColor.b += 0.6 * random(vec2(mixedColor.b, vUv.x * vUv.y));
+    mixedColor.r += (0.6 * u_distortion_amount) * random(vec2(mixedColor.r, vUv.x * vUv.y));
+    mixedColor.g += (0.6 * u_distortion_amount) * random(vec2(mixedColor.g, vUv.x * vUv.y));
+    mixedColor.b += (0.6 * u_distortion_amount) * random(vec2(mixedColor.b, vUv.x * vUv.y));
 
     gl_FragColor = mixedColor;
 }
