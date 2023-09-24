@@ -105,12 +105,12 @@ const frag = `
     vec4 texture1PixelColor = texture2D(u_texture_1, uv);
     vec4 texture2PixelColor = texture2D(u_texture_2, uv);
 
-    texture1PixelColor.r += (0.3) * random(vec2(texture1PixelColor.r, vUv.x * vUv.y)) - 0.15;
-    texture1PixelColor.g += (0.3) * random(vec2(texture1PixelColor.g, vUv.x * vUv.y)) - 0.15;
-    texture1PixelColor.b += (0.3) * random(vec2(texture1PixelColor.b, vUv.x * vUv.y)) - 0.15;
-    texture2PixelColor.r += (0.3) * random(vec2(texture2PixelColor.r, vUv.x * vUv.y)) - 0.15;
-    texture2PixelColor.g += (0.3) * random(vec2(texture2PixelColor.g, vUv.x * vUv.y)) - 0.15;
-    texture2PixelColor.b += (0.3) * random(vec2(texture2PixelColor.b, vUv.x * vUv.y)) - 0.15;
+    texture1PixelColor.r += (0.6) * random(vec2(texture1PixelColor.r, vUv.x * vUv.y)) - 0.3;
+    texture1PixelColor.g += (0.6) * random(vec2(texture1PixelColor.g, vUv.x * vUv.y)) - 0.3;
+    texture1PixelColor.b += (0.6) * random(vec2(texture1PixelColor.b, vUv.x * vUv.y)) - 0.3;
+    texture2PixelColor.r += (0.6) * random(vec2(texture2PixelColor.r, vUv.x * vUv.y)) - 0.3;
+    texture2PixelColor.g += (0.6) * random(vec2(texture2PixelColor.g, vUv.x * vUv.y)) - 0.3;
+    texture2PixelColor.b += (0.6) * random(vec2(texture2PixelColor.b, vUv.x * vUv.y)) - 0.3;
     
     // pop a little vignette around the edges so we don't get that weird stretching/stripy stuff at the edges
     // this is only necessary if we're distorting the image so let’s base it on the distortion amount
@@ -134,9 +134,9 @@ const frag = `
     mixedColor.a *= u_alpha;
 
     // add noise
-    mixedColor.r += (0.3) * random(vec2(mixedColor.r, vUv.x * vUv.y + sin(u_time))) - 0.15;
-    mixedColor.g += (0.3) * random(vec2(mixedColor.g, vUv.x * vUv.y + sin(u_time))) - 0.15;
-    mixedColor.b += (0.3) * random(vec2(mixedColor.b, vUv.x * vUv.y + sin(u_time))) - 0.15;
+    mixedColor.r += (0.6) * random(vec2(mixedColor.r, vUv.x * vUv.y + sin(u_time))) - 0.3;
+    mixedColor.g += (0.6) * random(vec2(mixedColor.g, vUv.x * vUv.y + sin(u_time))) - 0.3;
+    mixedColor.b += (0.6) * random(vec2(mixedColor.b, vUv.x * vUv.y + sin(u_time))) - 0.3;
 
     gl_FragColor = mixedColor;
 }
