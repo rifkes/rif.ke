@@ -43,3 +43,7 @@ h1 {
 img, canvas {
   user-select: none;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}

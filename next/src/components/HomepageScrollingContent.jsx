@@ -48,7 +48,7 @@ const HomepageScrollingContent = () => {
                 item?.item?.foregroundMedia?.type === 'image' &&
                 item?.item?.foregroundMedia?.image?.url &&
                 <Image
-                  className='max-w-[50%] max-h-[50%] block relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl'
+                  className='max-w-[50%] max-h-[50%] w-auto h-auto block relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl'
                   src={ item.item.foregroundMedia.image.url }
                   alt={ item.item.foregroundMedia.image.altText ?? item.item.title + ' image' }
                   width={ 1024 }

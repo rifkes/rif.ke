@@ -233,10 +233,10 @@ const PhotoDistortAndGrain = ({ stage }) => {
   useEffect(() => {
     texture1CanvasCtx.current.clearRect(0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
     texture1CanvasCtx.current.clearRect(0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
-    texture1Canvas.current.width = 2048;
-    texture1Canvas.current.height = windowHeight / windowWidth * 2048;
-    texture2Canvas.current.width = 2048;
-    texture2Canvas.current.height = windowHeight / windowWidth * 2048;
+    texture1Canvas.current.width = 1024;
+    texture1Canvas.current.height = windowHeight / windowWidth * 1024;
+    texture2Canvas.current.width = 1024;
+    texture2Canvas.current.height = windowHeight / windowWidth * 1024;
 
     if (backgroundImageHistory.current[1] && backgroundImageHistory.current[1] !== 'webcam') {
       const img = document.createElement('img');
