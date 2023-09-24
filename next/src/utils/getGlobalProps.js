@@ -1,13 +1,13 @@
-import { PROJECTS_LIST } from '@/fragments/projectsList';
 import client from '../hooks/useSanityQuery';
 import { HOMEPAGE } from '@/fragments/homePage';
+import { SETTINGS } from '@/fragments/settings';
 
 const getGlobalProps = async () => {
-  const projectsList = await client.fetch(PROJECTS_LIST, {});
+  const settings = await client.fetch(SETTINGS, {}); 
   const homepage = await client.fetch(HOMEPAGE, {});
 
   return {
-    projectsList,
+    settings,
     homepage,
   };
 };

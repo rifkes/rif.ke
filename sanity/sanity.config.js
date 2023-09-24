@@ -1,16 +1,22 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { defineConfig } from 'sanity'
+import { deskTool } from 'sanity/desk'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemas'
+import { deskStructure } from './deskStructure'
 
 export default defineConfig({
   name: 'default',
   title: 'rif.ke',
 
-  projectId: '4lyq75ta',
+  projectId: '5hal0fpp',
   dataset: 'production',
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({
+      structure: deskStructure,
+    }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,

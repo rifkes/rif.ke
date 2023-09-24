@@ -62,7 +62,9 @@ const frag = `
 
   void main() {
     vec2 st = vUv;
-    vec2 uv = vUv;  
+    vec2 uv = vUv;
+
+    float distortion_amount = clamp(u_distortion_amount, 0.0, 1.0);
 
     vec2 mouse = st * 2. - u_mouse.xy;
     mouse.x *= u_ratio * 2.;
@@ -79,7 +81,7 @@ const frag = `
 
     float noise = snoise(noise_pos + vec2(0., u_time * speed + u_noise_seed * 0.1)) * .5 + .5;
     noise += snoise(noise_pos * touch) * 1.75 + 0.1;
-    touch *= touch;
+    touch *= touch * touch;
 
     float noise2 = snoise(noise_pos + vec2(0., u_time * speed + u_noise_seed * 0.1 + 0.1)) * .5 + .5;
     noise2 += snoise(noise_pos * u_mouse.y * 3. * touch2) * 1.75 + 0.1;
@@ -93,7 +95,7 @@ const frag = `
 
     float wave = noise * 2.;
     float strength = smoothstep(0.0, 2.0, 4.) - smoothstep(3.0, 4.0, 4.) * (1.0 - sin( 5.) * 0.45);
-    float distortion = mix(1.0, 1.0 + (strength * u_distortion_amount), wave);
+    float distortion = mix(1.0, 1.0 + (strength * distortion_amount), wave);
 
     // expansion value from the centre (lower value, larger image)
     uv *= distortion;
@@ -102,10 +104,17 @@ const frag = `
 
     vec4 texture1PixelColor = texture2D(u_texture_1, uv);
     vec4 texture2PixelColor = texture2D(u_texture_2, uv);
+
+    texture1PixelColor.r += (0.3) * random(vec2(texture1PixelColor.r, vUv.x * vUv.y)) - 0.15;
+    texture1PixelColor.g += (0.3) * random(vec2(texture1PixelColor.g, vUv.x * vUv.y)) - 0.15;
+    texture1PixelColor.b += (0.3) * random(vec2(texture1PixelColor.b, vUv.x * vUv.y)) - 0.15;
+    texture2PixelColor.r += (0.3) * random(vec2(texture2PixelColor.r, vUv.x * vUv.y)) - 0.15;
+    texture2PixelColor.g += (0.3) * random(vec2(texture2PixelColor.g, vUv.x * vUv.y)) - 0.15;
+    texture2PixelColor.b += (0.3) * random(vec2(texture2PixelColor.b, vUv.x * vUv.y)) - 0.15;
     
     // pop a little vignette around the edges so we don't get that weird stretching/stripy stuff at the edges
     // this is only necessary if we're distorting the image so let’s base it on the distortion amount
-    float vignette = ((distance(uv - .5, vec2(0.0)) * 4.) - 1.5) * u_distortion_amount;
+    float vignette = ((distance(uv - .5, vec2(0.0)) * 4.) - 1.5) * distortion_amount;
     float vignettePixel = clamp(vignette, 0.0, 1.0);
 
     texture1PixelColor.rgb += vignettePixel;
@@ -125,9 +134,9 @@ const frag = `
     mixedColor.a *= u_alpha;
 
     // add noise
-    mixedColor.r += (0.6 * u_distortion_amount) * random(vec2(mixedColor.r, vUv.x * vUv.y));
-    mixedColor.g += (0.6 * u_distortion_amount) * random(vec2(mixedColor.g, vUv.x * vUv.y));
-    mixedColor.b += (0.6 * u_distortion_amount) * random(vec2(mixedColor.b, vUv.x * vUv.y));
+    mixedColor.r += (0.3) * random(vec2(mixedColor.r, vUv.x * vUv.y + sin(u_time))) - 0.15;
+    mixedColor.g += (0.3) * random(vec2(mixedColor.g, vUv.x * vUv.y + sin(u_time))) - 0.15;
+    mixedColor.b += (0.3) * random(vec2(mixedColor.b, vUv.x * vUv.y + sin(u_time))) - 0.15;
 
     gl_FragColor = mixedColor;
 }

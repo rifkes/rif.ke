@@ -31,3 +31,15 @@ h1 {
   text-transform: uppercase;
   margin: 0;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-ms-scrollbar {
+  display: none;
+}
+
+img, canvas {
+  user-select: none;
+}

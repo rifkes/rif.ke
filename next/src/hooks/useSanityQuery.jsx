@@ -1,7 +1,7 @@
-import sanityClient from '@sanity/client';
+import { createClient } from '@sanity/client';
 
 import sanityConfig from '../sanity.config';
 
-const client = sanityClient(sanityConfig);
+const client = createClient(sanityConfig);
 
 export default client;
