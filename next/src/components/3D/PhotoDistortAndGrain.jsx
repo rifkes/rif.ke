@@ -64,8 +64,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
   const texture2CanvasCtx = useRef(null);
   const vignetteCanvas = useRef(null);
   const vignetteCanvasCtx = useRef(null);
-  const vignetteOpacity = useRef(1.0);
   const touchTexture = useRef(null);
+  const video = useRef(document.createElement('video'));
   const texture1 = useRef(null);
   const texture2 = useRef(null);
   const touchTrail = useRef(new Array(config.current.dotsNumber));
@@ -75,16 +75,26 @@ const PhotoDistortAndGrain = ({ stage }) => {
   const [ backgroundImageTexture2, setBackgroundImageTexture2 ] = useState(backgroundImage);
   const currentStage = useRef(stage);
   
+
+  const activeTextureIndex = useRef(0);
+  const currentFadeAmount = useRef(0);
+  const targetFadeAmount = useRef(0);
+
+  const targetDistortionAmount = useRef(1.0);
+  const currentDistortionAmount = useRef(1.0);
+  const distortionAmountTimout = useRef(null);
+  
   useEffect(() => {
     currentStage.current = stage;
   }, [ stage ]);
 
-  const handleDrawImage = useCallback((img, visualCanvas, visualCtx, textureToChange) => {
+  // draw the image onto either canvas 1 or 2 depending on which one is active
+  const handleDrawImage = useCallback((img, visualCanvas, visualCtx, textureToChange, isVideo) => {
     const cw = visualCanvas.width;
     const ch = visualCanvas.height;
 
-    const iw = img.naturalWidth;
-    const ih = img.naturalHeight;
+    const iw = isVideo !== true ? img.naturalWidth : img.videoWidth;
+    const ih = isVideo !== true ? img.naturalHeight : img.videoHeight;
 
     visualCtx.clearRect(0, 0, cw, ch);
 
@@ -103,9 +113,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
 
     if (textureToChange === 2) {
-      // activeTextureIndex.current = 1;
-      // targetFadeAmount.current = 0;
-
       if (texture2.current) {
         texture2.current = new THREE.CanvasTexture(texture2Canvas.current);
         material.current.uniforms.u_texture_2.value = texture2.current;
@@ -113,10 +120,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
         mesh.current.material.needsUpdate = true;
         material.current.uniformsNeedUpdate = true;
       }
-    } else {
-      // activeTextureIndex.current = 0;
-      // targetFadeAmount.current = 1;
-      
+    } else {      
       if (texture1.current) {
         texture1.current = new THREE.CanvasTexture(texture1Canvas.current);
         material.current.uniforms.u_texture_1.value = texture1.current;
@@ -129,7 +133,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   // initialise the image canvases
   useEffect(() => {
-
     const newTexture1Canvas = document.createElement('canvas');
     newTexture1Canvas.width = window.innerWidth;
     newTexture1Canvas.height = window.innerHeight;
@@ -144,9 +147,9 @@ const PhotoDistortAndGrain = ({ stage }) => {
     texture2CanvasCtx.current = newTexture2Canvas.getContext('2d');
     texture2.current = new THREE.CanvasTexture(texture2Canvas.current);
 
-    texture1CanvasCtx.current.fillStyle = 'red';
+    texture1CanvasCtx.current.fillStyle = 'white';
     texture1CanvasCtx.current.fillRect(0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
-    texture2CanvasCtx.current.fillStyle = 'red';
+    texture2CanvasCtx.current.fillStyle = 'white';
     texture2CanvasCtx.current.fillRect(0, 0, texture2Canvas.current.width, texture2Canvas.current.height);
 
     // uncomment to debug
@@ -159,7 +162,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     // document.body.appendChild(texture1Canvas.current);
     // document.body.appendChild(texture2Canvas.current);
     // document.body.appendChild(touchCanvas.current);
-  }, [ handleDrawImage ]);
+  }, []);
 
 
 
@@ -178,14 +181,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
     u_distortion_amount: { type: 'f', value: 1.0 },
   });
 
-  const activeTextureIndex = useRef(0);
-  const currentFadeAmount = useRef(0);
-  const targetFadeAmount = useRef(0);
-
-  const targetDistortionAmount = useRef(1.0);
-  const currentDistortionAmount = useRef(1.0);
-  const distortionAmountTimout = useRef(null);
-
   // assign each background image in the array so it reflects what’s on canvas 1 and 2
   useEffect(() => {
     if (activeTextureIndex.current === 1) {
@@ -197,39 +192,51 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
   }, [ backgroundImage ]);
 
+  // when the first background image changes, update the canvas
   useEffect(() => {
     const img = document.createElement('img');
     const visualCanvas = texture1Canvas.current;
     const visualCtx = texture1CanvasCtx.current;
 
-    if (backgroundImage) {
+    if (backgroundImageTexture1) {
       img.crossOrigin = 'anonymous';
       img.addEventListener('load', () => {
         activeTextureIndex.current = 1;
         handleDrawImage(img, visualCanvas, visualCtx, 1);
         targetFadeAmount.current = 0;
       });
-      img.src = backgroundImage;
+      img.src = backgroundImageTexture1;
     }
   }, [ backgroundImageTexture1, handleDrawImage ]);
 
+
+  // when the second background image changes, update the canvas
   useEffect(() => {
     const img = document.createElement('img');
     const visualCanvas = texture2Canvas.current;
     const visualCtx = texture2CanvasCtx.current;
 
     if (backgroundImageTexture2) {
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
+      if (backgroundImageTexture2 !== 'webcam') {
+        img.crossOrigin = 'anonymous';
+        img.addEventListener('load', () => {
+          activeTextureIndex.current = 0;
+          handleDrawImage(img, visualCanvas, visualCtx, 2);
+          targetFadeAmount.current = 1;
+        });
+        img.src = backgroundImageTexture2;
+      } else {
         activeTextureIndex.current = 0;
-        handleDrawImage(img, visualCanvas, visualCtx, 2);
+        handleDrawImage(video.current, visualCanvas, visualCtx, 2);
         targetFadeAmount.current = 1;
-      });
-      img.src = backgroundImageTexture2;
+        // here
+      }
+
     }
 
   }, [ backgroundImageTexture2, handleDrawImage ]);
 
+  // redraw the canvases when the window resizes
   useEffect(() => {
     texture1CanvasCtx.current.clearRect(0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
     texture1CanvasCtx.current.clearRect(0, 0, texture1Canvas.current.width, texture1Canvas.current.height);
@@ -274,6 +281,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
   });
 
+  // dev
   useEffect(() => {
 
     let amount = 0;
@@ -299,6 +307,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     }
   }, []);
 
+  // update the resolution and ratio uniforms when the window resizes
   useEffect(() => {
     const handleResize = () => {
       mesh.current.scale.set(window.innerWidth, window.innerHeight, 1);
@@ -338,7 +347,9 @@ const PhotoDistortAndGrain = ({ stage }) => {
         texture1, texture2,
       } } />
       <VignetteCanvas { ...{ vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity, } } />
-      <WebcamTexture { ...{ texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas } } />
+      <WebcamTexture { ...{
+        texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas, handleDrawImage, video,
+      } } />
     </>
   );
 }
