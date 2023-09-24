@@ -35,10 +35,10 @@ extend({ DistortionMaterial });
 
 const PhotoDistortAndGrain = ({ stage }) => {
 
-  // const { backgroundImage } = useSiteGlobals();
+  const { backgroundImage, setBackgroundImage } = useSiteGlobals();
   const { windowWidth, windowHeight } = useWindowSize();
 
-  const [ backgroundImage ] = useState('/assets/stunning-vista.png');
+  // const [ backgroundImage ] = useState('/assets/stunning-vista.png');
 
   const config = useRef({
     dotsNumber: 12,
@@ -195,17 +195,22 @@ const PhotoDistortAndGrain = ({ stage }) => {
   // when the first background image changes, update the canvas
   useEffect(() => {
     const img = document.createElement('img');
-    const visualCanvas = texture1Canvas.current;
-    const visualCtx = texture1CanvasCtx.current;
 
     if (backgroundImageTexture1) {
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
+      const visualCanvas = texture1Canvas.current;
+      const visualCtx = texture1CanvasCtx.current;
+      if (backgroundImageTexture1 !== 'webcam') {
+        img.crossOrigin = 'anonymous';
+        img.addEventListener('load', () => {
+          activeTextureIndex.current = 1;
+          handleDrawImage(img, visualCanvas, visualCtx, 1);
+          targetFadeAmount.current = 0;
+        });
+        img.src = backgroundImageTexture1;
+      } else {
         activeTextureIndex.current = 1;
-        handleDrawImage(img, visualCanvas, visualCtx, 1);
         targetFadeAmount.current = 0;
-      });
-      img.src = backgroundImageTexture1;
+      }
     }
   }, [ backgroundImageTexture1, handleDrawImage ]);
 
@@ -213,10 +218,10 @@ const PhotoDistortAndGrain = ({ stage }) => {
   // when the second background image changes, update the canvas
   useEffect(() => {
     const img = document.createElement('img');
-    const visualCanvas = texture2Canvas.current;
-    const visualCtx = texture2CanvasCtx.current;
 
     if (backgroundImageTexture2) {
+      const visualCanvas = texture2Canvas.current;
+      const visualCtx = texture2CanvasCtx.current;
       if (backgroundImageTexture2 !== 'webcam') {
         img.crossOrigin = 'anonymous';
         img.addEventListener('load', () => {
@@ -227,11 +232,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
         img.src = backgroundImageTexture2;
       } else {
         activeTextureIndex.current = 0;
-        handleDrawImage(video.current, visualCanvas, visualCtx, 2);
         targetFadeAmount.current = 1;
-        // here
       }
-
     }
 
   }, [ backgroundImageTexture2, handleDrawImage ]);
@@ -245,7 +247,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     texture2Canvas.current.width = 512;
     texture2Canvas.current.height = windowHeight / windowWidth * 512;
 
-    if (backgroundImageHistory.current[1]) {
+    if (backgroundImageHistory.current[1] && backgroundImageHistory.current[1] !== 'webcam') {
       const img = document.createElement('img');
       const visualCanvas = texture2Canvas.current;
       const visualCtx = texture2CanvasCtx.current;
@@ -257,7 +259,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
       img.src = backgroundImageHistory.current[1];
     }
 
-    if (backgroundImageHistory.current[0]) {
+    if (backgroundImageHistory.current[0] && backgroundImageHistory.current[0] !== 'webcam') {
       const img = document.createElement('img');
       const visualCanvas = texture1Canvas.current;
       const visualCtx = texture1CanvasCtx.current;
@@ -272,7 +274,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
-    currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.05);
+    currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.025);
     currentDistortionAmount.current = lerp(currentDistortionAmount.current, targetDistortionAmount.current, 0.05);
     if (material.current?.uniforms) {
       material.current.uniforms.u_transition_amount.value = currentFadeAmount.current;
@@ -286,18 +288,28 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
     let amount = 0;
 
+    let index = 0;
+
     const handleClick = () => {
-      // turn distortion off on team section and back on on other sections
-      clearTimeout(distortionAmountTimout.current);
-      if (amount === 1.0) {
-        amount = 0.0;
-        activeTextureIndex.current = 1;
-        setTargetVignetteOpacity(0.0);
+      index++;
+      if (index % 2 === 0) {
+        setBackgroundImage('/assets/stunning-vista.png');
       } else {
-        amount = 1.0;
-        setTargetVignetteOpacity(1.0);
+        setBackgroundImage('webcam');
       }
-      targetDistortionAmount.current = amount;
+      // turn distortion off on team section and back on on other sections
+      // clearTimeout(distortionAmountTimout.current);
+      // if (amount === 1.0) {
+      //   amount = 0.0;
+      //   activeTextureIndex.current = 1;
+      //   setTargetVignetteOpacity(0.0);
+      // } else {
+      //   amount = 1.0;
+      //   setTargetVignetteOpacity(1.0);
+      // }
+      // targetDistortionAmount.current = amount;
+
+
     }
 
     window.addEventListener('click', handleClick);
@@ -348,6 +360,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
       } } />
       <VignetteCanvas { ...{ vignetteCanvas, vignetteCanvasCtx, targetVignetteOpacity, } } />
       <WebcamTexture { ...{
+        backgroundImageTexture1, backgroundImageTexture2, activeTextureIndex, targetFadeAmount,
         texture1, texture2, texture1Canvas, texture2Canvas, texture1CanvasCtx, texture2CanvasCtx, vignetteCanvas, handleDrawImage, video,
       } } />
     </>
