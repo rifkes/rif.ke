@@ -49,6 +49,8 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   const [ noiseSeed ] = useState(Math.random() * 12);
   const mesh = useRef();
+  const mousemoveTimeout = useRef(null);
+  const isIdle = useRef(true);
   const touchPoint = useRef(new THREE.Vector2(.5, .65));
   const targetTouchPoint = useRef(new THREE.Vector2(.5, .65));
   const touchCanvasPoint = useRef([ touchPoint.current.x * window.innerWidth, (1 - touchPoint.current.y) * window.innerHeight ]);
@@ -270,7 +272,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
-    if (targetDistortionAmount.current > 0.0) {
+    if (targetDistortionAmount.current > 0.0 && isIdle.current === true) {
       targetDistortionAmount.current -= 0.001;
     }
     currentFadeAmount.current = lerp(currentFadeAmount.current, targetFadeAmount.current, 0.05);
@@ -295,8 +297,13 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
     const handleMouseMove = (e) => {
       if (targetDistortionAmount.current < 1.0) {
-        targetDistortionAmount.current += 0.005;
+        targetDistortionAmount.current += 0.05;
       }
+      isIdle.current = false;
+      clearTimeout(mousemoveTimeout.current);
+      mousemoveTimeout.current = setTimeout(() => {
+        isIdle.current = true;
+      }, 3000);
     }
 
     const handleClick = () => {

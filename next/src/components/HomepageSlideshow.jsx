@@ -15,9 +15,10 @@ const HomepageSlideshow = ({ items }) => {
       setTitleText('Rifke');
     } else {
       if (items[ activeItemIndex ].item?.backgroundImage?.url) {
-        setBackgroundImage(items[ activeItemIndex ].item.backgroundImage.url);
+        // setBackgroundImage(items[ activeItemIndex ].item.backgroundImage.url);
+        setBackgroundImage('white.png');
       } else {
-        setBackgroundImage('webcam');
+        setBackgroundImage('/white.png');
       }
       if (items[ activeItemIndex ]._type === 'textSection') {
         setTitleText(items[ activeItemIndex ].text);

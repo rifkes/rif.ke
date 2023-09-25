@@ -23,9 +23,9 @@ const HomepageScrollingContent = ({ items }) => {
           } else {
             if (items[ activeIndex ].item?.backgroundImage?.url) {
               // setBackgroundImage(items[ activeIndex ].item.backgroundImage.url);
-              setBackgroundImage('/white.png');
+              setBackgroundImage('/assets/white.jpg');
             } else {
-              setBackgroundImage('/white.png');
+              setBackgroundImage('/assets/white.jpg');
             }
             if (items[ activeIndex ]._type === 'textSection') {
               setTitleText(items[ activeIndex ].text);

@@ -65,13 +65,17 @@ const TouchCanvas = ({
   // update touchCanvas
   const updateTrail = useCallback(() => {
     if (!touchCanvasCtx.current || !touchTexture.current) return;
+
+    touchCanvasCtx.current.fillStyle = `rgba(0, 0, 0, ${(1 - targetDistortionAmount.current) / 10})`;
+    
     if (currentDistortionAmount.current === 0) {
       touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
-    }  else if (targetDistortionAmount.current === 0) {
-      touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
-    } else {
-      // touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .01)';
     }
+    // }  else if (targetDistortionAmount.current === 0) {
+    //   touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
+    // } else {
+    //   // touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .01)';
+    // }
     touchCanvasCtx.current.fillRect(0, 0, touchCanvas.current.width, touchCanvas.current.height);
 
     touchTrail.current.forEach((p, pIdx) => {
