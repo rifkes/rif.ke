@@ -15,8 +15,7 @@ const HomepageSlideshow = ({ items }) => {
       setTitleText('Rifke');
     } else {
       if (items[ activeItemIndex ].item?.backgroundImage?.url) {
-        // setBackgroundImage(items[ activeItemIndex ].item.backgroundImage.url);
-        setBackgroundImage('white.png');
+        setBackgroundImage('/white.png');
       } else {
         setBackgroundImage('/white.png');
       }
