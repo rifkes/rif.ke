@@ -27,6 +27,7 @@ export const ITEM_CONTENT = groq`
       },
     },
   },
+  role,
   credits [] {
     person,
     role,

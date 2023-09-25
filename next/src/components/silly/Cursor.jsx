@@ -76,7 +76,6 @@ const Cursor = () => {
     const handleMouseMove = (event) => {
       mouse.x = event.pageX;
       mouse.y = event.pageY;
-      // trail.current.classList.remove('inactive');
     }
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -94,9 +93,6 @@ const Cursor = () => {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', handleMouseMove);
-      if (document.querySelector('.trail')) {
-        document.querySelector('.trail').innerHTML = '';
-      }
     }
   }, [ characters, windowWidth, windowHeight ]);
 

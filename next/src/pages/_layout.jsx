@@ -9,6 +9,7 @@ import FlipVertical from '@/components/silly/FlipVertical';
 import Eraser from '@/components/silly/Eraser';
 import PhotoDistortAndGrain from '@/components/silly/3D/OilSlick';
 import OilSlick from '@/components/silly/3D/OilSlick';
+import DistortedText from '@/components/silly/3D/DistortedText';
 
 const Layout = ({ children }) => {
 
@@ -40,6 +41,14 @@ const Layout = ({ children }) => {
       {
         sillyName === 'eraser' &&
         <Eraser />
+      }
+      {
+        sillyName === 'distorted text' &&
+        <div className='w-full h-screen fixed top-0 left-0 overflow-hidden mix-blend-difference'>
+          <ThreeCanvas>
+            <DistortedText />
+          </ThreeCanvas>
+        </div>
       }
       {
         sillyName === 'oil slick' &&

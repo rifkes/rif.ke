@@ -134,6 +134,11 @@ export default defineType({
       group: 'content',
     }),
     defineField({
+      name: 'role',
+      title: 'Role',
+      type: 'string',
+    }),
+    defineField({
       name: 'credits',
       title: 'Credits',
       type: 'array',

@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
+import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 
 const ItemInfoSection = () => {
+  const { activeItem } = useSiteGlobals();
 
   return (
     <motion.div
@@ -14,24 +16,48 @@ const ItemInfoSection = () => {
       } }
     >
       <div className='max-h-full w-full overflow-y-scroll py-12 px-2'>
-        What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-        What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-        What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
+        {
+          <h2 className='mb-2'>{ activeItem.title }</h2>
+        }
+        {
+          activeItem?.description &&
+          <p className='mb-8'>{ activeItem.description }</p>
+        }
+        {
+          activeItem?.client &&
+          <p className='mb-2'>Client: { activeItem.client }</p>
+        }
+        {
+          activeItem?.role &&
+          <p className='mb-2'>Role: { activeItem.role }</p>
+        }
+        {
+          activeItem?.credits?.length > 0 &&
+          <div className='mb-8'>
+            <p className='inline'>Credits: </p>
+            <ul className='list-none inline'>
+              {
+                activeItem.credits.map((credit, index) => (
+                  <li
+                    className="inline after:text-white after:mr-2 after:content-[','] last:after:content-none"
+                    key={ index }
+                  >{ credit.person }—{ credit.role }</li>
+                ))
+              }
+            </ul>
+          </div>
+        }
+        {
+          activeItem?.url &&
+          <p className='mb-2'>
+              Visit: <a
+              href={ activeItem.url }
+              target='_blank'
+              rel='noopener noreferrer'
+              className='after:text-white after:ml-2 after:content-[→]'
+              >{ activeItem.url.replace('https://', '').replace('http://', '') }</a>
+          </p>
+        }
       </div>
     </motion.div>
   )

@@ -93,3 +93,8 @@ img, canvas {
 .flip-vertical {
   transform: scaleY(-1);
 }
+
+.ui-text-transparent .ui-text {
+  opacity: 0 !important;
+  transition: none !important;
+}

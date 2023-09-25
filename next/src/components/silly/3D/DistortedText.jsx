@@ -1,13 +1,13 @@
 import { shaderMaterial } from '@react-three/drei';
 import { useRef, useEffect, useCallback, useState } from 'react';
-import frag from './shaders/OilSlickFrag.js';
+import frag from './shaders/DistortedTextFrag.js';
 import { extend, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { lerp } from 'three/src/math/MathUtils';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext.jsx';
 import useWindowSize from '@/hooks/useWindowSize.jsx';
-import TouchCanvas from './OilSlickTouchCanvas.jsx';
-import OilSlickWebcamTexture from './OilSlickWebcamTexture.jsx';
+import TouchCanvas from './DistortedTextTouchCanvas.jsx';
+import DistortedTextCanvas from './DistortedTextCanvas.jsx';
 
 const vert = `
   varying vec2 vUv;
@@ -19,7 +19,7 @@ const vert = `
   }
 `;
 
-const OilSlickMaterial = shaderMaterial(
+const DistortionMaterial = shaderMaterial(
   { u_time: 0 },
   // vertex shader
   /*glsl*/`${ vert }`,
@@ -27,24 +27,28 @@ const OilSlickMaterial = shaderMaterial(
   /*glsl*/`${ frag }`,
 );
 
-extend({ OilSlickMaterial });
+extend({ DistortionMaterial });
 
-const OilSlick = () => {
+const DistortedText = () => {
 
   const { webcamAllowed } = useSiteGlobals();
   const { windowWidth, windowHeight } = useWindowSize();
-  const fallbackImage = '/assets/gradient-test.jpg';
-
   
+  useEffect(() => {
+    document.body.classList.add('ui-text-transparent');
+    return () => {
+      document.body.classList.remove('ui-text-transparent');
+    }
+  }, []);
 
   const config = useRef({
     dotsNumber: 6,
-    dotsBaseRadius: window.innerHeight * .025,
+    dotsBaseRadius: 60,
     tailSpring: .915,
     tailGravity: window.innerHeight * .05,  
     tailGravityBonds: [window.innerHeight * .005, window.innerHeight * .01],
-    tailFriction: .15,
-    catchingSpeed: window.innerWidth * .0001,
+    tailFriction: .01,
+    catchingSpeed: window.innerWidth * .001,
   });
 
   const [ noiseSeed ] = useState(Math.random() * 12);
@@ -59,7 +63,6 @@ const OilSlick = () => {
   const textureCanvas = useRef(null);
   const textureCanvasCtx = useRef(null);
   const touchTexture = useRef(null);
-  const video = useRef(document.createElement('video'));
   const texture = useRef(null);
   const touchTrail = useRef(new Array(config.current.dotsNumber));
   const material = useRef(null);
@@ -68,24 +71,15 @@ const OilSlick = () => {
   const currentDistortionAmount = useRef(1.0);
 
   // draw the image onto either canvas 1 or 2 depending on which one is active
-  const handleDrawImage = useCallback((img, isVideo) => {
-    const cw = textureCanvas.current.width;
-    const ch = textureCanvas.current.height;
+  const handleDrawImage = useCallback((img) => {
+    const iw = img.naturalWidth;
+    const ih = img.naturalHeight;
 
-    const iw = isVideo !== true ? img.naturalWidth : img.videoWidth;
-    const ih = isVideo !== true ? img.naturalHeight : img.videoHeight;
+    textureCanvas.current.width = iw;
+    textureCanvas.current.height = ih;
 
-    textureCanvasCtx.current.clearRect(0, 0, cw, ch);
-
-    // crop and center image
-    const imageMoreLandscape = (iw / ih) > (cw / ch);
-
-    const w = imageMoreLandscape === false ? cw : iw / ih * ch;
-    const h = imageMoreLandscape === true ? ch : ih / iw * cw;
-    const x = cw / 2 - w / 2;
-    const y = ch / 2 - h / 2;
-
-    textureCanvasCtx.current.drawImage(img, x, y, w, h);
+    textureCanvasCtx.current.clearRect(0, 0, iw, ih);
+    textureCanvasCtx.current.drawImage(img, 0, 0, iw, ih, 0, 0, iw, ih);
 
     if (texture.current && material.current) {
       texture.current = new THREE.CanvasTexture(textureCanvas.current);
@@ -132,38 +126,6 @@ const OilSlick = () => {
     u_distortion_amount: { type: 'f', value: 1.0 },
   });
 
-  // when the first background image changes, update the canvas
-  useEffect(() => {
-    const img = document.createElement('img');
-    if (webcamAllowed === false) {
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
-        handleDrawImage(img, false);
-      });
-      img.src = fallbackImage;
-    }
-  }, [ webcamAllowed, fallbackImage, handleDrawImage ]);
-
-
-  // redraw the canvases when the window resizes
-  useEffect(() => {
-    textureCanvasCtx.current.clearRect(0, 0, textureCanvas.current.width, textureCanvas.current.height);
-    textureCanvas.current.width = 512;
-    textureCanvas.current.height = windowHeight / windowWidth * 512;
-
-    if (webcamAllowed === false) {
-      const img = document.createElement('img');
-      img.crossOrigin = 'anonymous';
-      img.addEventListener('load', () => {
-        handleDrawImage(img, false);
-      });
-      img.src = fallbackImage;
-    } else {
-      handleDrawImage(video.current, true);
-    }
-
-  }, [ windowWidth, windowHeight, handleDrawImage, webcamAllowed, fallbackImage ]);
-
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
     if (targetDistortionAmount.current > 0.0 && isIdle.current === true) {
@@ -179,8 +141,6 @@ const OilSlick = () => {
       material.current.uniforms.u_distortion_amount.value = currentDistortionAmount.current;
     }
   });
-
-  const index = useRef(5);
 
   // dev
   useEffect(() => {
@@ -229,7 +189,7 @@ const OilSlick = () => {
         position={[0, 0, -200]}
       >
         <planeGeometry args={ [ 1, 1 ] } />
-        <oilSlickMaterial
+        <distortionMaterial
           ref={ material }
           uniforms={ uniforms.current }
           attach="material"
@@ -244,9 +204,11 @@ const OilSlick = () => {
         touchCanvasCtx, material, touchPoint, targetTouchPoint, targetDistortionAmount,
         texture, currentDistortionAmount,
       } } />
-      <OilSlickWebcamTexture { ...{ handleDrawImage, video } } />
+      <DistortedTextCanvas { ...{
+        handleDrawImage, textureCanvas, textureCanvasCtx, texture, material,
+      } } />
     </>
   );
 }
 
-export default OilSlick;
+export default DistortedText;

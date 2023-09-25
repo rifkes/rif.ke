@@ -5,9 +5,9 @@ import * as THREE from 'three';
 const OilSlickTouchCanvas = ({
   touchTrail, touchCanvasPoint, config, touchTexture, touchCanvas, touchCanvasCtx,
   material, touchPoint, targetTouchPoint, targetDistortionAmount, texture, currentDistortionAmount,
-}) => {
+ }) => {
 
-  const color = '255, 255, 255';
+  const prevMousePosition = useRef({ x: 0, y: 0 });
 
   const isMoving = useRef(false);
   const movingTimer = useRef(null);
@@ -66,16 +66,26 @@ const OilSlickTouchCanvas = ({
   const updateTrail = useCallback(() => {
     if (!touchCanvasCtx.current || !touchTexture.current) return;
 
-    touchCanvasCtx.current.fillStyle = `rgba(0, 0, 0, ${(1 - targetDistortionAmount.current) / 10})`;
+    touchCanvasCtx.current.globalCompositeOperation = 'source-over';
+
+    const r = touchPoint.current?.x ? Math.abs(touchPoint.current.x - prevMousePosition.current.x) * 200 * 255 : 0;
+    const g = touchPoint.current?.y ? Math.abs(touchPoint.current.y - prevMousePosition.current.y) * 200 * 255 : 0;
+
+    prevMousePosition.current.x = touchPoint.current.x ?? 0;
+    prevMousePosition.current.y = touchPoint.current.y ?? 0;
+
+    touchCanvasCtx.current.fillStyle = `rgba(${ r }, ${ g }, 0, ${ (1 - targetDistortionAmount.current) / 10 })`;
     
     if (currentDistortionAmount.current === 0) {
+      touchCanvasCtx.current.globalCompositeOperation = 'source-over';
       touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
+    } else if (targetDistortionAmount.current === 0) {
+      touchCanvasCtx.current.globalCompositeOperation = 'source-over';
+      touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
+    } else {
+      touchCanvasCtx.current.globalCompositeOperation = 'source-over';
+      touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .1)';
     }
-    // }  else if (targetDistortionAmount.current === 0) {
-    //   touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
-    // } else {
-    //   // touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .01)';
-    // }
     touchCanvasCtx.current.fillRect(0, 0, touchCanvas.current.width, touchCanvas.current.height);
 
     touchTrail.current.forEach((p, pIdx) => {
@@ -95,6 +105,9 @@ const OilSlickTouchCanvas = ({
       }
 
       const grd = touchCanvasCtx.current.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+
+      const color = `${ r }, ${ g }, 255`;
+      
       grd.addColorStop(0, `rgba(${ color },${ 0.1 })`);
       grd.addColorStop(1, `rgba(${ color }, 0)`);
 
@@ -105,8 +118,8 @@ const OilSlickTouchCanvas = ({
     });
 
     touchTexture.current.needsUpdate = true;
-    texture.current.needsUpdate = true;
-  }, [ color ]);
+    // texture.current.needsUpdate = true;
+  }, []);
 
   useFrame(({ clock }) => {
     touchPoint.current.x += (targetTouchPoint.current.x - touchPoint.current.x) * config.current.catchingSpeed;
