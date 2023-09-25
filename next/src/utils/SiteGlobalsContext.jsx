@@ -11,6 +11,12 @@ export const SiteGlobalsContext = createContext({
   setTitleText: async (titleText) => null,
   webcamAllowed: false,
   setWebcamAllowed: async (webcamAllowed) => null,
+  activeItem: null,
+  setActiveItem: async (activeItem) => null,
+  infoIsActive: false,
+  setInfoIsActive: async (infoIsActive) => null,
+  itemInfoIsActive: false,
+  setItemInfoIsActive: async (itemInfoIsActive) => null,
 });
 
 export const useSiteGlobals = () => useContext(SiteGlobalsContext)
@@ -21,6 +27,9 @@ export const SiteGlobalsProvider = ({ children }) => {
   const [ isTouchscreen, setIsTouchscreen ] = useState(false);
   const [ titleText, setTitleText ] = useState('Rifke');
   const [ webcamAllowed, setWebcamAllowed ] = useState(false);
+  const [ activeItem, setActiveItem ] = useState(null);
+  const [ infoIsActive, setInfoIsActive ] = useState(false);
+  const [ itemInfoIsActive, setItemInfoIsActive ] = useState(false);
 
   return (
     <SiteGlobalsContext.Provider
@@ -30,6 +39,9 @@ export const SiteGlobalsProvider = ({ children }) => {
         isTouchscreen, setIsTouchscreen,
         titleText, setTitleText,
         webcamAllowed, setWebcamAllowed,
+        activeItem, setActiveItem,
+        infoIsActive, setInfoIsActive,
+        itemInfoIsActive, setItemInfoIsActive,
       } }
     >{ children }</SiteGlobalsContext.Provider>
   );

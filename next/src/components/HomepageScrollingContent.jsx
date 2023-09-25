@@ -6,34 +6,40 @@ import Image from 'next/image';
 
 const HomepageScrollingContent = ({ items }) => {
 
-  const { setBackgroundImage, setTitleText } = useSiteGlobals();
-
-  const [ activeItemIndex, setActiveItemIndex ] = useState(-1);
+  const { setBackgroundImage, setTitleText, setActiveItem, infoIsActive, itemInfoIsActive } = useSiteGlobals();
 
   return (
     <>
       <motion.div
-        { ...fadeInOutVariants }
+        initial={ { opacity: 0 } }
+        animate={ { opacity: infoIsActive === false && itemInfoIsActive === false ? 1 : 0 } }
+        exit={ { opacity: 0 } }
         className='w-full h-screen fixed top-0 left-0 z-10 overflow-y-scroll'
+        style={ {
+          pointerEvents: infoIsActive === false && itemInfoIsActive === false ? 'auto' : 'none',
+        } }
         onScroll={ (e) => {
           let activeIndex = Math.ceil((e.target.scrollTop - window.innerHeight * 0.25) / window.innerHeight) - 1;
           if (activeIndex < 0 || activeIndex >= items.length) {
             setBackgroundImage('webcam');
             setTitleText('Rifke');
+            setActiveItem(null);
           } else {
             if (items[ activeIndex ].item?.backgroundImage?.url) {
-              // setBackgroundImage(items[ activeIndex ].item.backgroundImage.url);
-              setBackgroundImage('/assets/white.jpg');
+              setBackgroundImage('/white.png');
             } else {
-              setBackgroundImage('/assets/white.jpg');
+              setBackgroundImage('/white.png');
             }
             if (items[ activeIndex ]._type === 'textSection') {
               setTitleText(items[ activeIndex ].text);
+              setActiveItem(null);
             } else {
+              if (items[ activeIndex ]?.item) {
+                setActiveItem(items[ activeIndex ].item);
+              }
               setTitleText(items[ activeIndex ].item?.title ? items[ activeIndex ].item.title : items[ activeIndex ].item?.client ? items[ activeIndex ].item.client : items[ activeIndex ].item?.project ? items[ activeIndex ].item.project : '');
             }
           }
-            setActiveItemIndex(activeIndex);
         } }
       >
         <div className='w-screen h-screen' />
