@@ -1,23 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const HomepageScrollingContent = () => {
+const HomepageScrollingContent = ({ items }) => {
 
-  const { siteGlobals, setBackgroundImage, setTitleText } = useSiteGlobals();
-
-  const items = useMemo(() => {
-    if (siteGlobals?.homepage?.items) {
-      return siteGlobals.homepage.items.map((item, index) => ({
-        ...item,
-        index,
-      }));
-    } else {
-      return [];
-    }
-  }, [ siteGlobals?.homepage?.items ]);
+  const { setBackgroundImage, setTitleText } = useSiteGlobals();
 
   const [ activeItemIndex, setActiveItemIndex ] = useState(-1);
 
