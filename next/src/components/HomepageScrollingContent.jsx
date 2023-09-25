@@ -32,7 +32,7 @@ const HomepageScrollingContent = ({ items }) => {
             }
             if (items[ activeIndex ]._type === 'textSection') {
               setTitleText(items[ activeIndex ].text);
-              setActiveItem(null);
+              setActiveItem(items[ activeIndex ]);
             } else {
               if (items[ activeIndex ]?.item) {
                 setActiveItem(items[ activeIndex ].item);
@@ -42,7 +42,7 @@ const HomepageScrollingContent = ({ items }) => {
           }
         } }
       >
-        <div className='w-screen h-screen' />
+        <div className='w-screen h-screen pointer-events-none' />
         {
           items.map((item, index) => (
             <div className='w-screen h-screen max-xs:px-0 p-12' key={ index }>

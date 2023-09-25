@@ -3,7 +3,7 @@ import ThreeScene from './ThreeScene';
 import { OrthographicCamera } from '@react-three/drei';
 import { useRef } from 'react';
 
-const ThreeCanvas = ({ stage, setStage }) => {
+const ThreeCanvas = ({ children }) => {
 
   const camera = useRef();
 
@@ -29,7 +29,7 @@ const ThreeCanvas = ({ stage, setStage }) => {
             intensity={ 0.5 }
             position={ [ 0, 0, 20 ] }
           />
-          <ThreeScene { ...{ stage, setStage } } />
+      <ThreeScene { ...{ children } } />
         </Canvas>
   )
 };

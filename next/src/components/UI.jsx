@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 
 const UI = () => {
-  const { titleText, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive } = useSiteGlobals();
+  const { titleText, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName } = useSiteGlobals();
 
   useEffect(() => {
     setItemInfoIsActive(false);
@@ -56,8 +56,13 @@ const UI = () => {
           { itemInfoIsActive === true ? 'close' : '?' }
         </button>
       }
-      <button className='select-none fixed top-0 right-0 p-2 uppercase mix-blend-difference text-white z-[999]'>
-        Lab
+      <button
+        onClick={ () => {
+          setSillyName(sillyNames[ Math.floor(Math.random() * sillyNames.length) ]);
+        } }
+        className='select-none fixed top-0 right-0 p-2 uppercase mix-blend-difference text-white z-[999]'
+      >
+        ♡
       </button>
       <a
         href={ `mailto:rifke@rifke.world` }
@@ -75,6 +80,17 @@ const UI = () => {
       >
         @rifke.world
       </a>
+      {
+        !activeItem &&
+        <span
+          href='https://instagram.com/rifke.world'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='select-none block fixed bottom-0 left-1/2 -translate-x-1/2 p-2 uppercase mix-blend-difference text-white z-[999]'
+        >
+          scroll
+        </span>
+      }
     </>
   )
 }

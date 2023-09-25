@@ -30,6 +30,19 @@ export const SiteGlobalsProvider = ({ children }) => {
   const [ activeItem, setActiveItem ] = useState(null);
   const [ infoIsActive, setInfoIsActive ] = useState(false);
   const [ itemInfoIsActive, setItemInfoIsActive ] = useState(false);
+  const [ initialSillyNames ] = useState([
+    'trail cursor',
+    'oil slick',
+    'eraser',
+  ]);
+  const [ sillyNames ] = useState([
+    'trail cursor',
+    'oil slick',
+    'flip horizontal',
+    'flip vertical',
+    'eraser',
+  ]);
+  const [ sillyName, setSillyName ] = useState('');
 
   return (
     <SiteGlobalsContext.Provider
@@ -42,6 +55,7 @@ export const SiteGlobalsProvider = ({ children }) => {
         activeItem, setActiveItem,
         infoIsActive, setInfoIsActive,
         itemInfoIsActive, setItemInfoIsActive,
+        sillyNames, initialSillyNames, sillyName, setSillyName,
       } }
     >{ children }</SiteGlobalsContext.Provider>
   );
