@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const HomepageScrollingContent = () => {
 
-  const { siteGlobals, setBackgroundImage } = useSiteGlobals();
+  const { siteGlobals, setBackgroundImage, setTitleText } = useSiteGlobals();
 
   const items = useMemo(() => {
     if (siteGlobals?.homepage?.items) {
@@ -30,11 +30,17 @@ const HomepageScrollingContent = () => {
           let activeIndex = Math.ceil((e.target.scrollTop - window.innerHeight * 0.25) / window.innerHeight) - 1;
           if (activeIndex < 0 || activeIndex >= items.length) {
             setBackgroundImage('webcam');
+            setTitleText('Rifke');
           } else {
             if (items[ activeIndex ].item?.backgroundImage?.url) {
               setBackgroundImage(items[ activeIndex ].item.backgroundImage.url);
             } else {
               setBackgroundImage('webcam');
+            }
+            if (items[ activeIndex ]._type === 'textSection') {
+              setTitleText(items[ activeIndex ].text);
+            } else {
+              setTitleText(items[ activeIndex ].item?.title ? items[ activeIndex ].item.title : items[ activeIndex ].item?.client ? items[ activeIndex ].item.client : items[ activeIndex ].item?.project ? items[ activeIndex ].item.project : '');
             }
           }
             setActiveItemIndex(activeIndex);
@@ -53,6 +59,9 @@ const HomepageScrollingContent = () => {
                   alt={ item.item.foregroundMedia.image.altText ?? item.item.title + ' image' }
                   width={ 1024 }
                   height={ 1024 }
+                  style={ {
+                    boxShadow: '2px 2px 25px -5px rgba(0, 0, 0, 0.5)'
+                  } }
                 />
               }
             </div>

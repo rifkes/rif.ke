@@ -104,7 +104,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     visualCtx.drawImage(img, x, y, w, h);
 
     if (textureToChange === 2) {
-      if (texture2.current) {
+      if (texture2.current && material.current) {
         texture2.current = new THREE.CanvasTexture(texture2Canvas.current);
         material.current.uniforms.u_texture_2.value = texture2.current;
         texture2.current.needsUpdate = true;
@@ -112,7 +112,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
         material.current.uniformsNeedUpdate = true;
       }
     } else {      
-      if (texture1.current) {
+      if (texture1.current && material.current) {
         texture1.current = new THREE.CanvasTexture(texture1Canvas.current);
         material.current.uniforms.u_texture_1.value = texture1.current;
         texture1.current.needsUpdate = true;
@@ -144,15 +144,15 @@ const PhotoDistortAndGrain = ({ stage }) => {
     texture2CanvasCtx.current.fillRect(0, 0, texture2Canvas.current.width, texture2Canvas.current.height);
 
     // uncomment to debug
-    // touchCanvas.current.setAttribute('style', 'position: fixed; bottom: 0; left: 0; z-index: 100; width: 120px; height: auto; pointer-events: none;');
+    // touchCanvas.current.setAttribute('style', 'position: fixed; bottom: 0; left: 0; z-index: 999; width: 120px; height: auto; pointer-events: none;');
     // touchCanvas.current.setAttribute('id', 'touchCanvas');
+    // document.body.appendChild(touchCanvas.current);
     // texture1Canvas.current.setAttribute('style', 'position: fixed; top: 0; left: 0; z-index: 100; width: 120px; height: auto; pointer-events: none;');
     // texture1Canvas.current.setAttribute('id', 'canvas1');
     // texture2Canvas.current.setAttribute('style', 'position: fixed; top: 0; right: 0; z-index: 100; width: 120px; height: auto; pointer-events: none;');
     // texture2Canvas.current.setAttribute('id', 'canvas2');
     // document.body.appendChild(texture1Canvas.current);
     // document.body.appendChild(texture2Canvas.current);
-    // document.body.appendChild(touchCanvas.current);
   }, []);
 
 

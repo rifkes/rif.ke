@@ -31,7 +31,7 @@ const TouchCanvas = ({
         vx: 0,
         vy: 0,
         intensity: i ? .9 * (config.current.dotsNumber - i) / config.current.dotsNumber : .9,
-        r: config.current.dotsBaseRadius * (1 + Math.pow(i / config.current.dotsNumber, .9))
+        r: config.current.dotsBaseRadius * (1 + Math.pow(i / config.current.dotsNumber, 1.0))
       };
     }
 
@@ -57,7 +57,7 @@ const TouchCanvas = ({
       movingTimer.current = setTimeout(movingTimeout, 300);
 
       targetTouchPoint.current.x = eX / window.innerWidth;
-      targetTouchPoint.current.y = 1.1 - Math.max(eY / window.innerHeight, .2);
+      targetTouchPoint.current.y = 1.1 - Math.max(eY / window.innerHeight, .1);
     }
 
   }, [ touchCanvas, touchCanvasCtx, touchCanvasPoint, touchTexture, touchTrail, config ]);

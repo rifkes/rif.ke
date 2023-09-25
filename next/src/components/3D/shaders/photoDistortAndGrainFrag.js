@@ -138,6 +138,23 @@ const frag = `
     mixedColor.g += (0.6) * random(vec2(mixedColor.g, vUv.x * vUv.y + sin(u_time))) - 0.3;
     mixedColor.b += (0.6) * random(vec2(mixedColor.b, vUv.x * vUv.y + sin(u_time))) - 0.3;
 
+    // mixedColor.r += 0.4;
+    // mixedColor.g += 0.4;
+    // mixedColor.b += 0.4;
+
+    // mixedColor.r = clamp(mixedColor.r, 0.7, 0.9);
+    // mixedColor.g = clamp(mixedColor.g, 0.7, 0.9);
+    // mixedColor.b = clamp(mixedColor.b, 0.7, 0.9);
+
+
+    // make it black and white
+    // float average = (mixedColor.r + mixedColor.g + mixedColor.b) / 3.;
+    // average += 0.4;
+    // average = clamp(average, 0.8, 1.0);
+    // gl_FragColor = vec4(average, average, average, 1.0);
+
+
+
     gl_FragColor = mixedColor;
 }
 `;
