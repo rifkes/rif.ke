@@ -37,8 +37,6 @@ const PhotoDistortAndGrain = ({ stage }) => {
   const { backgroundImage, setBackgroundImage } = useSiteGlobals();
   const { windowWidth, windowHeight } = useWindowSize();
 
-  // const [ backgroundImage ] = useState('/assets/stunning-vista.png');
-
   const config = useRef({
     dotsNumber: 6,
     dotsBaseRadius: window.innerHeight * .025,
@@ -163,7 +161,7 @@ const PhotoDistortAndGrain = ({ stage }) => {
     u_texture_1: { type: 't', value: texture1.current },
     u_texture_2: { type: 't', value: texture2.current },
     u_mouse: { type: 'v2', value: new THREE.Vector2(0, 0) },
-    u_alpha: { type: 'f', value: 0.8 },
+    u_alpha: { type: 'f', value: 0.2 },
     u_resolution: { type: 'v2', value: new THREE.Vector2(0, 0) },
     u_time: { type: 'f', value: 0 },
     u_transition_amount: { type: 'f', value: 0 },
@@ -174,7 +172,9 @@ const PhotoDistortAndGrain = ({ stage }) => {
 
   // assign each background image in the array so it reflects what’s on canvas 1 and 2
   useEffect(() => {
-    targetDistortionAmount.current = 0.0;
+    if (backgroundImage === 'webcam') {
+      // targetDistortionAmount.current = 0.0;
+    }
     if (activeTextureIndex.current === 0) {
       backgroundImageHistory.current[1] = backgroundImage;
       setBackgroundImageTexture2(backgroundImage);

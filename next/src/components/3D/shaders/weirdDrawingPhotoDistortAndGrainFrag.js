@@ -105,12 +105,12 @@ const frag = `
     vec4 texture1PixelColor = texture2D(u_texture_1, uv);
     vec4 texture2PixelColor = texture2D(u_texture_2, uv);
 
-    texture1PixelColor.r += (0.3) * random(vec2(texture1PixelColor.r, vUv.x * vUv.y));
-    texture1PixelColor.g += (0.3) * random(vec2(texture1PixelColor.g, vUv.x * vUv.y));
-    texture1PixelColor.b += (0.3) * random(vec2(texture1PixelColor.b, vUv.x * vUv.y));
-    texture2PixelColor.r += (0.3) * random(vec2(texture2PixelColor.r, vUv.x * vUv.y));
-    texture2PixelColor.g += (0.3) * random(vec2(texture2PixelColor.g, vUv.x * vUv.y));
-    texture2PixelColor.b += (0.3) * random(vec2(texture2PixelColor.b, vUv.x * vUv.y));
+    texture1PixelColor.r += (0.6) * random(vec2(texture1PixelColor.r, vUv.x * vUv.y)) - 0.3;
+    texture1PixelColor.g += (0.6) * random(vec2(texture1PixelColor.g, vUv.x * vUv.y)) - 0.3;
+    texture1PixelColor.b += (0.6) * random(vec2(texture1PixelColor.b, vUv.x * vUv.y)) - 0.3;
+    texture2PixelColor.r += (0.6) * random(vec2(texture2PixelColor.r, vUv.x * vUv.y)) - 0.3;
+    texture2PixelColor.g += (0.6) * random(vec2(texture2PixelColor.g, vUv.x * vUv.y)) - 0.3;
+    texture2PixelColor.b += (0.6) * random(vec2(texture2PixelColor.b, vUv.x * vUv.y)) - 0.3;
     
     // pop a little vignette around the edges so we don't get that weird stretching/stripy stuff at the edges
     // this is only necessary if we're distorting the image so let’s base it on the distortion amount
@@ -132,9 +132,9 @@ const frag = `
 ;
 
     // add noise
-    mixedColor.r += (0.3) * random(vec2(mixedColor.r, vUv.x * vUv.y + sin(u_time)));
-    mixedColor.g += (0.3) * random(vec2(mixedColor.g, vUv.x * vUv.y + sin(u_time)));
-    mixedColor.b += (0.3) * random(vec2(mixedColor.b, vUv.x * vUv.y + sin(u_time)));
+    mixedColor.r += (0.6) * random(vec2(mixedColor.r, vUv.x * vUv.y + sin(u_time))) - 0.3;
+    mixedColor.g += (0.6) * random(vec2(mixedColor.g, vUv.x * vUv.y + sin(u_time))) - 0.3;
+    mixedColor.b += (0.6) * random(vec2(mixedColor.b, vUv.x * vUv.y + sin(u_time))) - 0.3;
 
     // mixedColor.r += 0.4;
     // mixedColor.g += 0.4;
@@ -144,8 +144,8 @@ const frag = `
     // mixedColor.g = clamp(mixedColor.g, 0.4, 0.9);
     // mixedColor.b = clamp(mixedColor.b, 0.4, 0.9);
     
-    // drawing thing
     mixedColor.a = 0.;
+    // increase transparency
     mixedColor.a += ( touch * 40.);
 
 

@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className='w-full h-screen fixed top-0 left-0'>
+      <div className='w-full h-screen fixed top-0 left-0 bg-white'>
         <ThreeCanvas { ...{ stage, setStage } } />
       </div>
       <UI />

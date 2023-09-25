@@ -22,9 +22,10 @@ const HomepageScrollingContent = ({ items }) => {
             setTitleText('Rifke');
           } else {
             if (items[ activeIndex ].item?.backgroundImage?.url) {
-              setBackgroundImage(items[ activeIndex ].item.backgroundImage.url);
+              // setBackgroundImage(items[ activeIndex ].item.backgroundImage.url);
+              setBackgroundImage('/white.png');
             } else {
-              setBackgroundImage('webcam');
+              setBackgroundImage('/white.png');
             }
             if (items[ activeIndex ]._type === 'textSection') {
               setTitleText(items[ activeIndex ].text);

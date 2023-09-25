@@ -47,3 +47,7 @@ img, canvas {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+.children-pointer-events-none * {
+  pointer-events: none !important;
+}
