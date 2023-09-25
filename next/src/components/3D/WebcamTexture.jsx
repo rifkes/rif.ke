@@ -1,3 +1,4 @@
+import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import { useEffect, useState, useCallback, useRef } from 'react';
 
 const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2,
@@ -6,6 +7,7 @@ const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2,
 
   const [ videoIsReady, setVideoIsReady ] = useState(false);
   const raf = useRef(null);
+  const { webcamAllowed, setWebcamAllowed, setBackgroundImage } = useSiteGlobals();
 
 
   const loop = useCallback(() => {
@@ -83,10 +85,14 @@ const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2,
       // we can start having fun
       video.current.srcObject = stream;
       setVideoIsReady(true);
+      setBackgroundImage('webcam');
+      setWebcamAllowed(true);
     }, function (err) {
       throw err;
     }).catch((error) => {
-      console.log(error);
+      setWebcamAllowed(false);
+      setBackgroundImage('/white.png');
+      setBackgroundImage('/assets/gradient-test.jpg');
     });
 
     const handleFirstInteraction = () => {

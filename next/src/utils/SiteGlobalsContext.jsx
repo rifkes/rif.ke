@@ -9,15 +9,18 @@ export const SiteGlobalsContext = createContext({
   setIsTouchscreen: async (isTouchscreen) => null,
   titleText: 'Rifke',
   setTitleText: async (titleText) => null,
+  webcamAllowed: false,
+  setWebcamAllowed: async (webcamAllowed) => null,
 });
 
 export const useSiteGlobals = () => useContext(SiteGlobalsContext)
 
 export const SiteGlobalsProvider = ({ children }) => {
   const [ siteGlobals, setSiteGlobals ] = useState(null);
-  const [ backgroundImage, setBackgroundImage ] = useState('webcam');
+  const [ backgroundImage, setBackgroundImage ] = useState('/white.png');
   const [ isTouchscreen, setIsTouchscreen ] = useState(false);
   const [ titleText, setTitleText ] = useState('Rifke');
+  const [ webcamAllowed, setWebcamAllowed ] = useState(false);
 
   return (
     <SiteGlobalsContext.Provider
@@ -26,6 +29,7 @@ export const SiteGlobalsProvider = ({ children }) => {
         backgroundImage, setBackgroundImage,
         isTouchscreen, setIsTouchscreen,
         titleText, setTitleText,
+        webcamAllowed, setWebcamAllowed,
       } }
     >{ children }</SiteGlobalsContext.Provider>
   );
