@@ -25,7 +25,7 @@ export default function Home({ globalData }) {
       <SetGlobalProps { ...{ globalData } } />
       {
         isTouchscreen === true ?
-          <HomepageSlideshow { ...{ items } } /> :
+          <HomepageScrollingContent { ...{ items } } /> :
           <HomepageScrollingContent { ...{ items } } />
       }
     </>
