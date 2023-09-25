@@ -39,12 +39,12 @@ const HomepageScrollingContent = ({ items }) => {
         <div className='w-screen h-screen' />
         {
           items.map((item, index) => (
-            <div className='w-screen h-screen p-12' key={ index }>
+            <div className='w-screen h-screen max-xs:px-0 p-12' key={ index }>
               {
                 item?.item?.foregroundMedia?.type === 'image' &&
                 item?.item?.foregroundMedia?.image?.url &&
                 <Image
-                  className='max-w-[75%] max-h-[75%] w-auto h-auto block relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl'
+                  className='max-xs:w-full xs:max-w-[75%] xs:max-h-[75%] xs:w-auto h-auto block relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl'
                   src={ item.item.foregroundMedia.image.url }
                   alt={ item.item.foregroundMedia.image.altText ?? item.item.title + ' image' }
                   width={ 1024 }
