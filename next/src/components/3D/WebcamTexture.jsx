@@ -74,8 +74,8 @@ const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2,
     // The callback happens when we are starting to stream the video.current.
     navigator.mediaDevices.getUserMedia({
       video: {
-        width: 128,
-        height: 128 / 16 * 9
+        width: { max: 128 },
+        height: { max: 128 / 16 * 9 }
     }, audio: false }).then(function (stream) {
       // Yay, now our webcam input is treated as a normal video and
       // we can start having fun
