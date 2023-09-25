@@ -14,7 +14,7 @@ const HomepageScrollingContent = ({ items }) => {
     <>
       <motion.div
         { ...fadeInOutVariants }
-        className='w-full h-screen fixed top-0 left-0 z-10 hover-hover:overflow-y-scroll hover-none:overflow-hidden'
+        className='w-full h-screen fixed top-0 left-0 z-10 overflow-y-scroll'
         onScroll={ (e) => {
           let activeIndex = Math.ceil((e.target.scrollTop - window.innerHeight * 0.25) / window.innerHeight) - 1;
           if (activeIndex < 0 || activeIndex >= items.length) {
