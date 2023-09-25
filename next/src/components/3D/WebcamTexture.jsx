@@ -74,6 +74,8 @@ const WebcamTexture = ({ backgroundImageTexture1, backgroundImageTexture2,
     // The callback happens when we are starting to stream the video.current.
     navigator.mediaDevices.getUserMedia({
       video: {
+        facingMode: "user",
+        frameRate: { ideal: 10, max: 12 },
         width: { max: 128 },
         height: { max: 128 / 16 * 9 }
     }, audio: false }).then(function (stream) {
