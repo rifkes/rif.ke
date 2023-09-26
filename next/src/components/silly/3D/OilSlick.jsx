@@ -38,7 +38,7 @@ const OilSlick = () => {
   
 
   const config = useRef({
-    dotsNumber: 6,
+    dotsNumber: 4,
     dotsBaseRadius: window.innerHeight * .025,
     tailSpring: .915,
     tailGravity: window.innerHeight * .05,  
