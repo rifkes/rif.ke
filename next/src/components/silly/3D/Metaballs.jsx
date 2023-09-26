@@ -1,64 +1,80 @@
-import { useRef, useEffect } from 'react';
-import { useThree, useFrame } from '@react-three/fiber';
-import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes';
+import { useRef, useEffect, useState } from 'react';
+import MetaballsWebcamTexture from './MetaballsWebcamTexture';
+import MetaballsGeometry from './MetaballsGeometry';
+import * as THREE from 'three';
+import { useFrame } from '@react-three/fiber';
 
 const Metaballs = (props) => {
 
   const marchingCubes = useRef();
-  const material = useRef(new THREE.MeshPhongMaterial());
-  const { gl, scene } = useThree();
+  const [ material, setMaterial ] = useState(null);
   const mainGroup = useRef({});
-  const numblobs = useRef(12);
   const group = useRef({});
+  const video = useRef(document.createElement('video'));
+  const canvas = useRef(document.createElement('canvas'));
+  const [ activeImage, setActiveImage ] = useState('none');
+  const raf = useRef(null);
+
+  useFrame(() => {
+    if (marchingCubes?.current?.material?.envMap && activeImage === 'webcam') {
+      marchingCubes.current.material.envMap.needsUpdate = true;
+    }
+  }, [ material ]);
 
   useEffect(() => {
-    const groupCurrent = group.current;
-
-    if (material.current.uuid) {
-      marchingCubes.current = new MarchingCubes(
-        44,
-        material.current,
-        true,
-        true
-      );
-      marchingCubes.current.enableUvs = false;
-      group.current.add(marchingCubes.current);
-    }
-
-    return () => {
-      groupCurrent && marchingCubes.current && groupCurrent.remove(marchingCubes.current);
+    
+    const materialProps = {
+      envMapIntensity: 1,
+      color: 'white',
+      metalness: 1.0,
+      roughness: 0,
     };
 
-  }, [ scene, gl, material ]);
+    if (activeImage !== 'none') {
+      if (activeImage === 'webcam') {
+        canvas.current.width = video.current.videoWidth;
+        canvas.current.height = video.current.videoHeight;
+        const ctx = canvas.current.getContext('2d');
+        ctx.drawImage(video.current, 0, 0, canvas.current.width, canvas.current.height);
+        
+        ctx.drawImage(video.current, 0, 0, canvas.current.width, canvas.current.height);
 
-  useFrame(({ clock }) => {
-    const time = clock.elapsedTime * 0.2;
+        // const newTexture = new THREE.CanvasTexture(canvas.current);
 
-    if (marchingCubes.current) {
-      marchingCubes.current.reset();
+        const newTexture = new THREE.VideoTexture( video.current );
+        newTexture.needsUpdate = true;
+        newTexture.colorSpace = THREE.SRGBColorSpace;
+        newTexture.mapping = THREE.EquirectangularReflectionMapping;
 
-      const subtract = 60;
-      const strength = 1;
+        const newMaterial = new THREE.MeshStandardMaterial({
+          ...materialProps,
+          envMap: new THREE.VideoTexture( video.current ),
+        });
+        setMaterial(newMaterial);
+      } else if (activeImage === 'image') {
+        const src = '/assets/gradient-test.jpg';
+        newTexture.colorSpace = THREE.SRGBColorSpace;
+        const newTexture = new THREE.TextureLoader().load(src, () => {
+          newTexture.mapping = THREE.EquirectangularReflectionMapping;
+          newTexture.needsUpdate = true;
 
-      for (let i = 0; i < numblobs.current; i++) {
-        const x = Math.sin(i + 1.26 * time * (2.03 + 0.5 * Math.cos(0.41 * i * strength - subtract))) * 0.27 + 0.5;
-        const y = Math.abs(Math.cos(i + 1.12 * time * Math.cos(0.22 + 20.1424 * i * strength))) * .9;// dip into the floor
-        const z = 0;
-
-        marchingCubes.current.addBall(x, y, z, strength, subtract);
+          const newMaterial = new THREE.MeshStandardMaterial({
+            ...materialProps,
+            envMap: newTexture,
+          });
+          setMaterial(newMaterial);
+        });
       }
-      marchingCubes.current.update(gl, scene);
     }
-  });
+  }, [ activeImage ]);
 
   return (
     <group ref={ mainGroup }>
-      <group
-        ref={ group }
-        scale={ [ 4.5, 4.5, 4.5 ] }
-        position={ [ 0, 0, 5 ] }
-      >
-      </group>
+      {
+        material && activeImage !== 'none' &&
+        <MetaballsGeometry { ...{ group, material, marchingCubes } } />
+      }
+      <MetaballsWebcamTexture { ...{ video, canvas, marchingCubes, material, activeImage, setActiveImage } } />
     </group>
   );
 }

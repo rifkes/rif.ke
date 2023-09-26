@@ -9,6 +9,7 @@ import FlipVertical from '@/components/silly/FlipVertical';
 import Eraser from '@/components/silly/Eraser';
 import OilSlick from '@/components/silly/3D/OilSlick';
 import DistortedText from '@/components/silly/3D/DistortedText';
+import Metaballs from '@/components/silly/3D/Metaballs';
 
 const Layout = ({ children }) => {
 
@@ -22,8 +23,8 @@ const Layout = ({ children }) => {
   }, [ setIsTouchscreen ]);
 
   useEffect(() => {
-    setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
-    // setSillyName('oil slick');
+    // setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
+    setSillyName('metaballs');
   }, [ initialSillyNames, setSillyName ]);
 
   return (
@@ -39,6 +40,14 @@ const Layout = ({ children }) => {
       {
         sillyName === 'eraser' &&
         <Eraser />
+      }
+      {
+        sillyName === 'metaballs' &&
+        <div className='w-full h-screen fixed top-0 left-0 overflow-hidden pointer-events-none z-[999]'>
+          <ThreeCanvas perspectiveCamera={ true }>
+            <Metaballs />
+          </ThreeCanvas>
+        </div>
       }
       {
         sillyName === 'distorted text' &&

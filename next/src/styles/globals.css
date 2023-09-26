@@ -102,3 +102,7 @@ img, canvas {
 .children-inline * {
   display: inline;
 }
+
+.canvas-wrapper * {
+  pointer-events: none !important;
+}

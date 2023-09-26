@@ -1,32 +1,9 @@
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect } from 'react';
 
-const OilSlickWebcamTexture = ({ handleDrawImage, video }) => {
+const MetaballsWebcamTexture = ({ handleDrawImage, video, canvas, setActiveImage }) => {
 
-  const [ videoIsReady, setVideoIsReady ] = useState(false);
-  const raf = useRef(null);
-  const { webcamAllowed, setWebcamAllowed } = useSiteGlobals();
-
-  const loop = useCallback(() => {
-    if (webcamAllowed === true) {
-      handleDrawImage(video.current, true);
-    }
-    
-    if (webcamAllowed === true) {
-      raf.current = requestAnimationFrame(loop);
-    }
-  }, [ video, handleDrawImage, webcamAllowed ]);
-    
-  useEffect(() => {
-    if (videoIsReady && webcamAllowed === true) {
-      raf.current = requestAnimationFrame(loop);
-    }
-
-    return () => {
-      cancelAnimationFrame(raf.current);
-    }
-  }, [ videoIsReady, webcamAllowed, loop ]);
-  
+  const { setWebcamAllowed } = useSiteGlobals();
 
   // start recording from the webcam
   useEffect(() => {
@@ -40,6 +17,9 @@ const OilSlickWebcamTexture = ({ handleDrawImage, video }) => {
     video.current.setAttribute('playsinline', '1'); // important for iPhones
     video.current.setAttribute('muted', '1');
 
+    // video.current.setAttribute('style', 'width: 120px; height: auto; position: fixed; top: 0; left: 0; z-index: 999;')
+    // document.body.appendChild(video.current);
+
     // The video should fill out all of the canvas
     video.current.setAttribute('width', 0.5)
     video.current.setAttribute('height', 0.5)
@@ -52,18 +32,18 @@ const OilSlickWebcamTexture = ({ handleDrawImage, video }) => {
       video: {
         facingMode: "user",
         frameRate: { ideal: 10, max: 12 },
-        width: { max: 128 },
-        height: { max: 128 / 16 * 9 }
+        width: { max: 512 },
+        height: { max: 512 / 16 * 9 }
     }, audio: false }).then(function (stream) {
       // Yay, now our webcam input is treated as a normal video and
       // we can start having fun
       video.current.srcObject = stream;
-      setVideoIsReady(true);
       setWebcamAllowed(true);
     }, function (err) {
       throw err;
     }).catch((error) => {
       setWebcamAllowed(false);
+      setActiveImage('image');
     });
 
     const handleFirstInteraction = () => {
@@ -80,13 +60,19 @@ const OilSlickWebcamTexture = ({ handleDrawImage, video }) => {
     window.addEventListener('touchstart', handleFirstInteraction);
     window.addEventListener('click', handleFirstInteraction);
 
+    const handlePlay = () => {
+      setActiveImage('webcam');
+    }
+
+    video.current.addEventListener('play', handlePlay, 'once');
+
     return () => {
       window.removeEventListener('touchstart', handleFirstInteraction);
       window.removeEventListener('click', handleFirstInteraction);
     }
-  }, [ video, handleDrawImage ]);
+  }, [ video, handleDrawImage, setActiveImage ]);
   
   return null;
 };
 
-export default OilSlickWebcamTexture;
+export default MetaballsWebcamTexture;

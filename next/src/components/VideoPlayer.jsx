@@ -64,7 +64,7 @@ const VideoPlayer = (props) => {
       {
         isPlaying === false &&
         <button
-          className='absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 uppercase'
+          className='absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 uppercase text-white mix-blend-difference'
           onClick={ handleClickPlayButton }
         >{ isPlaying === true ? 'pause' : 'play video' }</button>
       }
