@@ -23,8 +23,8 @@ const Layout = ({ children }) => {
   }, [ setIsTouchscreen ]);
 
   useEffect(() => {
-    // setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
-    setSillyName('metaballs');
+    setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
+    // setSillyName('metaballs');
   }, [ initialSillyNames, setSillyName ]);
 
   return (

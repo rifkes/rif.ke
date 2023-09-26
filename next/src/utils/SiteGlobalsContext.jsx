@@ -33,6 +33,7 @@ export const SiteGlobalsProvider = ({ children }) => {
   const [ initialSillyNames ] = useState([
     'trail cursor',
     'oil slick',
+    'metaballs',
     // 'eraser',
   ]);
   const [ sillyNames ] = useState([
@@ -40,6 +41,7 @@ export const SiteGlobalsProvider = ({ children }) => {
     'oil slick',
     'flip horizontal',
     'flip vertical',
+    'metaballs',
     // 'eraser',
   ]);
   const [ sillyName, setSillyName ] = useState('');

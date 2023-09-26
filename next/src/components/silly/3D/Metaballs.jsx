@@ -12,12 +12,21 @@ const Metaballs = (props) => {
   const group = useRef({});
   const video = useRef(document.createElement('video'));
   const canvas = useRef(document.createElement('canvas'));
+  const webcamTexture = useRef(new THREE.CanvasTexture(canvas.current));
   const [ activeImage, setActiveImage ] = useState('none');
   const raf = useRef(null);
 
   useFrame(() => {
-    if (marchingCubes?.current?.material?.envMap && activeImage === 'webcam') {
-      marchingCubes.current.material.envMap.needsUpdate = true;
+    if (group?.current?.children ?.length > 0 && activeImage === 'webcam') {
+      const ctx = canvas.current.getContext('2d');
+      ctx.drawImage(video.current, 0, 0, canvas.current.width, canvas.current.height);
+      webcamTexture.current = new THREE.CanvasTexture(canvas.current);
+      webcamTexture.current.needsUpdate = true;
+      webcamTexture.current.colorSpace = THREE.SRGBColorSpace;
+      webcamTexture.current.mapping = THREE.EquirectangularReflectionMapping;
+      if (group?.current?.children?.length > 0) {
+        group.current.children[ 0 ].material.envMap = webcamTexture.current;
+      }
     }
   }, [ material ]);
 
@@ -39,16 +48,16 @@ const Metaballs = (props) => {
         
         ctx.drawImage(video.current, 0, 0, canvas.current.width, canvas.current.height);
 
-        // const newTexture = new THREE.CanvasTexture(canvas.current);
+        webcamTexture.current = new THREE.CanvasTexture(canvas.current);
 
-        const newTexture = new THREE.VideoTexture( video.current );
-        newTexture.needsUpdate = true;
-        newTexture.colorSpace = THREE.SRGBColorSpace;
-        newTexture.mapping = THREE.EquirectangularReflectionMapping;
+        // const newTexture = new THREE.VideoTexture( video.current );
+        webcamTexture.current.needsUpdate = true;
+        webcamTexture.current.colorSpace = THREE.SRGBColorSpace;
+        webcamTexture.current.mapping = THREE.EquirectangularReflectionMapping;
 
         const newMaterial = new THREE.MeshStandardMaterial({
           ...materialProps,
-          envMap: new THREE.VideoTexture( video.current ),
+          envMap: webcamTexture.current,
         });
         setMaterial(newMaterial);
       } else if (activeImage === 'image') {
@@ -72,7 +81,7 @@ const Metaballs = (props) => {
     <group ref={ mainGroup }>
       {
         material && activeImage !== 'none' &&
-        <MetaballsGeometry { ...{ group, material, marchingCubes } } />
+        <MetaballsGeometry { ...{ group, material, marchingCubes, group } } />
       }
       <MetaballsWebcamTexture { ...{ video, canvas, marchingCubes, material, activeImage, setActiveImage } } />
     </group>
