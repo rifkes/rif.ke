@@ -33,14 +33,14 @@ export const SiteGlobalsProvider = ({ children }) => {
   const [ initialSillyNames ] = useState([
     'trail cursor',
     'oil slick',
-    'eraser',
+    // 'eraser',
   ]);
   const [ sillyNames ] = useState([
     'trail cursor',
     'oil slick',
     'flip horizontal',
     'flip vertical',
-    'eraser',
+    // 'eraser',
   ]);
   const [ sillyName, setSillyName ] = useState('');
 

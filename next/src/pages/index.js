@@ -1,5 +1,4 @@
 import HomepageScrollingContent from '@/components/HomepageScrollingContent';
-import HomepageSlideshow from '@/components/HomepageSlideshow';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import getGlobalProps from '@/utils/getGlobalProps';
@@ -7,7 +6,7 @@ import { useMemo } from 'react';
 
 export default function Home({ globalData }) {
 
-  const { isTouchscreen, siteGlobals } = useSiteGlobals();
+  const { siteGlobals } = useSiteGlobals();
 
   const items = useMemo(() => {
     if (siteGlobals?.homepage?.items) {
@@ -23,11 +22,7 @@ export default function Home({ globalData }) {
   return (
     <>
       <SetGlobalProps { ...{ globalData } } />
-      {
-        isTouchscreen === true ?
-          <HomepageScrollingContent { ...{ items } } /> :
-          <HomepageScrollingContent { ...{ items } } />
-      }
+      <HomepageScrollingContent { ...{ items } } />
     </>
   )
 }
