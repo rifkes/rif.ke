@@ -24,8 +24,8 @@ const Layout = ({ children }) => {
   }, [ setIsTouchscreen ]);
 
   useEffect(() => {
-    // setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
-    setSillyName('oil slick');
+    setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
+    // setSillyName('oil slick');
   }, [ initialSillyNames, setSillyName ]);
 
   return (
