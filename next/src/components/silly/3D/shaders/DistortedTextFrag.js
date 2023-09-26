@@ -51,14 +51,18 @@ const DistortedTextFrag = `
     // Add noise to the base shape
     vec2 noise_pos = vec2(uv * u_mouse * 2.).xy;
 
-    float speed = 0.1;
+    float speed = 0.01;
 
-    float noise = (snoise(u_mouse + vec2(0.1, u_time * speed)) * .5 + .5) * 0.01;
-
+    float noise = (snoise(vec2(0.1, sin(u_time) * speed)) * .5 + .5) * 0.01;
 
     uv -= (flow.xy * (0.3 * 0.2));
 
+    // uv += (noise * flow.r);
     vec3 tex = texture2D(u_texture, uv).rgb;
+
+    tex.r = round(tex.r);
+    tex.g = round(tex.g);
+    tex.b = round(tex.b);
 
     gl_FragColor = vec4(tex.r, tex.g, tex.b, tex.r);
 }

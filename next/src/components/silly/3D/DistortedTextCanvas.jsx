@@ -1,12 +1,12 @@
 import useWindowSize from '@/hooks/useWindowSize';
-import { useRef, useLayoutEffect, useEffect, useState } from 'react';
+import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
+import { useRef, useLayoutEffect } from 'react';
 
-const DistortedTextCanvas = ({ handleDrawImage, textureCanvas, textureCanvasCtx, texture, material, }) => {
+const DistortedTextCanvas = ({ handleDrawImage }) => {
 
   const { windowWidth, windowHeight } = useWindowSize();
   const canvas = useRef(null);
-
-  console.log('canvas', canvas);
+  const { titleText, activeItem, infoIsActive, itemInfoIsActive } = useSiteGlobals();
 
   useLayoutEffect(() => {
     let raf;
@@ -39,78 +39,50 @@ const DistortedTextCanvas = ({ handleDrawImage, textureCanvas, textureCanvasCtx,
       ctx.globalCompositeOperation = 'source-over';
       ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       ctx.fillRect(0, 0, canvas.current.width, canvas.current.height);
-    
-      // ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
-
-      let grd = ctx.createRadialGradient(windowWidth, windowHeight, 0, windowWidth, windowHeight, windowWidth);
-      grd.addColorStop(0, 'rgba(0, 0, 0, 1)');
-      grd.addColorStop(1, 'rgba(255, 0, 255, 1)');
-      ctx.fillStyle = grd;
-      // ctx.fillRect(0, 0, canvas.current.width, canvas.current.height);
 
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.font = '18pt sans-serif';
       ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-      ctx.fillText('INFO', 11, 19);
+      if (infoIsActive === true) {
+        ctx.fillText('CLOSE', 11, 19);
+      } else {
+        ctx.fillText('INFO', 11, 19);
+      }
       ctx.fill();
+
+      if (activeItem?.title) {
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        if (itemInfoIsActive === true) {
+          ctx.fillText('CLOSE', windowWidth, 19);
+        } else {
+          ctx.fillText('?', windowWidth, 19);
+        }
+        ctx.fill();
+      }
 
       ctx.textAlign = 'right';
       ctx.textBaseline = 'top';
-      ctx.font = '18pt sans-serif';
-      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
       ctx.fillText('♡', (windowWidth * 2) - 12, 19);
       ctx.fill();
 
-      ctx.textAlign = 'center';
-      // ctx.textBaseline = 'top';
-      ctx.font = '18pt sans-serif';
-      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-      ctx.fillText('RIFKE', windowWidth, windowHeight - 12);
-      ctx.fill();
+      if (infoIsActive === false && itemInfoIsActive === false) {
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(titleText.toUpperCase(), windowWidth, windowHeight - 12);
+        ctx.fill();
+      }
 
       ctx.textAlign = 'left';
       ctx.textBaseline = 'bottom';
-      ctx.font = '18pt sans-serif';
-      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
       ctx.fillText('ASK ME ANYTHING', 11, windowHeight * 2 - 19);
       ctx.fill();
 
       ctx.textAlign = 'right';
       ctx.textBaseline = 'bottom';
-      ctx.font = '18pt sans-serif';
-      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
       ctx.fillText('FOLLOW', (windowWidth * 2) - 12, windowHeight * 2 - 19);
       ctx.fill();
-
-
-      ctx.globalCompositeOperation = 'source-over';
-      // ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-      // ctx.fillRect(0, 0, canvas.current.width, canvas.current.height);
-
-      const colors = [ '255, 0, 0', '255, 255, 0', '0, 255, 0', '0, 255, 255', '0, 0, 255' ];
-      let radius, x, y;
-
-      for (let i = 0; i < 5; i++) {
-        const color = colors[ Math.floor(Math.random() * colors.length) ];
-        x = Math.random() * canvas.current.width;
-        y = Math.random() * canvas.current.height;
-        radius = Math.random() * canvas.current.width * 0.25 + canvas.current.width * 0.25;
-        grd = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        grd.addColorStop(0, `rgba(${ color }, 1)`);
-        grd.addColorStop(1, `rgba(${ color }, 0)`);
-        ctx.fillStyle = grd;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-      }
-      grd = ctx.createRadialGradient(canvas.current.width * 0.5, canvas.current.height * 0.5, 0, canvas.current.width * 0.5, canvas.current.height * 0.5, canvas.current.width * 0.25);
-      grd.addColorStop(0, 'rgba(255, 255, 255, 0)');
-      grd.addColorStop(1, 'rgba(255, 255, 255, 1)');
-      ctx.fillStyle = grd;
-      ctx.beginPath();
-
     }
 
     const dataUrl = canvas.current.toDataURL('image/png');
@@ -128,7 +100,7 @@ const DistortedTextCanvas = ({ handleDrawImage, textureCanvas, textureCanvasCtx,
       window.removeEventListener('mousemove', handleMouseMove);
       img.removeEventListener('load', handleImageLoad);
     }
-  }, [ windowWidth, windowHeight, handleDrawImage ]);
+  }, [ windowWidth, windowHeight, handleDrawImage, titleText, activeItem, infoIsActive, itemInfoIsActive ]);
 
   return null;
 };

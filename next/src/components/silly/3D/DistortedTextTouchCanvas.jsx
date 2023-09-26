@@ -35,6 +35,8 @@ const OilSlickTouchCanvas = ({
       };
     }
 
+    // touchCanvas.current.setAttribute('style', 'position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; width: 120px; height: auto;')
+    // document.body.appendChild(touchCanvas.current);
 
 
     let movingTimeout = () => {
@@ -66,24 +68,19 @@ const OilSlickTouchCanvas = ({
   const updateTrail = useCallback(() => {
     if (!touchCanvasCtx.current || !touchTexture.current) return;
 
-    touchCanvasCtx.current.globalCompositeOperation = 'source-over';
-
     const r = touchPoint.current?.x ? Math.abs(touchPoint.current.x - prevMousePosition.current.x) * 200 * 255 : 0;
     const g = touchPoint.current?.y ? Math.abs(touchPoint.current.y - prevMousePosition.current.y) * 200 * 255 : 0;
 
     prevMousePosition.current.x = touchPoint.current.x ?? 0;
     prevMousePosition.current.y = touchPoint.current.y ?? 0;
 
-    touchCanvasCtx.current.fillStyle = `rgba(${ r }, ${ g }, 0, ${ (1 - targetDistortionAmount.current) / 10 })`;
+    touchCanvasCtx.current.fillStyle = `rgba(${ r }, ${ g }, 0, 0.1)`;
     
     if (currentDistortionAmount.current === 0) {
-      touchCanvasCtx.current.globalCompositeOperation = 'source-over';
       touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
     } else if (targetDistortionAmount.current === 0) {
-      touchCanvasCtx.current.globalCompositeOperation = 'source-over';
-      touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 1)';
+      touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, 0.25)';
     } else {
-      touchCanvasCtx.current.globalCompositeOperation = 'source-over';
       touchCanvasCtx.current.fillStyle = 'rgba(0, 0, 0, .1)';
     }
     touchCanvasCtx.current.fillRect(0, 0, touchCanvas.current.width, touchCanvas.current.height);
@@ -124,7 +121,7 @@ const OilSlickTouchCanvas = ({
   useFrame(({ clock }) => {
     touchPoint.current.x += (targetTouchPoint.current.x - touchPoint.current.x) * config.current.catchingSpeed;
     touchPoint.current.y += (targetTouchPoint.current.y - touchPoint.current.y) * config.current.catchingSpeed;
-    touchCanvasPoint.current = [ touchPoint.current.x * window.innerWidth, (1 - touchPoint.current.y) * window.innerHeight ];
+    touchCanvasPoint.current = [ touchPoint.current.x * (window.innerWidth), (1 - touchPoint.current.y) * (window.innerHeight * 1.2) ];
 
     const time = clock.getElapsedTime();
 

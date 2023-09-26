@@ -30,9 +30,6 @@ const DistortionMaterial = shaderMaterial(
 extend({ DistortionMaterial });
 
 const DistortedText = () => {
-
-  const { webcamAllowed } = useSiteGlobals();
-  const { windowWidth, windowHeight } = useWindowSize();
   
   useEffect(() => {
     document.body.classList.add('ui-text-transparent');
@@ -43,11 +40,11 @@ const DistortedText = () => {
 
   const config = useRef({
     dotsNumber: 6,
-    dotsBaseRadius: 60,
-    tailSpring: .915,
+    dotsBaseRadius: 20,
+    tailSpring: .15,
     tailGravity: window.innerHeight * .05,  
     tailGravityBonds: [window.innerHeight * .005, window.innerHeight * .01],
-    tailFriction: .01,
+    tailFriction: .6,
     catchingSpeed: window.innerWidth * .001,
   });
 
