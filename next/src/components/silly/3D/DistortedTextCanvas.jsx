@@ -1,12 +1,27 @@
 import useWindowSize from '@/hooks/useWindowSize';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useEffect, useState } from 'react';
 
 const DistortedTextCanvas = ({ handleDrawImage }) => {
 
   const { windowWidth, windowHeight } = useWindowSize();
   const canvas = useRef(null);
   const { titleText, activeItem, infoIsActive, itemInfoIsActive } = useSiteGlobals();
+
+  const [ fontIsLoaded, setFontIsLoaded ] = useState(false);
+  const font = useRef(null);
+  
+  useEffect(() => {
+    font.current = new FontFace('myFont', 'url(/fonts/HelveticaNeue-Roman.ttf)');
+
+    font.current.load().then(function(font){
+      // with canvas, if this is ommited won't work
+      document.fonts.add(font);
+      console.log('Font loaded');
+      setFontIsLoaded(true);
+    });
+
+  }, [ fontIsLoaded ]);
 
   useLayoutEffect(() => {
     let raf;
@@ -31,7 +46,7 @@ const DistortedTextCanvas = ({ handleDrawImage }) => {
     canvas.current.style.height = '100vh';
     const ctx = canvas.current.getContext('2d');
 
-    if (windowWidth > 2 && windowHeight > 2) {
+    if (windowWidth > 2 && windowHeight > 2 && fontIsLoaded === true) {
       // document.body.appendChild(canvas.current);
       canvas.current.width = windowWidth * 2;
       canvas.current.height = windowHeight * 2;
@@ -42,7 +57,7 @@ const DistortedTextCanvas = ({ handleDrawImage }) => {
 
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      ctx.font = '18pt sans-serif';
+      ctx.font = '18pt myFont';
       ctx.fillStyle = 'rgba(255, 255, 255, 1)';
       if (infoIsActive === true) {
         ctx.fillText('CLOSE', 11, 19);
@@ -100,7 +115,7 @@ const DistortedTextCanvas = ({ handleDrawImage }) => {
       window.removeEventListener('mousemove', handleMouseMove);
       img.removeEventListener('load', handleImageLoad);
     }
-  }, [ windowWidth, windowHeight, handleDrawImage, titleText, activeItem, infoIsActive, itemInfoIsActive ]);
+  }, [ windowWidth, windowHeight, handleDrawImage, titleText, activeItem, infoIsActive, itemInfoIsActive, fontIsLoaded ]);
 
   return null;
 };
