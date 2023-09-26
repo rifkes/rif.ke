@@ -15,12 +15,15 @@ export const SETTINGS = groq`
       },
     },
     info[] {
-      infoItemTitle,
-      infoItemText [] {
+      "title": infoItemTitle,
+      "text": infoItemText [] {
         ${PORTABLE_TEXT}
       },
     },
-    topRightLink {
+    mainEmailLink {
+      ${LINK_EMAIL}
+    },
+    mainSocialLink {
       ${LINK_EXTERNAL}
     },
     seoTags[],

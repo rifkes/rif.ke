@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 
 const UI = () => {
-  const { titleText, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName } = useSiteGlobals();
+  const { titleText, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName, siteGlobals } = useSiteGlobals();
 
   useEffect(() => {
     setItemInfoIsActive(false);
@@ -64,22 +64,28 @@ const UI = () => {
       >
         ♡
       </button>
-      <a
-        href={ `mailto:rifke@rifke.world` }
-        target='_blank'
-        rel='noopener noreferrer'
-        className='select-none fixed bottom-0 left-0 p-2 uppercase mix-blend-difference text-white ui-text z-[999]'
-      >
-        Ask me anything
-      </a>
-      <a
-        href='https://instagram.com/rifke.world'
-        target='_blank'
-        rel='noopener noreferrer'
-        className='select-none fixed bottom-0 right-0 p-2 uppercase mix-blend-difference text-white ui-text z-[999]'
-      >
-        Follow
-      </a>
+      {
+        siteGlobals?.settings?.mainEmailLink?.email &&
+        <a
+          href={ `mailto:${ siteGlobals.settings.mainEmailLink.email }` }
+          target='_blank'
+          rel='noopener noreferrer'
+          className='select-none fixed bottom-0 left-0 p-2 uppercase mix-blend-difference text-white ui-text z-[999]'
+        >
+          Ask me anything
+        </a>
+      }
+      {
+        siteGlobals?.settings?.mainSocialLink?.url &&
+        <a
+            href={ siteGlobals.settings.mainSocialLink.url }
+          target='_blank'
+          rel='noopener noreferrer'
+          className='select-none fixed bottom-0 right-0 p-2 uppercase mix-blend-difference text-white ui-text z-[999]'
+        >
+          { siteGlobals.settings.mainSocialLink.title ?? siteGlobals.settings.mainSocialLink.url.replace('https://', '').replace('http://', '') }
+        </a>
+      }
       {
         !activeItem &&
         <span

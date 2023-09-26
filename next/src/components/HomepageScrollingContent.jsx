@@ -3,6 +3,7 @@ import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import VideoPlayer from './VideoPlayer';
 
 const HomepageScrollingContent = ({ items }) => {
 
@@ -59,6 +60,13 @@ const HomepageScrollingContent = ({ items }) => {
                     boxShadow: '2px 2px 25px -5px rgba(0, 0, 0, 0.5)'
                   } }
                 />
+              }
+              {
+                item?.item?.foregroundMedia?.type === 'video' &&
+                item?.item?.foregroundMedia?.videoEmbed?.url &&
+                <div className='relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                  <VideoPlayer url={ item.item.foregroundMedia.videoEmbed.url } />
+                </div>
               }
             </div>
           ))

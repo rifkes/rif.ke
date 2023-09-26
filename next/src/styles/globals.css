@@ -98,3 +98,7 @@ img, canvas {
   opacity: 0 !important;
   transition: none !important;
 }
+
+.children-inline * {
+  display: inline;
+}

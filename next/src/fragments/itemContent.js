@@ -13,7 +13,7 @@ export const ITEM_CONTENT = groq`
   },
   foregroundMedia {
     type,
-    (type == 'video' && videoEmbed.url) => {
+    (type == 'video') => {
       videoEmbed {
         url,
         thumbnail {

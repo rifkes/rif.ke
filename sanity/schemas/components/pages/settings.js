@@ -59,9 +59,14 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'topRightLink',
-      title: 'Top Right Link',
+      name: 'mainSocialLink',
+      title: 'Main Social Link',
       type: 'linkExternal',
+    }),
+    defineField({
+      name: 'mainEmailLink',
+      title: 'Main Email Link',
+      type: 'linkEmail',
     }),
     defineField({
       name: 'seoDescription',

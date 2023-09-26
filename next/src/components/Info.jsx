@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
+import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
+import PortableTextBlocks from './blocks/PortableTextBlocks';
 
 const Info = () => {
 
+  const { siteGlobals } = useSiteGlobals();
+  console.log(siteGlobals?.settings);
 
   return (
     <motion.div
@@ -15,11 +19,48 @@ const Info = () => {
       } }
     >
       <div className='max-h-full w-full overflow-y-scroll py-12 px-2 uppercase'>
-        <p className='mt-2 mb-2'>About: I collaborate with forward-thinking clients and friends across the arts, music and fashion on visual and interactive experiences.</p>
-        <p className='mt-2 mb-2'>Services: Digital creative direction, digital design and art direction, interaction design, creative web development, animation, AR, VR</p>
-        <p className='mt-2 mb-2'>Clients: Dazed, Google, The Face, Burberry, Warp, Universal Music, Somerset House, Claire Barrow, Ella Boucht, HÄN, Chopova Lowena, Abandon Normal Devices, Ben Ditto, The 1975, Beirut Re—Store</p>
-        <p className='mt-2 mb-2'>Speaking: Iterations 2020, UEL, Creative Coding Meetup 2020</p>
-        <p className='mt-2 mb-2'>Workshops/teaching: Iterations 2020, UEL, Creative Coding Meetup 2020</p>
+        {
+          siteGlobals?.settings?.info &&
+          siteGlobals.settings.info.map((item, index) => (
+            <div className='mt-2 mb-2' key={ index }>
+              {
+                item.title?.length > 0 &&
+                <h3 className='inline'>{ item.title }: </h3>
+              }
+              {
+                item.text?.length > 0 &&
+                <div className='inline children-inline'>
+                  <PortableTextBlocks value={ item.text } />
+                </div>
+              }
+            </div>
+          ))
+        }
+        <div className='mt-8 w-full'>
+          {
+            siteGlobals?.settings?.contactItems &&
+            siteGlobals.settings.contactItems.map((item, index) => (
+              <p className='mt-2 mb-2' key={ index }>
+                {
+                  item._type === 'linkExternal' ?
+                    <a
+                      key={ index }
+                      href={ item.url }
+                      target='_blank'
+                      rel='noreferrer'
+                    >{ item.title }</a>
+                    :
+                    <a
+                      key={ index }
+                      href={ item.email }
+                      target='_blank'
+                      rel='noreferrer'
+                    >{ item.email }</a>
+              }
+              </p>
+            ))
+          }
+        </div>
       </div>
     </motion.div>
   )
