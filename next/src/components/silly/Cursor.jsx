@@ -74,11 +74,17 @@ const Cursor = () => {
     }
 
     const handleMouseMove = (event) => {
-      mouse.x = event.pageX;
-      mouse.y = event.pageY;
+      if (typeof event.pageX !== 'undefined') {
+       mouse.x = event.pageX;
+       mouse.y = event.pageY;
+      } else {
+        mouse.x = event.touches[0].clientX;
+        mouse.y = event.touches[1].clientX;
+      }
     }
 
     window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove);
 
     // animate() calls draw() then recursively calls itself
       // everytime the screen repaints via requestAnimationFrame().
@@ -93,6 +99,7 @@ const Cursor = () => {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleMouseMove);
     }
   }, [ characters, windowWidth, windowHeight ]);
 
