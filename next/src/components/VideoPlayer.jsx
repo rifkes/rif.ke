@@ -25,9 +25,6 @@ const VideoPlayer = (props) => {
     <div
       className={ `relative w-full h-0 pb-[56.25%]` }
       onClick={ () => setPlayerShouldPlay(!playerShouldPlay) }
-      // onMouseEnter={() => setIsHovered(true)}
-      // onMouseLeave={() => setIsHovered(false)}
-      // onBlur={() => setIsHovered(false)}
       style={{
         paddingBottom: 100 * aspectRatio + '%'
       }}
@@ -64,10 +61,13 @@ const VideoPlayer = (props) => {
           />
         </Suspense>
       </div>
-      <button
-        className='absolute top-0 left-0 z-10'
-        onClick={ handleClickPlayButton }
-      >{ isPlaying === true ? 'pause' : 'play video' }</button>
+      {
+        isPlaying === false &&
+        <button
+          className='absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 uppercase'
+          onClick={ handleClickPlayButton }
+        >{ isPlaying === true ? 'pause' : 'play video' }</button>
+      }
     </div>
   )
 }
