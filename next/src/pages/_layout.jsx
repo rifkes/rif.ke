@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ThreeCanvas from '@/components/silly/3D/ThreeCanvas';
 import UI from '@/components/UI';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
@@ -10,17 +10,29 @@ import Eraser from '@/components/silly/Eraser';
 import OilSlick from '@/components/silly/3D/OilSlick';
 import DistortedText from '@/components/silly/3D/DistortedText';
 import Metaballs from '@/components/silly/3D/Metaballs';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const Layout = ({ children }) => {
 
   const router = useRouter();
   const { setIsTouchscreen, sillyName, initialSillyNames, setSillyName } = useSiteGlobals();
+  const { windowWidth, windowHeight } = useWindowSize();
 
   useEffect(() => {
     if (window.matchMedia('(hover: none)').matches) {
       setIsTouchscreen(true);
     }
   }, [ setIsTouchscreen ]);
+
+  useEffect(() => {
+    if (windowWidth > 2 && windowHeight > 2) {
+      document.body.style.width = `${windowWidth}px`;
+      document.body.style.height = `${ windowHeight }px`;
+      document.querySelectorAll('.h-screen').forEach((item) => {
+        item.style.height = `${ windowHeight }px`;
+      });
+    }
+  }, [ windowWidth, windowHeight ]);
 
   useEffect(() => {
     setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
