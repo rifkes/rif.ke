@@ -35,8 +35,7 @@ const Layout = ({ children }) => {
   }, [ windowWidth, windowHeight ]);
 
   useEffect(() => {
-    // setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
-    setSillyName('distorted text');
+    setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
   }, [ initialSillyNames, setSillyName ]);
 
   return (
