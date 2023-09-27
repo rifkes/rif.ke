@@ -1,4 +1,4 @@
-import { useState, Suspense, lazy, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
+import { useState, Suspense, lazy, useCallback, useRef, useEffect } from 'react';
 
 const ReactPlayer = lazy(() => import('react-player'));
 

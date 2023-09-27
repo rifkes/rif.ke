@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
-import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import VideoPlayer from './VideoPlayer';
@@ -64,7 +62,12 @@ const HomepageScrollingContent = ({ items }) => {
               {
                 item?.item?.foregroundMedia?.type === 'video' &&
                 item?.item?.foregroundMedia?.videoEmbed?.url &&
-                <div className='relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                <div
+                  className='max-xs:w-full xs:max-w-[75%] xs:max-h-[75%] xs:w-auto h-auto relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+                  style={ {
+                    boxShadow: '2px 2px 25px -5px rgba(0, 0, 0, 0.5)'
+                  } }
+                >
                   <VideoPlayer url={ item.item.foregroundMedia.videoEmbed.url } />
                 </div>
               }
