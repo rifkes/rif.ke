@@ -53,7 +53,7 @@ const UI = () => {
           } }
           className='select-none fixed top-0 left-1/2 -translate-x-1/2 p-2 uppercase mix-blend-difference text-white ui-text z-[999]'
         >
-          { itemInfoIsActive === true ? 'close' : '?' }
+          { itemInfoIsActive === true ? 'close' : 'about project' }
         </button>
       }
       <button
