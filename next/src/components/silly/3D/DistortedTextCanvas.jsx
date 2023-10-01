@@ -72,7 +72,7 @@ const DistortedTextCanvas = ({ handleDrawImage }) => {
         if (itemInfoIsActive === true) {
           ctx.fillText('CLOSE', windowWidth, 19);
         } else {
-          ctx.fillText('ABOUT PROJECT', windowWidth, 19);
+          ctx.fillText('?', windowWidth, 19);
         }
         ctx.fill();
       }
