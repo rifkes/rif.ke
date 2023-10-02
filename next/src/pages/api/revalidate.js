@@ -61,10 +61,11 @@ async function queryStaleRoutes(body) {
   if (body._type === 'item') {
     const exists = await client.fetch(groq`*[_id == $id][0]`, { id: body._id })
     if (!exists && body._type === 'item') {
-      let staleRoutes = ['/'];
-      if ((body.slug)?.current) {
-        staleRoutes.push(`/item/${(body.slug).current}`)
-      }
+      let staleRoutes = [ '/' ];
+      // if we ever make separate pages for items then sort that out here
+      // if ((body.slug)?.current) {
+      //   staleRoutes.push(`/item/${(body.slug).current}`)
+      // }
       // Assume that the project document was deleted. Query the datetime used to sort "More stories" to determine if the project was in the list.
       return [...new Set([...staleRoutes])]
     }
@@ -82,12 +83,15 @@ async function queryStaleRoutes(body) {
   }
 }
 
-async function _queryAllRoutes(client) {
-  return await client.fetch(groq`*[_type == "item"].slug.current`)
-}
+// async function _queryAllRoutes(client) {
+//   return await client.fetch(groq`*[_type == "item"].slug.current`)
+// }
 
 async function queryAllRoutes(client) {
-  const slugs = await _queryAllRoutes(client);
+  // const slugs = await _queryAllRoutes(client);
 
-  return ['/', ...slugs.map((slug) => `/item/${slug}`)]
+  return [
+    '/',
+    // ...slugs.map((slug) => `/item/${ slug }`)
+  ];
 }
