@@ -6,7 +6,6 @@ import PortableTextBlocks from './blocks/PortableTextBlocks';
 const Info = () => {
 
   const { siteGlobals } = useSiteGlobals();
-  console.log(siteGlobals?.settings);
 
   return (
     <motion.div

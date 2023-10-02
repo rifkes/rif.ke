@@ -17,7 +17,6 @@ const DistortedTextCanvas = ({ handleDrawImage }) => {
     font.current.load().then(function(font){
       // with canvas, if this is ommited won't work
       document.fonts.add(font);
-      console.log('Font loaded');
       setFontIsLoaded(true);
     });
 
