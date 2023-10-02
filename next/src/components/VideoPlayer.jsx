@@ -11,6 +11,10 @@ const VideoPlayer = (props) => {
   const [ aspectRatio ] = useState(0.5625);
   const playerRef = useRef(null);
 
+  if (playerRef.current !== null) {
+    console.log('playerRef', playerRef.current.getConfig());
+  }
+
   const handleClickPlayButton = useCallback((e) => {
     setPlayerShouldPlay(true);
   }, []);

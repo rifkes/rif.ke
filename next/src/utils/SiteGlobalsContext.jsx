@@ -35,6 +35,7 @@ export const SiteGlobalsProvider = ({ children }) => {
     'oil slick',
     'metaballs',
     'distorted text',
+    'grob',
     // 'eraser',
   ]);
   const [ sillyNames ] = useState([
@@ -44,6 +45,7 @@ export const SiteGlobalsProvider = ({ children }) => {
     'flip vertical',
     'metaballs',
     'distorted text',
+    'grob',
     // 'eraser',
   ]);
   const [ sillyName, setSillyName ] = useState('');

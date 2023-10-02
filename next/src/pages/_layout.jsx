@@ -11,6 +11,7 @@ import OilSlick from '@/components/silly/3D/OilSlick';
 import DistortedText from '@/components/silly/3D/DistortedText';
 import Metaballs from '@/components/silly/3D/Metaballs';
 import useWindowSize from '@/hooks/useWindowSize';
+import Grob from '@/components/silly/Grob';
 
 const Layout = ({ children }) => {
 
@@ -79,6 +80,10 @@ const Layout = ({ children }) => {
       {
         sillyName === 'trail cursor' &&
         <Cursor />
+      }
+      {
+        sillyName === 'grob' &&
+        <Grob />
       }
       <UI />
       {
