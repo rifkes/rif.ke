@@ -83,7 +83,9 @@ const Layout = ({ children }) => {
       }
       {
         sillyName === 'grob' &&
-        <Grob />
+        <div className='w-full h-screen fixed top-0 left-0 overflow-hidden pointer-evets-none'>
+          <Grob />
+        </div>
       }
       <UI />
       {
