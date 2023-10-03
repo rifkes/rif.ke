@@ -34,7 +34,6 @@ export const SiteGlobalsProvider = ({ children }) => {
     'trail cursor',
     'oil slick',
     'metaballs',
-    'distorted text',
     'grob',
     // 'eraser',
   ]);
