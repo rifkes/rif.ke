@@ -10,8 +10,7 @@ const Seo = (props) => {
     return (
       <Head>
         {
-          siteGlobals.settings.siteTitle &&
-          <title>{ `${ siteGlobals.settings.siteTitle }${ title ? ` | ${ title }` : '' }` }</title>
+          <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
         }
         {
           siteGlobals.settings.gaMeasurementId &&
