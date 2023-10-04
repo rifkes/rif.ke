@@ -27,11 +27,11 @@ const Seo = (props) => {
             <link rel="icon" href="/favicon.ico" />
         }
         {
-          seoDescription &&
+          siteGlobals?.settings?.seoDescription &&
           <>
-            <meta name="description" content={ seoDescription } />
-            <meta property='og:description' content={ seoDescription } />
-            <meta name='twitter:description' content={ seoDescription } />
+            <meta name="description" content={ siteGlobals.settings.seoDescription } />
+            <meta property='og:description' content={ siteGlobals.settings.seoDescription } />
+            <meta name='twitter:description' content={ siteGlobals.settings.seoDescription } />
           </>
         }
         {
