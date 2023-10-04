@@ -69,6 +69,11 @@ export default defineType({
       type: 'linkEmail',
     }),
     defineField({
+      name: 'siteTitle',
+      title: 'Site Title',
+      type: 'string',
+    }),
+    defineField({
       name: 'seoDescription',
       title: 'SEO Description',
       type: 'text',
@@ -88,6 +93,11 @@ export default defineType({
         layout: 'tags',
       },
     },
+    defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'image',
+    }),
     defineField({
       name: 'gaMeasurementId',
       title: 'Google Analytics Measurement ID',

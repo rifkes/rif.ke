@@ -12,6 +12,7 @@ import DistortedText from '@/components/silly/3D/DistortedText';
 import Metaballs from '@/components/silly/3D/Metaballs';
 import useWindowSize from '@/hooks/useWindowSize';
 import Grob from '@/components/silly/Grob';
+import Seo from '@/utils/Seo';
 
 const Layout = ({ children }) => {
 
@@ -41,6 +42,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Seo />
       {
         sillyName === 'flip horizontal' &&
         <FlipHorizontal />

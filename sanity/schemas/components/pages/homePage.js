@@ -6,10 +6,6 @@ export default defineType({
   type: 'document',
   groups: [
     {
-      name: 'seo',
-      title: 'SEO',
-    },
-    {
       name: 'content',
       title: 'Content',
       default: true,
@@ -74,33 +70,9 @@ export default defineType({
       ],
       group: 'content',
     }),
-    defineField({
-      name: 'seoDescription',
-      title: 'SEO Description',
-      type: 'text',
-      rows: 2,
-      group: 'seo',
-    }),
-    defineField({
-      name: 'seoImage',
-      title: 'SEO Image (used for social media)',
-      type: 'image',
-      group: 'seo',
-    }),
-    {
-      name: 'seoTags',
-      title: 'SEO Keywords (site-wide)',
-      type: 'array',
-      of: [ { name: 'seoTag', type: 'string' } ],
-      options: {
-        layout: 'tags',
-      },
-      group: 'seo',
-    },
   ],
   preview: {
     select: {
-      media: 'seoImage',
     },
     prepare(selection) {
       return {

@@ -14,7 +14,5 @@ export const HOMEPAGE = groq`
         "text": textSectionText,
       },
     },
-    seoTags[],
-    seoDescription,
   }
 `;

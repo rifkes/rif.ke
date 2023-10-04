@@ -6,25 +6,25 @@ const Seo = (props) => {
   const { seoDescription, seoImage, title } = props;
   const { siteGlobals } = useSiteGlobals();
 
-  if (siteGlobals?.settingsData) {
+  if (siteGlobals?.settings) {
     return (
       <Head>
         {
-          siteGlobals.settingsData.siteTitle &&
-          <title>{ `${ siteGlobals.settingsData.siteTitle }${ title ? ` | ${ title }` : '' }` }</title>
+          siteGlobals.settings.siteTitle &&
+          <title>{ `${ siteGlobals.settings.siteTitle }${ title ? ` | ${ title }` : '' }` }</title>
         }
         {
-          siteGlobals.settingsData.gaMeasurementId &&
-          <GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settingsData.gaMeasurementId } />
+          siteGlobals.settings.gaMeasurementId &&
+          <GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
         }
         {
-          siteGlobals.settingsData.seoTags &&
-          <meta name="keywords" content={ `${ siteGlobals.settingsData.seoTags.join(', ') }` } />
+          siteGlobals.settings.seoTags &&
+          <meta name="keywords" content={ `${ siteGlobals.settings.seoTags.join(', ') }` } />
         }
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {
-          siteGlobals.settingsData?.favicon?.url ?
-            <link rel="icon" href={ siteGlobals.settingsData.favicon.url } /> :
+          siteGlobals.settings?.favicon?.url ?
+            <link rel="icon" href={ siteGlobals.settings.favicon.url } /> :
             <link rel="icon" href="/favicon.ico" />
         }
         {
