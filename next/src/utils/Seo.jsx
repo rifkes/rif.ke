@@ -3,7 +3,7 @@ import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useSiteGlobals } from '../utils/SiteGlobalsContext';
 
 const Seo = (props) => {
-  const { seoDescription, seoImage, title } = props;
+  const { seoImage, title } = props;
   const { siteGlobals } = useSiteGlobals();
 
   if (siteGlobals?.settings) {
