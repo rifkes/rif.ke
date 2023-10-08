@@ -41,6 +41,7 @@ const Seo = (props) => {
             <meta name="twitter:image" content={ seoImage.url } />
           </>
         }
+        <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
     );
