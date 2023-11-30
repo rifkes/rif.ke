@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useSiteGlobals } from '../utils/SiteGlobalsContext';
 
 const Seo = (props) => {
@@ -11,10 +10,6 @@ const Seo = (props) => {
       <Head>
         {
           <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
-        }
-        {
-          siteGlobals.settings.gaMeasurementId &&
-          <GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
         }
         {
           siteGlobals.settings.seoTags &&

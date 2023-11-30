@@ -17,7 +17,7 @@ import Seo from '@/utils/Seo';
 const Layout = ({ children }) => {
 
   const router = useRouter();
-  const { setIsTouchscreen, sillyName, initialSillyNames, setSillyName } = useSiteGlobals();
+  const { setIsTouchscreen, sillyName, initialSillyNames, setSillyName, siteGlobals } = useSiteGlobals();
   const { windowWidth, windowHeight } = useWindowSize();
 
   useEffect(() => {
@@ -42,6 +42,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      {
+        siteGlobals?.settings?.gaMeasurementId &&
+        <GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
+      }
       <Seo />
       {
         sillyName === 'flip horizontal' &&
