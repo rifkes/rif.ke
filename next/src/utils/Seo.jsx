@@ -12,16 +12,7 @@ const Seo = (props) => {
       <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
       <meta property='og:title' content={ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
       <meta property='twitter:title' content={ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
-      {
-        siteGlobals?.settings?.seoTags &&
-        <meta name="keywords" content={ `${ siteGlobals.settings.seoTags.join(', ') }` } />
-      }
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {
-        siteGlobals?.settings?.favicon?.url ?
-          <link rel="icon" href={ siteGlobals.settings.favicon.url } /> :
-          <link rel="icon" href="/favicon.ico" />
-      }
+      
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="description" content={ siteGlobals?.settings?.seoDescription } />
       <meta property='og:description' content={ siteGlobals?.settings?.seoDescription } />
@@ -51,6 +42,16 @@ const Seo = (props) => {
         <></>
       }
       <meta property="og:url" content="https://rif.ke/" />
+      {
+        siteGlobals?.settings?.seoTags?.length > 0 &&
+        <meta name="keywords" content={ `${ siteGlobals.settings.seoTags.join(', ') }` } />
+      }
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {
+        siteGlobals?.settings?.favicon?.url ?
+          <link rel="icon" href={ siteGlobals.settings.favicon.url } /> :
+          <link rel="icon" href="/favicon.ico" />
+      }
       <meta property='og:site_name' content={ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' } />
       <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
     </Head>
