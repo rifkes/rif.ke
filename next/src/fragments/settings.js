@@ -31,6 +31,9 @@ export const SETTINGS = groq`
     favicon {
       ${IMAGE}
     },
+    seoImage {
+      ${IMAGE}
+    },
     seoTags[],
     seoDescription,
     gaMeasurementId,

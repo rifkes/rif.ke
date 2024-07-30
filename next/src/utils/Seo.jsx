@@ -5,6 +5,8 @@ const Seo = (props) => {
   const { seoImage, title, seoDescription, image, } = props;
   const { siteGlobals } = useSiteGlobals();
 
+  console.log('Seo siteGlobals:', siteGlobals);
+
   if (siteGlobals?.settings) {
     return (
       <Head>
