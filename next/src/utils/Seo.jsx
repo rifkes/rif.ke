@@ -7,9 +7,9 @@ const Seo = (props) => {
 
   return (
     <Head>
-      {
-        <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
-      }
+      <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
+      <meta property='og:title' content={ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
+      <meta property='twitter:title' content={ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
       {
         siteGlobals?.settings?.seoTags &&
         <meta name="keywords" content={ `${ siteGlobals.settings.seoTags.join(', ') }` } />
@@ -24,34 +24,33 @@ const Seo = (props) => {
       {
         (siteGlobals?.settings?.seoDescription) &&
         <>
-          <meta name="description" content={ siteGlobals.settings.seoDescription } />
+          <meta property="description" content={ siteGlobals.settings.seoDescription } />
           <meta property='og:description' content={ siteGlobals.settings.seoDescription } />
-          <meta name='twitter:description' content={ siteGlobals.settings.seoDescription } />
+          <meta property='twitter:description' content={ siteGlobals.settings.seoDescription } />
         </>
       }
       {
         seoImage?.url ?
         <>
           <meta property="og:image" content={ seoImage.url } />
-          <meta name="twitter:image" content={ seoImage.url } />
+          <meta property="twitter:image" content={ seoImage.url } />
         </>
           :
         image?.url ?
         <>
           <meta property="og:image" content={ image.url } />
-          <meta name="twitter:image" content={ image.url } />
+          <meta property="twitter:image" content={ image.url } />
         </>
           :
         siteGlobals?.settings?.seoImage?.url ?
         <>
           <meta property="og:image" content={ siteGlobals?.settings?.seoImage.url } />
-          <meta name="twitter:image" content={ siteGlobals?.settings?.seoImage.url } />
+          <meta property="twitter:image" content={ siteGlobals?.settings?.seoImage.url } />
         </>
           :
         <></>
       }
       <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
   )
 };
