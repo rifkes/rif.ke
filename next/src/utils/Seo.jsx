@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useSiteGlobals } from '../utils/SiteGlobalsContext';
 
 const Seo = (props) => {
-  const { seoImage, title, image, } = props;
+  const { seoImage, title, image, seoDescription, } = props;
   const { siteGlobals } = useSiteGlobals();
 
   return (
@@ -12,9 +12,9 @@ const Seo = (props) => {
       <meta property='twitter:title' content={ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
       
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="description" content={ siteGlobals?.settings?.seoDescription } />
-      <meta property='og:description' content={ siteGlobals?.settings?.seoDescription } />
-      <meta property='twitter:description' content={ siteGlobals?.settings?.seoDescription } />
+      <meta property="description" content={ seoDescription ?? siteGlobals?.settings?.seoDescription } />
+      <meta property='og:description' content={ seoDescription ?? siteGlobals?.settings?.seoDescription } />
+      <meta property='twitter:description' content={ seoDescription ?? siteGlobals?.settings?.seoDescription } />
       {
         seoImage?.url ?
           <meta property="og:image" content={ seoImage.url } />
