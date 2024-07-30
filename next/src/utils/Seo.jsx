@@ -5,8 +5,6 @@ const Seo = (props) => {
   const { seoImage, title, image, } = props;
   const { siteGlobals } = useSiteGlobals();
 
-  console.log(siteGlobals?.settings?.seoImage?.url, siteGlobals?.settings?.seoDescription)
-
   return (
     <Head>
       <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>

@@ -1,4 +1,5 @@
 import HomepageScrollingContent from '@/components/HomepageScrollingContent';
+import Seo from '@/utils/Seo';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import getGlobalProps from '@/utils/getGlobalProps';
@@ -21,6 +22,7 @@ export default function Home({ globalData }) {
 
   return (
     <>
+      <Seo { ...globalData?.settings } />
       <SetGlobalProps { ...{ globalData } } />
       <HomepageScrollingContent { ...{ items } } />
     </>

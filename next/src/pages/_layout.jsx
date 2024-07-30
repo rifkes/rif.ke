@@ -12,7 +12,6 @@ import DistortedText from '@/components/silly/3D/DistortedText';
 import Metaballs from '@/components/silly/3D/Metaballs';
 import useWindowSize from '@/hooks/useWindowSize';
 import Grob from '@/components/silly/Grob';
-import Seo from '@/utils/Seo';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 const Layout = ({ children }) => {
@@ -47,7 +46,6 @@ const Layout = ({ children }) => {
         siteGlobals?.settings?.gaMeasurementId &&
         <GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
       }
-      <Seo />
       {
         sillyName === 'flip horizontal' &&
         <FlipHorizontal />
