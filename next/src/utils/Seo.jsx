@@ -5,6 +5,8 @@ const Seo = (props) => {
   const { seoImage, title, image, } = props;
   const { siteGlobals } = useSiteGlobals();
 
+  console.log(siteGlobals?.settings?.seoImage?.url, siteGlobals?.settings?.seoDescription)
+
   return (
     <Head>
       <title>{ `${ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
@@ -21,18 +23,9 @@ const Seo = (props) => {
           <link rel="icon" href="/favicon.ico" />
       }
       <meta property="twitter:card" content="summary_large_image" />
-      {
-        (siteGlobals?.settings?.seoDescription) &&
-        <meta property="description" content={ siteGlobals.settings.seoDescription } />
-      }
-      {
-        (siteGlobals?.settings?.seoDescription) &&
-        <meta property='og:description' content={ siteGlobals.settings.seoDescription } />
-      }
-      {
-        (siteGlobals?.settings?.seoDescription) &&
-        <meta property='twitter:description' content={ siteGlobals.settings.seoDescription } />
-      }
+      <meta property="description" content={ siteGlobals?.settings?.seoDescription } />
+      <meta property='og:description' content={ siteGlobals?.settings?.seoDescription } />
+      <meta property='twitter:description' content={ siteGlobals?.settings?.seoDescription } />
       {
         seoImage?.url ?
           <meta property="og:image" content={ seoImage.url } />
