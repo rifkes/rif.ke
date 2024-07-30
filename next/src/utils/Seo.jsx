@@ -23,30 +23,37 @@ const Seo = (props) => {
       <meta property="twitter:card" content="summary_large_image" />
       {
         (siteGlobals?.settings?.seoDescription) &&
-        <>
-          <meta property="description" content={ siteGlobals.settings.seoDescription } />
-          <meta property='og:description' content={ siteGlobals.settings.seoDescription } />
-          <meta property='twitter:description' content={ siteGlobals.settings.seoDescription } />
-        </>
+        <meta property="description" content={ siteGlobals.settings.seoDescription } />
+      }
+      {
+        (siteGlobals?.settings?.seoDescription) &&
+        <meta property='og:description' content={ siteGlobals.settings.seoDescription } />
+      }
+      {
+        (siteGlobals?.settings?.seoDescription) &&
+        <meta property='twitter:description' content={ siteGlobals.settings.seoDescription } />
       }
       {
         seoImage?.url ?
-        <>
           <meta property="og:image" content={ seoImage.url } />
-          <meta property="twitter:image" content={ seoImage.url } />
-        </>
           :
         image?.url ?
-        <>
           <meta property="og:image" content={ image.url } />
-          <meta property="twitter:image" content={ image.url } />
-        </>
           :
         siteGlobals?.settings?.seoImage?.url ?
-        <>
           <meta property="og:image" content={ siteGlobals?.settings?.seoImage.url } />
+          :
+        <></>
+      }
+      {
+        seoImage?.url ?
+          <meta property="twitter:image" content={ seoImage.url } />
+          :
+        image?.url ?
+          <meta property="twitter:image" content={ image.url } />
+          :
+        siteGlobals?.settings?.seoImage?.url ?
           <meta property="twitter:image" content={ siteGlobals?.settings?.seoImage.url } />
-        </>
           :
         <></>
       }
