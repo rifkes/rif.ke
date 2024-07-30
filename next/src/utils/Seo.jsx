@@ -50,6 +50,8 @@ const Seo = (props) => {
           :
         <></>
       }
+      <meta property="og:url" content="https://rif.ke/" />
+      <meta property='og:site_name' content={ siteGlobals?.settings?.siteTitle ? siteGlobals.settings.siteTitle : 'Rifke' } />
       <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
     </Head>
   )
