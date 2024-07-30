@@ -20,6 +20,7 @@ const Seo = (props) => {
           <link rel="icon" href={ siteGlobals.settings.favicon.url } /> :
           <link rel="icon" href="/favicon.ico" />
       }
+      <meta property="twitter:card" content="summary_large_image" />
       {
         (siteGlobals?.settings?.seoDescription) &&
         <>
