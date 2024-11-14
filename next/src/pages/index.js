@@ -22,7 +22,7 @@ export default function Home({ globalData }) {
 
   return (
     <>
-      <Seo { ...globalData?.settings } />
+      <Seo { ...{ globalData, } } />
       <SetGlobalProps { ...{ globalData } } />
       <HomepageScrollingContent { ...{ items } } />
     </>
