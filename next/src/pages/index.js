@@ -3,6 +3,7 @@ import Seo from '@/utils/Seo';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import getGlobalProps from '@/utils/getGlobalProps';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useMemo } from 'react';
 
 export default function Home({ globalData }) {
@@ -22,6 +23,10 @@ export default function Home({ globalData }) {
 
   return (
     <>
+			{
+				globalData?.settings?.gaMeasurementId &&
+				<GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
+			}
       <Seo { ...{ globalData, } } />
       <SetGlobalProps { ...{ globalData } } />
       <HomepageScrollingContent { ...{ items } } />

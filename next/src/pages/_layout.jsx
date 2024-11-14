@@ -43,10 +43,6 @@ const Layout = ({ children }) => {
   return (
     <>
       {
-        siteGlobals?.settings?.gaMeasurementId &&
-        <GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
-      }
-      {
         sillyName === 'flip horizontal' &&
         <FlipHorizontal />
       }
