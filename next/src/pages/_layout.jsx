@@ -12,7 +12,6 @@ import DistortedText from '@/components/silly/3D/DistortedText';
 import Metaballs from '@/components/silly/3D/Metaballs';
 import useWindowSize from '@/hooks/useWindowSize';
 import Grob from '@/components/silly/Grob';
-import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 const Layout = ({ children }) => {
 

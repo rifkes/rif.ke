@@ -25,7 +25,7 @@ export default function Home({ globalData }) {
     <>
 			{
 				globalData?.settings?.gaMeasurementId &&
-				<GoogleAnalytics trackPageViews gaMeasurementId={ siteGlobals.settings.gaMeasurementId } />
+				<GoogleAnalytics trackPageViews gaMeasurementId={ globalData.settings.gaMeasurementId } />
 			}
       <Seo { ...{ globalData, } } />
       <SetGlobalProps { ...{ globalData } } />
