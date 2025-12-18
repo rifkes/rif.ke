@@ -25,13 +25,6 @@ export const deskStructure = (S, context) =>
   S.list()
     .title('Content')
     .items([
-			orderableDocumentListDeskItem({
-				type: 'item',
-				title: 'Items',	
-				icon: () => '🗒️',
-				S,
-				context,
-			}),
       S.listItem()
         .icon(() => '⚙️')
         .title('Settings')
