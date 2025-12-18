@@ -256,7 +256,7 @@ const MuxVideoPlayer = (props) => {
 			</div>
 			<div
 				ref={scrubVisualiser}
-				className='absolute top-0 left-0 w-full h-[4px] bg-black opacity-0 transition-opacity duration-300 pointer-events-none'
+				className='absolute top-0 left-0 w-full h-[4px] bg-white mix-blend-difference opacity-0 transition-opacity duration-300 pointer-events-none'
 				style={{
 					opacity: scrubberIsVisible ? 1 : 0,
 					transform: `scaleX(${currentTime / duration})`,
