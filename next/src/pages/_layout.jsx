@@ -36,7 +36,8 @@ const Layout = ({ children }) => {
   }, [ windowWidth, windowHeight ]);
 
   useEffect(() => {
-    setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
+		// setSillyName(initialSillyNames[ Math.floor(Math.random() * initialSillyNames.length) ]);
+		setSillyName('metaballs');
   }, [ initialSillyNames, setSillyName ]);
 
   return (
