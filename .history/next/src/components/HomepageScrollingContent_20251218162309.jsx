@@ -33,10 +33,10 @@ const HomepageScrollingContent = ({ items, }) => {
               setTitleText(items[ activeIndex ].text);
               setActiveItem(items[ activeIndex ]);
             } else {
-              if (items[ activeIndex ]) {
-                setActiveItem(items[ activeIndex ]);
+              if (items[ activeIndex ]?.item) {
+                setActiveItem(items[ activeIndex ].item);
               }
-              setTitleText(items[ activeIndex ]?.title ? items[ activeIndex ].title : items[ activeIndex ]?.client ? items[ activeIndex ].client : items[ activeIndex ]?.project ? items[ activeIndex ].project : '');
+              setTitleText(items[ activeIndex ].item?.title ? items[ activeIndex ].item.title : items[ activeIndex ].item?.client ? items[ activeIndex ].item.client : items[ activeIndex ].item?.project ? items[ activeIndex ].item.project : '');
             }
           }
         } }
@@ -46,14 +46,31 @@ const HomepageScrollingContent = ({ items, }) => {
           items.map((item, index) => (
             <div className='w-screen h-screen max-xs:px-0 p-12' key={ index }>
               {
-                item?.video?.hlsUrl &&
+                item?.foregroundMedia?.type === 'image' &&
+                item?.foregroundMedia?.image?.url &&
+                <Image
+                  className='max-xs:w-full xs:max-w-[75%] xs:max-h-[75%] xs:w-auto h-auto block relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl'
+                  src={ item.foregroundMedia.image.url }
+                  alt={ item.foregroundMedia.image.altText ?? item.title + ' image' }
+                  width={ 1024 }
+                  height={ 1024 }
+                  style={ {
+                    boxShadow: '2px 2px 25px -5px rgba(0, 0, 0, 0.5)'
+                  } }
+                />
+              }
+              {
+                item?.foregroundMedia?.type === 'video' &&
+                item?.foregroundMedia?.videoEmbed?.url &&
                 <div
                   className='max-xs:w-full xs:max-w-[75%] xs:max-h-[75%] xs:w-auto h-auto relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
                   style={ {
                     boxShadow: '2px 2px 25px -5px rgba(0, 0, 0, 0.5)'
                   } }
-								>
+									>
+										{ console.log(item?.video) }
 									{
+										item?.video?.hlsUrl &&
 										<MuxVideoPlayer value={item.video} />
 									}
                 </div>

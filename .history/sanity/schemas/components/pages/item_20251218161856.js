@@ -17,7 +17,7 @@ export default defineType({
     },
   ],
   fields: [
-    orderRankField({ type: 'item', newItemPosition: 'first', }),
+    orderRankField({ type: 'item' }),
     defineField({
       name: 'title',
       title: 'Title',

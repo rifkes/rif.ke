@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 
 const UI = () => {
-  const { titleText, windowWidth, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName, siteGlobals } = useSiteGlobals();
+  const { titleText, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName, siteGlobals } = useSiteGlobals();
 
   useEffect(() => {
     setItemInfoIsActive(false);
@@ -51,7 +51,7 @@ const UI = () => {
             setItemInfoIsActive(!itemInfoIsActive);
             setInfoIsActive(false);
           } }
-          className='select-none fixed top-0 left-1/2 -translate-x-1/2 p-2 uppercase mix-blend-difference text-white ui-text z-[999] cursor-pointer'
+          className='select-none fixed top-0 left-1/2 -translate-x-1/2 p-2 uppercase mix-blend-difference text-white ui-text z-[999]'
         >
 						{itemInfoIsActive === true ? 'close' :
 							windowWidth < 768 ? '?' : 'About the project'}

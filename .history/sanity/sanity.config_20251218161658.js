@@ -19,6 +19,7 @@ export default defineConfig({
     }),
     visionTool(),
     muxInput(),
+    orderableDocumentListDeskItem(),
   ],
 
   schema: {

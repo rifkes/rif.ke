@@ -35,13 +35,29 @@ export const deskStructure = (S, context) =>
             .documentId('homePage'),
             ...S.documentTypeListItems().filter((listItem ) => !['homePage'].includes(listItem.getId()))
         ),
-			orderableDocumentListDeskItem({
-				type: 'item',
-				title: 'Items',	
-				icon: () => '🗒️',
-				S,
-				context,
-			}),
+				orderableDocumentListDeskItem({
+					type: 'item',
+					title: 'Items',
+					icon: () => '�️',
+					// Required if using multiple lists of the same 'type'
+					// id: 'orderable-archive-projects',
+					// createIntent: false, // do not add an option for item creation
+					// menuItems: [], // allow an array of `S.menuItem()` to be injected to orderable document list menu
+					// pass from the structure callback params above
+					S,
+					context,
+				}),
+      // S.listItem()
+      //   .icon(() => '🗒️')
+      //   .title('Items')
+      //   .child(
+      //     S.documentList()
+      //       .title('Items')
+      //       .filter('_type == "item"')
+      //       .defaultOrdering([ { field: 'title', direction: 'asc' } ])
+      //       .menuItems(S.documentTypeList('item').getMenuItems())
+      //       .filter('_type == "item" && !(_id in path("drafts.**"))'),
+      // ),
       S.listItem()
         .icon(() => '⚙️')
         .title('Settings')

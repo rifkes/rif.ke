@@ -19,8 +19,6 @@
   * https://www.sanity.io/docs/overview-structure-builder
  */
 
-import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
-
 export const deskStructure = (S, context) =>
   S.list()
     .title('Content')
@@ -35,13 +33,17 @@ export const deskStructure = (S, context) =>
             .documentId('homePage'),
             ...S.documentTypeListItems().filter((listItem ) => !['homePage'].includes(listItem.getId()))
         ),
-			orderableDocumentListDeskItem({
-				type: 'item',
-				title: 'Items',	
-				icon: () => '🗒️',
-				S,
-				context,
-			}),
+      S.listItem()
+        .icon(() => '🗒️')
+        .title('Items')
+        .child(
+          S.documentList()
+            .title('Items')
+            .filter('_type == "item"')
+            .defaultOrdering([ { field: 'title', direction: 'asc' } ])
+            .menuItems(S.documentTypeList('item').getMenuItems())
+            .filter('_type == "item" && !(_id in path("drafts.**"))'),
+      ),
       S.listItem()
         .icon(() => '⚙️')
         .title('Settings')

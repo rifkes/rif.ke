@@ -35,13 +35,13 @@ export const deskStructure = (S, context) =>
             .documentId('homePage'),
             ...S.documentTypeListItems().filter((listItem ) => !['homePage'].includes(listItem.getId()))
         ),
-			orderableDocumentListDeskItem({
-				type: 'item',
-				title: 'Items',	
-				icon: () => '🗒️',
-				S,
-				context,
-			}),
+			// orderableDocumentListDeskItem({
+			// 	type: 'item',
+			// 	title: 'Items',	
+			// 	icon: () => '🗒️',
+			// 	S,
+			// 	context,
+			// }),
       S.listItem()
         .icon(() => '⚙️')
         .title('Settings')

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export const SiteGlobalsContext = createContext({
   siteGlobals: undefined,
@@ -47,26 +47,12 @@ export const SiteGlobalsProvider = ({ children }) => {
     'grob',
     // 'eraser',
   ]);
-	const [sillyName, setSillyName] = useState('');
-	const [ windowWidth, setWindowWidth ] = useState(0);
-	const [windowHeight, setWindowHeight] = useState(0);
-	
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-			setWindowHeight(window.innerHeight);
-		};
-		handleResize();
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
+  const [ sillyName, setSillyName ] = useState('');
 
   return (
     <SiteGlobalsContext.Provider
       value={ {
-				siteGlobals, setSiteGlobals,
-				windowWidth, setWindowWidth,
-				windowHeight, setWindowHeight,
+        siteGlobals, setSiteGlobals,
         backgroundImage, setBackgroundImage,
         isTouchscreen, setIsTouchscreen,
         titleText, setTitleText,
@@ -74,7 +60,7 @@ export const SiteGlobalsProvider = ({ children }) => {
         activeItem, setActiveItem,
         infoIsActive, setInfoIsActive,
         itemInfoIsActive, setItemInfoIsActive,
-				sillyNames, initialSillyNames, sillyName, setSillyName,
+        sillyNames, initialSillyNames, sillyName, setSillyName,
       } }
     >{ children }</SiteGlobalsContext.Provider>
   );
