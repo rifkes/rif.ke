@@ -14,7 +14,7 @@ const MetaballsGeometry = ({ material, marchingCubes, group }) => {
       material.needsUpdate = true;
       material.envMap.needsUpdate = true;
       marchingCubes.current = new MarchingCubes(
-        44,
+        128,
         material,
         true,
         true

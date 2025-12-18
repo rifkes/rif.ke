@@ -11,13 +11,9 @@ const nextConfig = {
       },
     ],
   },
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.glsl/,
-      type: "asset/source",
-    })
-    return config
-  },
+	turbopack: {
+		resolveExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.md', '.mdx'],
+	},
 }
 
 module.exports = nextConfig
