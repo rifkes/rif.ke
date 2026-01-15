@@ -1,4 +1,5 @@
 import { apiVersion, dataset, projectId } from '../../sanity.config'
+import { createClient, groq } from 'next-sanity'
 
 export const config = {
   api: { bodyParser: false },
