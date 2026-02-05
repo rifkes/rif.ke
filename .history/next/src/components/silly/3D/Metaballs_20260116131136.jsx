@@ -85,9 +85,6 @@ const Metaballs = (props) => {
 					...materialProps,
 					envMap: newTexture,
 				});
-
-				newMaterial.needsUpdate = true;
-				newTexture.needsUpdate = true;
 				setMaterial(newMaterial);
 			});
 		}

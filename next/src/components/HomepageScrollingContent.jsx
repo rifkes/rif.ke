@@ -44,11 +44,11 @@ const HomepageScrollingContent = ({ items, }) => {
         <div className='w-screen h-screen pointer-events-none' />
         {
           items.map((item, index) => (
-            <div className='w-screen h-screen max-xs:px-0 p-12' key={ index }>
+            <div className='w-screen min-h-screen max-xs:px-0 p-12 flex justify-center items-center' key={ index }>
               {
                 item?.video?.hlsUrl &&
                 <div
-                  className='max-xs:w-full xs:max-w-[75%] xs:max-h-[75%] xs:w-auto h-auto relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+                  className='max-xs:w-full xs:max-w-[75%] xs:max-h-[75%] xs:w-auto h-auto relative'
                   style={ {
                     boxShadow: '2px 2px 25px -5px rgba(0, 0, 0, 0.5)'
                   } }

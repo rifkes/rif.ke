@@ -62,10 +62,10 @@ const Metaballs = (props) => {
         setMaterial(newMaterial);
       } else if (activeImage === 'image') {
         const src = '/assets/gradient-test.jpg';
+        newTexture.colorSpace = THREE.SRGBColorSpace;
         const newTexture = new THREE.TextureLoader().load(src, () => {
           newTexture.mapping = THREE.EquirectangularReflectionMapping;
           newTexture.needsUpdate = true;
-					newTexture.colorSpace = THREE.SRGBColorSpace;
 
           const newMaterial = new THREE.MeshStandardMaterial({
             ...materialProps,
@@ -74,23 +74,7 @@ const Metaballs = (props) => {
           setMaterial(newMaterial);
         });
       }
-    } else {
-			const src = '/assets/gradient-test.jpg';
-			const newTexture = new THREE.TextureLoader().load(src, () => {
-				newTexture.mapping = THREE.EquirectangularReflectionMapping;
-				newTexture.needsUpdate = true;
-				newTexture.colorSpace = THREE.SRGBColorSpace;
-
-				const newMaterial = new THREE.MeshStandardMaterial({
-					...materialProps,
-					envMap: newTexture,
-				});
-
-				newMaterial.needsUpdate = true;
-				newTexture.needsUpdate = true;
-				setMaterial(newMaterial);
-			});
-		}
+    }
   }, [ activeImage ]);
 
   return (
