@@ -196,7 +196,7 @@ const MuxVideoPlayer = (props) => {
 			<div
 				className='w-full h-full relative'
 				style={{
-					backgroundImage: `url(${value?.thumbnailUrl})`,
+					backgroundImage: `url(${value?.thumbnail})`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',

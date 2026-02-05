@@ -184,8 +184,6 @@ const MuxVideoPlayer = (props) => {
 		}
 	};
 
-	console.log(value)
-
 	return (
 		<div
 			className='w-full h-full top-0 bg-black relative group'
@@ -196,7 +194,7 @@ const MuxVideoPlayer = (props) => {
 			<div
 				className='w-full h-full relative'
 				style={{
-					backgroundImage: `url(${value?.thumbnailUrl})`,
+					backgroundImage: `url(${value?.thumbnail})`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',

@@ -13,8 +13,6 @@ const MuxVideoPlayer = (props) => {
 	const [currentTime, setCurrentTime] = useState(0);
 	const [duration, setDuration] = useState(0);
 
-	const [ userHasInteracted, setUserHasInteracted ] = useState(false);
-
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [canPlay, setCanPlay] = useState(false);
 
@@ -28,9 +26,7 @@ const MuxVideoPlayer = (props) => {
 		const intersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
-					if (!userHasInteracted) {
-						// videoRef.current?.play().catch();
-					}
+					videoRef.current?.play();
 				} else {
 					videoRef.current?.pause();
 				}
@@ -38,14 +34,12 @@ const MuxVideoPlayer = (props) => {
 		});
 		intersectionObserver.observe(videoRef.current);
 		return () => intersectionObserver.disconnect();
-	}, [ userHasInteracted, ]);
+	}, []);
 	
 	useEffect(() => {
 		const handleClick = () => {
-			setUserHasInteracted(true);
 			if (videoRef.current?.paused) {
-				videoRef.current.muted = true;
-				videoRef.current?.play().catch();
+				videoRef.current?.play();
 			}
 		}
 
@@ -133,6 +127,9 @@ const MuxVideoPlayer = (props) => {
 			video.addEventListener('timeupdate', updateTime);
 			video.addEventListener('loadedmetadata', updateTime);
 
+			video.play().catch(error => {
+			});
+
 			return () => {
 				video.removeEventListener('timeupdate', updateTime);
 				video.removeEventListener('loadedmetadata', updateTime);
@@ -184,8 +181,6 @@ const MuxVideoPlayer = (props) => {
 		}
 	};
 
-	console.log(value)
-
 	return (
 		<div
 			className='w-full h-full top-0 bg-black relative group'
@@ -196,7 +191,7 @@ const MuxVideoPlayer = (props) => {
 			<div
 				className='w-full h-full relative'
 				style={{
-					backgroundImage: `url(${value?.thumbnailUrl})`,
+					backgroundImage: `url(${value?.thumbnail})`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',
@@ -208,15 +203,15 @@ const MuxVideoPlayer = (props) => {
 					controls={false}
 					playsInline
 					loop
-					muted
+					muted={true}
+					className='w-full h-full object-cover'
 					onCanPlay={ () => setCanPlay(true) }
 					onPlay={ () => setIsPlaying(true) }
 					onPause={ () => setIsPlaying(false) }
 					style={{
 						opacity: isPlaying ? 1 : 0,
-						transition: 'opacity 0.3s ease',
 						objectFit: !value?.fullscreen ? 'contain' : 'cover',
-					}}
+					} }
 				/>
 				<div className='absolute bottom-0 left-0 w-full h-full z-[2] group flex items-center justify-center transition-opacity duration-300'>
 					<input
@@ -256,16 +251,29 @@ const MuxVideoPlayer = (props) => {
 					{
 						!isPlaying &&
 						<button
-							className='w-full h-full'
+							className='w-16 h-16 rounded-full bg-white flex items-center justify-center z-[101]'
 							ref={playButtonRef}
 							onClick={() => {
 								if (isPlaying) {
-									// videoRef.current?.pause();
+									videoRef.current?.pause();
 								} else {
 									videoRef.current?.play()
 								}
 							}}
-						/>
+						>
+							{
+									isPlaying ?
+								// Pause svg
+								<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' className='w-8 h-8'>
+									<path d='M6 19h4V5H6v14zm8-14v14h4V5h-4z' />
+								</svg>
+								:
+									// Play
+									<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' className='w-8 h-8'>
+										<polygon points='6 19 6 5 18 12' />
+									</svg>
+							}
+						</button>
 					}
 				</div>
 			</div>

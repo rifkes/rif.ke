@@ -28,9 +28,7 @@ const MuxVideoPlayer = (props) => {
 		const intersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
-					if (!userHasInteracted) {
-						// videoRef.current?.play().catch();
-					}
+					videoRef.current?.play().catch();
 				} else {
 					videoRef.current?.pause();
 				}
@@ -38,13 +36,12 @@ const MuxVideoPlayer = (props) => {
 		});
 		intersectionObserver.observe(videoRef.current);
 		return () => intersectionObserver.disconnect();
-	}, [ userHasInteracted, ]);
+	}, []);
 	
 	useEffect(() => {
 		const handleClick = () => {
 			setUserHasInteracted(true);
 			if (videoRef.current?.paused) {
-				videoRef.current.muted = true;
 				videoRef.current?.play().catch();
 			}
 		}
@@ -133,6 +130,9 @@ const MuxVideoPlayer = (props) => {
 			video.addEventListener('timeupdate', updateTime);
 			video.addEventListener('loadedmetadata', updateTime);
 
+			video.play().catch(error => {
+			});
+
 			return () => {
 				video.removeEventListener('timeupdate', updateTime);
 				video.removeEventListener('loadedmetadata', updateTime);
@@ -184,8 +184,6 @@ const MuxVideoPlayer = (props) => {
 		}
 	};
 
-	console.log(value)
-
 	return (
 		<div
 			className='w-full h-full top-0 bg-black relative group'
@@ -196,7 +194,7 @@ const MuxVideoPlayer = (props) => {
 			<div
 				className='w-full h-full relative'
 				style={{
-					backgroundImage: `url(${value?.thumbnailUrl})`,
+					backgroundImage: `url(${value?.thumbnail})`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',
