@@ -27,16 +27,20 @@ const MuxVideoPlayer = (props) => {
 	useEffect(() => {
 		const intersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					if (userHasInteracted) {
+				if (userHasInteracted) {
+					if (entry.isIntersecting) {
 						videoRef.current?.play().catch();
+					} else {
+						videoRef.current?.pause();
 					}
-				} else {
-					videoRef.current?.pause();
 				}
 			});
+		}, {
+			threshold: 0.1,
 		});
-		intersectionObserver.observe(videoRef.current);
+		if (userHasInteracted) {
+			intersectionObserver.observe(videoRef.current);
+		}
 		return () => intersectionObserver.disconnect();
 	}, [ userHasInteracted, ]);
 	
@@ -208,6 +212,7 @@ const MuxVideoPlayer = (props) => {
 					controls={false}
 					playsInline
 					loop
+					autoPlay
 					muted
 					onCanPlay={ () => setCanPlay(true) }
 					onPlay={ () => setIsPlaying(true) }
@@ -259,11 +264,7 @@ const MuxVideoPlayer = (props) => {
 							className='w-full h-full'
 							ref={playButtonRef}
 							onClick={() => {
-								if (isPlaying) {
-									// videoRef.current?.pause();
-								} else {
-									videoRef.current?.play()
-								}
+								videoRef.current?.play();
 							}}
 						/>
 					}

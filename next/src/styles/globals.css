@@ -50,6 +50,14 @@ h1 {
   display: none;
 }
 
+::-moz-scrollbar {
+  display: none;
+}
+
+* {
+	scrollbar-width: none;
+}
+
 img, canvas {
   user-select: none;
 }
