@@ -2,8 +2,10 @@ import Seo from '@/utils/Seo';
 import getGlobalProps from '@/utils/getGlobalProps';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
+import PortableTextBlocks from '@/components/blocks/PortableTextBlocks';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import client from '@/hooks/useSanityQuery';
+import { useEffect } from 'react';
 import { ARCHIVE } from '@/fragments/archive';
 import Archive from '@/components/Archive/Archive';
 

@@ -19,17 +19,17 @@ const ArchiveItem = ({ item }) => {
 			}}
 		>
 			{
-				windowWidth < 768 ?
+				windowWidth < 1200 ?
 					<h3 className='col-span-2 sm:col-span-1'>{item.title}{item.client?.length > 0 ? `, ${item.client}` : ''}{item.agency ? ` (via ${item.agency})` : ''}</h3>
 					:
 					<h3 className='col-span-1'>{item.title}</h3>
 			}
 			{
-				windowWidth >= 768 &&
+				windowWidth >= 1200 &&
 				<p className='col-span-2 sm:col-span-1'>{item.client}</p>
 			}
 			{
-				windowWidth >= 768 &&
+				windowWidth >= 1200 &&
 				<p>{item.agency}</p>
 			}
 			<div className='flex justify-between gap-4 pr-4'>
