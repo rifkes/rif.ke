@@ -24,16 +24,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'project',
       title: 'Project',
       type: 'string',

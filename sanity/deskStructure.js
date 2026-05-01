@@ -33,6 +33,16 @@ export const deskStructure = (S, context) =>
 				context,
 			}),
       S.listItem()
+        .icon(() => '📂')
+        .title('Archive')
+        .child(
+          S.document()
+            .title('Archive')
+            .schemaType('archive')
+            .documentId('archive'),
+            ...S.documentTypeListItems().filter((listItem ) => !['archive'].includes(listItem.getId()))
+        ),
+      S.listItem()
         .icon(() => '⚙️')
         .title('Settings')
         .child(

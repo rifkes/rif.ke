@@ -9,6 +9,7 @@ import richTextSimple from './components/blocks/richTextSimple';
 import homePage from './components/pages/homePage';
 import item from './components/pages/item';
 import settings from './components/pages/settings';
+import archive from './components/pages/archive';
 
 export const schemaTypes = [
   annotationLinkExternal,
@@ -21,5 +22,6 @@ export const schemaTypes = [
   richTextSimple,
   homePage,
   item,
-  settings,
+	settings,
+	archive,
 ]
