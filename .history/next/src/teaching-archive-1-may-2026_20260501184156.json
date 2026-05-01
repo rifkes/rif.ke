@@ -1,0 +1,75 @@
+[
+  {
+    "course": "series of 2 creative coding workshops BA Graphic Design",
+    "institution": "University of Brighton",
+    "year": "2019",
+    "role": "workshop lead"
+  },
+  {
+    "course": "Creative computing diploma",
+    "institution": "UAL CCI",
+    "year": "2021",
+    "collaborators": "Lex Fefegha",
+    "role": "assistant lecturer"
+  },
+  {
+    "course": "Creative Web Design: Planning and Coding from Scratch",
+    "institution": "Domestika",
+    "year": "2021",
+    "collaborators": "Dan Bara (course designer and presenter)",
+    "role": "course designer and presenter"
+  },
+  {
+    "course": "Experimental Creative Coding Course",
+    "institution": "Cyberpatio",
+    "year": "2024",
+    "collaborators": "Eliza Struthers (instructor)",
+    "role": "p5 instructor"
+  },
+  {
+    "course": "MSc Creative Computing",
+    "institution": "UAL CCI",
+    "collaborators": "Daniel Howe (senior lecturer), Adam Cole (senior lecturer), April Chu (associate lecturer), Koundinya Dhulipalla (associate lecturer)",
+    "role": "associate lecturer"
+  },
+  {
+    "course": "BA Graphic Design",
+    "institution": "Ravensbourne University London",
+    "role": "associate lecturer"
+  },
+  {
+    "course": "BA Product Design",
+    "institution": "Ravensbourne University London",
+    "role": "associate lecturer"
+  },
+  {
+    "course": "BA UX/UI Design",
+    "institution": "Ravensbourne University London",
+    "role": "module lead, Creative Coding, Hello World, Making Machines"
+  },
+  {
+    "course": "BA Graphic Design",
+    "institution": "University of Greenwich",
+    "collaborators": "Maria Than (module co-lead), David Watson (module co-lead)",
+    "role": "module co-lead"
+  },
+  {
+    "course": "Experimental code lab – DXR Zone",
+    "institution": "HEAD Genève",
+    "year": "2023",
+    "collaborators": "Dan Bara (workshop co-lead)",
+    "role": "workshop co-lead"
+  },
+  {
+    "course": "BA creative computing",
+    "institution": "UAL CCI",
+    "collaborators": "Koundinya Dhulipalla (module lead)",
+    "role": "Three.js workshop lead"
+  },
+  {
+    "course": "p5.js workshops",
+    "institution": "University of Brighton",
+    "year": "2025",
+    "role": "workshop lead"
+  }
+]

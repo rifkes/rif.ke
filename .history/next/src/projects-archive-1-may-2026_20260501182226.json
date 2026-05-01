@@ -1,0 +1,1951 @@
+[
+	{
+		"title": "Brighton Show 2016 website",
+		"client": "Brighton University Graphic Design/Illustration cohort 2016",
+		"year": "2016",
+		"type": "website",
+		"status": "resurrected",
+		"credits": "Seamus White, branding by Alice Rogers, Josh Costar, Juliet Klottrup, George Hatton",
+		"role": "UI design, web development, typeface design",
+		"tools": "WordPress (PHP), CSS JavaScript",
+		"link": "https://brighton-show-16.netlify.app/"
+	},
+	{
+		"title": "Honiton typeface",
+		"client": "personal",
+		"year": "2016",
+		"type": "typeface",
+		"status": "live!",
+		"credits": "Anna Maria Geals (mentor)",
+		"role": "typeface design",
+		"tools": "Glyphs app"
+	},
+	{
+		"title": "Display is a Rehearsal website",
+		"client": "Vitoria De Mello Franco",
+		"year": "2016",
+		"type": "website",
+		"status": "live!",
+		"role": "design, web development",
+		"tools": "WordPress (PHP), CSS JavaScript",
+		"link": "https://displayisarehearsal.com/"
+	},
+	{
+		"title": "Let’s Verne",
+		"client": "Verne",
+		"year": "2024",
+		"type": "website",
+		"status": "gone",
+		"role": "web development",
+		"agency": "Studio NARI",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Contra Journal",
+		"client": "Contra Journal",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS JavaScript"
+	},
+	{
+		"title": "Pete Sharp ",
+		"client": "Pete Sharp",
+		"year": "2017",
+		"type": "website",
+		"status": "gone",
+		"role": "Interaction design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Synthetic Epiphany logo illustration",
+		"client": "Synthetic Epiphany",
+		"year": "2016",
+		"type": "illustration",
+		"status": "live!",
+		"role": "Illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Helmston branding",
+		"client": "Helmston Café",
+		"year": "2015",
+		"type": "illustration",
+		"status": "live!",
+		"role": "Brand design and illustration",
+		"tools": "pen, PhotoShop, Illustrator"
+	},
+	{
+		"title": "Butt Studio website",
+		"client": "Harry Butt",
+		"year": "2017",
+		"type": "website",
+		"status": "gone",
+		"credits": "Design by Harry Butt",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Sparrow London website",
+		"client": "Sparrow London",
+		"year": "2017",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Ben Weaver website",
+		"client": "Ben Weaver",
+		"year": "2016",
+		"type": "website",
+		"status": "gone",
+		"credits": "North Design (branding)",
+		"role": "UI design, web development",
+		"tools": "WordPress (PHP), CSS"
+	},
+	{
+		"title": "SNAKE, CAKE, LAKE, AWAKE, FAKE, RAKE, STEAK, DRAKE, SHAKE",
+		"client": "Dropbox and It's Nice That",
+		"year": "2017",
+		"type": "website",
+		"status": "gone",
+		"credits": "Max Siedentopf, JP Bonino, Anna Haifisch",
+		"role": "web development",
+		"agency": "It's Nice That",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Lucas Dupuy portfolio website",
+		"client": "Lucas Dupuy",
+		"year": "2017",
+		"type": "website",
+		"status": "live!",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Natalia Stuyk portfolio website",
+		"client": "Natalia Stuyk",
+		"year": "2018",
+		"type": "website",
+		"status": "resurrected",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript, Three.js"
+	},
+	{
+		"title": "Chopova Lowena online shop",
+		"client": "Chopova Lowena",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript, WooCommerce"
+	},
+	{
+		"title": "Dateagle Art website",
+		"client": "Dateagle Art",
+		"year": "2018",
+		"type": "website",
+		"status": "live!",
+		"credits": "All Purpose Studio (design)",
+		"role": "interaction design, web development",
+		"agency": "All Purpose Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Shared Meanings",
+		"client": "Mumdance",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "interaction design, web development",
+		"agency": "All Purpose Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "75001fr.cc",
+		"client": "Bafic",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "Bafic (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio (formerly Our Place)",
+		"tools": "WordPress (PHP), CSS, JavaScript",
+		"link": "75001fr.cc"
+	},
+	{
+		"title": "Bt41hu",
+		"client": "Bafic",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "Bafic (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio (formerly Our Place)",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Left Alone London",
+		"client": "Left Alone",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio (formerly Our Place)",
+		"tools": "WordPress (PHP), CSS, JavaScript, Matter.js",
+		"link": "http://leftal.one/"
+	},
+	{
+		"title": "c-ll-ct-v-ly online portfolio",
+		"client": "c-ll-ct-v-ly",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "C-ll-ct-v-ly (design)",
+		"role": "web development",
+		"agency": "c-ll-ct-v-ly",
+		"tools": "WordPress (PHP), CSS, JavaScript",
+		"link": "c-ll-ct-v-ly.com"
+	},
+	{
+		"title": "The Cut website",
+		"client": "The Cut",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "Studio BLVD (design)",
+		"role": "web development",
+		"agency": "Studio Blvd",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Ma-tt-er website homepage",
+		"client": "Ma-tt-er",
+		"year": "2018",
+		"type": "website",
+		"status": "live!",
+		"credits": "All Purpose Studio (formerly Our Place), web development by David Holland",
+		"role": "interaction design and code (homepage only)",
+		"tools": "CSS, JavaScript",
+		"link": "https://ma-tt-er.org/"
+	},
+	{
+		"title": "next2nothi.ng",
+		"client": "Topsafe",
+		"year": "2018",
+		"type": "website",
+		"status": "gone, recorded",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "lovehearts AR filter for Facebook",
+		"client": "personal",
+		"year": "2018",
+		"type": "AR filter",
+		"status": "gone, recorded",
+		"role": "Spark AR development",
+		"tools": "Spark AR"
+	},
+	{
+		"title": "Illustration for 'Between Cassandra and Noah: Illusions of Nobility and Survival in a Warming World by Qaisar Siddiqui",
+		"client": "Consented Magazine",
+		"year": "2018",
+		"type": "illustration",
+		"credits": "graphic design by Chani Wisdom",
+		"role": "Illustration",
+		"tools": "Spark AR"
+	},
+	{
+		"title": "Illustration for 'Climate Catastrophe and the Urgent Need for Collective Action' by Sai Englert",
+		"client": "Consented Magazine",
+		"year": "2018",
+		"type": "illustration",
+		"credits": "graphic design by Chani Wisdom",
+		"role": "Illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Illustration for an article by the editors",
+		"client": "Consented Magazine",
+		"year": "2018",
+		"type": "illustration",
+		"credits": "graphic design by Chani Wisdom",
+		"role": "Illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Bonnie Fechter online shop",
+		"client": "Bonnie Fechter",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript, WooCommerce"
+	},
+	{
+		"title": "Adam Slama portfolio site",
+		"client": "Adam Slama",
+		"year": "2018",
+		"type": "website",
+		"status": "updated",
+		"credits": "Peter Roden (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript, WoocCommerce"
+	},
+	{
+		"title": "A Sense of Scale",
+		"client": "Dan Adeyemi",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Uchronia Website",
+		"client": "Helga Schmidt",
+		"year": "2018",
+		"type": "website",
+		"status": "live!",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript",
+		"link": "https://uchronia.world/"
+	},
+	{
+		"title": "heavenl-e-chordz",
+		"client": "personal",
+		"year": "2018",
+		"type": "website",
+		"status": "live!",
+		"role": "web development, design, concept",
+		"tools": "HTML, CSS, JavaScript, Tone.js"
+	},
+	{
+		"title": "Lauren Maccabee portfolio site",
+		"client": "Lauren Maccabee",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"tools": "Kirby (PHP, YAML), CSS, JavaScript"
+	},
+	{
+		"title": "Dazed Beauty Wellness Week Digital Spa Quizzes",
+		"client": "Dazed Beauty",
+		"year": "2019",
+		"type": "website",
+		"status": "live!",
+		"credits": "Ryan Vautier (3D/CGI), Jon Emmony, (CGI illustration) Ben Ditto (art direction), Ram Han (illustration), Amelia Abraham, Billy Bixby, Tish Weinstock, Holly Benwell, Nellie Eden",
+		"role": "web development, design, interaction design, UI design",
+		"agency": "Dazed Beauty",
+		"tools": "HTML, CSS, JavaScript, Three.js"
+	},
+	{
+		"title": "Claire Burman website",
+		"client": "Claire Burman",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio",
+		"tools": "Kirby (PHP, YAML), CSS, JavaScript"
+	},
+	{
+		"title": "Elle French website",
+		"client": "Elle French",
+		"year": "2018",
+		"type": "website",
+		"status": "gone",
+		"credits": "Elle French (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Mowalola website",
+		"client": "Mowalola",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"credits": "Manu Pillai (design)",
+		"role": "web development",
+		"agency": "Metallic Inc",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Keep Hush website",
+		"client": "Keep Hush",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Peng percent AR filter",
+		"client": "personal",
+		"year": "2019",
+		"type": "AR filter",
+		"status": "gone, recorded",
+		"role": "Spark AR development",
+		"tools": "Spark AR studio"
+	},
+	{
+		"title": "Yasss queen AR filter",
+		"client": "personal",
+		"year": "2019",
+		"type": "AR filter",
+		"status": "gone, recorded",
+		"role": "Spark AR development",
+		"tools": "Spark AR studio"
+	},
+	{
+		"title": "Through Glass Darkly Poster",
+		"client": "Motrunk",
+		"year": "2019",
+		"type": "poster",
+		"role": "poster design, illustration",
+		"tools": "Pen, PhotoShop, InDesign"
+	},
+	{
+		"title": "Sophie Mars website",
+		"client": "Sophie Mars",
+		"year": "2019",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Jon Emmony website",
+		"client": "Jon Emmony",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Flying Lotus website",
+		"client": "Flying Lotus, Warp Records",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"credits": "Winston Hacking (illustration), Our Place Studio (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Autarkic Album Artwork: Trespassers Unite EP",
+		"client": "Optimo Espacio",
+		"year": "2019",
+		"type": "illustration",
+		"role": "Illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Depop Space",
+		"client": "Depop/Selfridges",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"credits": "Anyways Creative (design)",
+		"role": "web development",
+		"agency": "Anyways Creative",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Forecasting The Future microsite",
+		"client": "The Future Laboratory",
+		"year": "2019",
+		"type": "website",
+		"status": "archived (???)",
+		"credits": "Dan Bara (design, code), Ash Jones (3D modelling)",
+		"role": "web design, web development",
+		"tools": "Kirby (PHP, YAML), CSS, JavaScript"
+	},
+	{
+		"title": "The Face Magazine relaunch hardback boxed edition microsite",
+		"client": "The Face Magazine",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"credits": "Ash Jones (3D modelling), Alex O'Brien (creative Direction)",
+		"role": "web development",
+		"agency": "The Face Magazine",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Dazed and Burberry Boundless microsite",
+		"client": "Burberry",
+		"year": "2019",
+		"type": "website",
+		"status": "gone",
+		"credits": "Dan Bara (design, code), Dazed Studio (art direction), Peter Kent (motion graphics)",
+		"role": "web design, web development",
+		"agency": "Dazed Studio",
+		"tools": "HTML, CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Angel AR filter",
+		"client": "personal",
+		"year": "2019",
+		"type": "AR filter",
+		"role": "Spark AR development",
+		"tools": "Spark AR Studio"
+	},
+	{
+		"title": "Noisy band website",
+		"client": "Island Records",
+		"year": "2019",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Caroline Calloway AR filter",
+		"client": "personal",
+		"year": "2019",
+		"type": "AR filter",
+		"role": "Spark AR development",
+		"tools": "blender, Spark AR"
+	},
+	{
+		"title": "Labour AR Filter (when the Labour Party was still good)",
+		"client": "personal",
+		"year": "2019",
+		"type": "AR filter",
+		"role": "Spark AR development",
+		"tools": "Spark AR"
+	},
+	{
+		"title": "Clams Casino website",
+		"client": "Clams Casino",
+		"year": "2020",
+		"type": "website",
+		"credits": "Patrick Savile (design), Marielle Hyperballad (video) Jakub Valtar (video)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "The 1975: Mindshower.ai online affirmatons generator",
+		"client": "Dirty Hit",
+		"year": "2020",
+		"type": "website",
+		"credits": "Ben Ditto (creative direction), Jon Emmony (design) Ash Jones (3D modelling)",
+		"role": "web development",
+		"agency": "Ben Ditto",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Excellent Quarantine Ideas",
+		"client": "personal",
+		"year": "2020",
+		"type": "website",
+		"role": "self-directed, web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Costa Del Solitu.de",
+		"client": "personal",
+		"year": "2020",
+		"type": "website",
+		"role": "self-directed, web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js"
+	},
+	{
+		"title": "IoCoding Club, an Institute of Coding online coding workshop video series",
+		"client": "Institute of Coding",
+		"year": "2020",
+		"type": "video",
+		"role": "web design, web development, content creation, script writing, video editing",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Isolation Location",
+		"client": "Keep Hush",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Wired PR website",
+		"client": "Wired PR",
+		"year": "2019",
+		"type": "website",
+		"status": "live!",
+		"credits": "Charlie Rout (design)",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Lorenzo Senni Scacco Matti microsite",
+		"client": "Warp Records",
+		"year": "2020",
+		"type": "website",
+		"credits": "Daniel Sansavini (graphic design)",
+		"role": "UI design, web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "imissmymates.club",
+		"client": "personal",
+		"year": "2020",
+		"type": "website",
+		"role": "self-directed, web design, web development, server setup",
+		"tools": "node.js, JavaScript, express, socket-io, three.js, Mixlr, cockpit CMS"
+	},
+	{
+		"title": "We Are Meta website",
+		"client": "We Are Meta",
+		"year": "2019",
+		"type": "website",
+		"status": "gone, recorded",
+		"role": "web development, interaction design",
+		"agency": "Pitch Studios, DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript",
+		"link": "https://web.archive.org/web/20210307194244/https://wearemeta.com.au/mood/"
+	},
+	{
+		"title": "Trevor Jackson Homepage",
+		"client": "Trevor Jackson",
+		"year": "2018",
+		"type": "website",
+		"status": "live!",
+		"credits": "All Purpose Studio (formerly Our Place), web development by David Holland",
+		"role": "interaction design and code (homepage only)",
+		"agency": "All Purpose Studio",
+		"tools": "HTML, CSS, JavaScript",
+		"link": "https://www.trevor-jackson.com/"
+	},
+	{
+		"title": "Black Lives Matter Anti Racism page",
+		"client": "Charlie Rout",
+		"year": "2020",
+		"type": "website",
+		"credits": "Charlie Rout (direction, design)",
+		"role": "web development",
+		"tools": "HTML, CSS, JavaScript"
+	},
+	{
+		"title": "Queer Nation 2020 website",
+		"client": "Gareth Pugh and Carson McColl",
+		"year": "2020",
+		"type": "website",
+		"credits": "Jon Emmony (CGI and design)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Lucy Hardcastle Studio website",
+		"client": "Lucy Hardcastle Studio",
+		"year": "2020",
+		"type": "website",
+		"credits": "George Corney (WebGL), Jess Mae (design), Oli East (brand Identity)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Abby and Alice design website",
+		"client": "Abby and Alice",
+		"year": "2020",
+		"type": "website",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "We Plant Ideas, St Werburghs City Farm",
+		"client": "Will Walton Freeman, Juan Zhang and Emma Keaveny-Roys",
+		"year": "2020",
+		"type": "website",
+		"role": "design, development",
+		"tools": "Node.js, CSS, JavaScript, PHP, Cockpit CMS"
+	},
+	{
+		"title": "The 1975: Notes on a Conditional Future",
+		"client": "Dirty Hit",
+		"year": "2020",
+		"type": "website",
+		"credits": "Ben Ditto",
+		"role": "web development",
+		"agency": "Ben Ditto",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Keep Hush Merch Service t-shirt",
+		"client": "Keep Hush",
+		"year": "2021",
+		"type": "illustration",
+		"role": "illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Orla t shirt",
+		"client": "Keep Hush",
+		"year": "2021",
+		"type": "illustration",
+		"role": "graphic design, type design",
+		"tools": "Glyphs app, PhotoShop, Illustrator"
+	},
+	{
+		"title": "Sportscar portfolio website",
+		"client": "Sportscar",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Bog Magazine: The issue of Dust",
+		"client": "Bog Magazine",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Beirut Re—Store online fundraiser",
+		"client": "Beirut Re—Store",
+		"year": "2020",
+		"type": "website",
+		"credits": "Laura Tabet and Ulysse Sabbagh (creative direction), Antoine Roux (design), Billie Muraben (copy)",
+		"role": "web development",
+		"tools": "Shopify (liquid), CSS, JavaScript"
+	},
+	{
+		"title": "The Fortuneteller",
+		"client": "Cinekid",
+		"year": "2020",
+		"type": "website",
+		"credits": "TeYosh Studio (design, creative direction, CGI)",
+		"role": "interaction design, web development",
+		"agency": "TeYosh Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js, matter.js"
+	},
+	{
+		"title": "The Face and Burberry icy ad",
+		"client": "The Face, Burberry",
+		"year": "2020",
+		"type": "website",
+		"credits": "The Face (design)",
+		"role": "web development, interaction design",
+		"tools": "HTML, CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Keep Hush Merch Service dolphin t-shirt",
+		"client": "Keep Hush",
+		"year": "2020",
+		"type": "t-shirt design",
+		"role": "illustration, graphic design",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Mixtress t-shirt",
+		"client": "Keep Hush",
+		"year": "2020",
+		"type": "t-shirt design",
+		"role": "graphic design, illustration",
+		"tools": "pen, PhotoShop, illustrator"
+	},
+	{
+		"title": "Ella Boucht website",
+		"client": "Ella Boucht",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "Cockpit CMS, PHP, SnipCart, JavaScript, CSS"
+	},
+	{
+		"title": "Bernie Sanders AR filter",
+		"client": "personal",
+		"year": "2020",
+		"type": "AR filter",
+		"role": "Spark AR development",
+		"tools": "Spark AR"
+	},
+	{
+		"title": "Climate in Colour website",
+		"client": "Joycelyn Longdon",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "React.js, Cockpit CMS, JavaScript, CSS"
+	},
+	{
+		"title": "Find Yourself GGJ",
+		"client": "Global Game Jam theme: Lost and Found",
+		"year": "2020",
+		"type": "game",
+		"credits": "George Dyson, Akiko Haruna, Scott Wade, Rareman Sound, Govind Venkatesh, Zachary Sanderson, Ben Chan, Harvey Finch, Agnete Morell, Laurie Herman",
+		"role": "illustration, texture design, character design",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "The Bloom website",
+		"client": "The Bloom",
+		"year": "2020",
+		"type": "website",
+		"role": "web development",
+		"tools": "WordPress (PHP), JavaScript, CSS"
+	},
+	{
+		"title": "The Cycle website",
+		"client": "Darius Rodrigues",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "node.js, PHP, Cockpit CMS, JavaScript, CSS"
+	},
+	{
+		"title": "The Face and Burberry shark ad",
+		"client": "The Face, Burberry",
+		"year": "2021",
+		"type": "website",
+		"role": "web development, interaction design",
+		"agency": "DXR Zone",
+		"tools": "HTML, CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Dalston Superstore website",
+		"client": "Dalston Superstore",
+		"year": "2020",
+		"type": "website",
+		"credits": "Liz Bisoux (design)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), JavaScript, CSS, three.js"
+	},
+	{
+		"title": "Worms Magazine issue 3 cover art",
+		"client": "Worms Magazine",
+		"year": "2020",
+		"type": "magazine cover",
+		"role": "illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Hip Hop Poetry Bot",
+		"client": "Lex Fefegha and Google Arts and Culture",
+		"year": "2020",
+		"type": "website",
+		"credits": "Lex Fefegha",
+		"role": "design and frontend development",
+		"agency": "Google Arts and Culture",
+		"tools": "React.js, CSS, three.js"
+	},
+	{
+		"title": "Softer website",
+		"client": "Softer Digital Futures",
+		"year": "2020",
+		"type": "website",
+		"role": "web development",
+		"tools": "Cockpit CMS, PHP, three.js, JavaScript, CSS"
+	},
+	{
+		"title": "Chroma TV website",
+		"client": "Chroma TV",
+		"year": "2020",
+		"type": "website",
+		"credits": "Connor Ward (membership and subscription development) Patrick Savile (logo design)",
+		"role": "web design, web development",
+		"agency": "DXR Zone",
+		"tools": "Cockpit CMS, PHP, three.js, JavaScript, CSS"
+	},
+	{
+		"title": "Toxicity’s Reach",
+		"client": "Abandon Normal Devices",
+		"year": "2020",
+		"type": "website",
+		"credits": "Dani Admiss (curation)",
+		"role": "web design, web development",
+		"agency": "DXR Zone"
+	},
+	{
+		"title": "Bumps Per Minute microsite",
+		"client": "Anna Meredith (Moshi Moshi Records) and Somerset House",
+		"year": "2020",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Actual Objects website",
+		"client": "Actual Objects",
+		"year": "2020",
+		"type": "website",
+		"credits": "Actual Objects (design direction)",
+		"role": "web development",
+		"agency": "DXR Zone"
+	},
+	{
+		"title": "Corin Kennington website",
+		"client": "Corin Kennington",
+		"year": "2018",
+		"type": "website",
+		"role": "web development",
+		"agency": "All Purpose Studio"
+	},
+	{
+		"title": "Sav Remzi",
+		"client": "Sav Remzi",
+		"year": "2017",
+		"type": "website",
+		"role": "web development",
+		"agency": "All Purpose Studio"
+	},
+	{
+		"title": "Promise by Jennifer Lopez",
+		"client": "Jennifer Lopez",
+		"year": "2019",
+		"type": "website",
+		"role": "web development",
+		"agency": "The Digital Fairy, DXR Zone"
+	},
+	{
+		"title": "Pleat",
+		"client": "Pleat Artists",
+		"year": "2018",
+		"type": "website",
+		"role": "web development",
+		"agency": "All Purpose Studio"
+	},
+	{
+		"title": "Mikolai Berg",
+		"client": "Mikolai Berg",
+		"year": "2018",
+		"type": "website",
+		"role": "web development",
+		"agency": "All Purpose Studio"
+	},
+	{
+		"title": "The Texture of Air",
+		"client": "On The Record",
+		"year": "2021",
+		"type": "website",
+		"credits": "Jack Wild (design, web development)",
+		"role": "web development"
+	},
+	{
+		"title": "Milo McGrath Joinery portfolio website",
+		"client": "Milo McGrath",
+		"year": "2023",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Transparency Please",
+		"client": "Ben Ditto",
+		"year": "2021",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "how do you take a walk with someone on the internet",
+		"client": "Giorgia Chiarion",
+		"year": "2021",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Keep Hush Merch Service swan t shirt",
+		"client": "Keep Hush",
+		"year": "2021",
+		"type": "t-shirt design",
+		"role": "illustration"
+	},
+	{
+		"title": "NEON Digital online festival",
+		"client": "NEON Digital",
+		"year": "2021",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "The Pop Manifesto website",
+		"client": "The Pop Manifesto",
+		"year": "2021",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "White Institutions Guide (the WIG): interactive fembot version",
+		"client": "Fannie Sosa, NEON Digital",
+		"year": "2021",
+		"type": "website",
+		"role": "web design, web development, illustration, animation"
+	},
+	{
+		"title": "Business Hardcore tee",
+		"client": "Mixtress, Keep Hush",
+		"year": "2021",
+		"type": "t-shirt design",
+		"role": "illustration, graphic design"
+	},
+	{
+		"title": "Worms Magazine issue 4 cover art",
+		"client": "Worms Magazine",
+		"year": "2021",
+		"type": "magazine cover",
+		"role": "illustration, graphic design"
+	},
+	{
+		"title": "Introduction to Creative Coding website",
+		"client": "personal",
+		"year": "2019",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "TeYosh Studio website",
+		"client": "TeYosh Studio",
+		"year": "2021",
+		"type": "website",
+		"status": "live!",
+		"credits": "TeYosh Studio (design)",
+		"role": "web development",
+		"link": "teyosh.com"
+	},
+	{
+		"title": "Claire Barrow house website",
+		"client": "Claire Barrow",
+		"year": "2021",
+		"type": "website",
+		"status": "live!",
+		"credits": "Claire Barrow (content, concept), Ash Jones (3D scanning)",
+		"role": "web design, web development",
+		"tools": "Cockpit CMS, Next.js, React Three Fiber, CSS",
+		"link": "clairebarrow.com"
+	},
+	{
+		"title": "In Search of Good Ancestors website and visualiser",
+		"client": "Jonathan Reus",
+		"year": "2022",
+		"type": "website",
+		"status": "live!",
+		"credits": "Jonathan Reus (AI model, direction, radio broadcast, websocket and server set up)",
+		"role": "web design, web development (frontent)",
+		"tools": "Cockpit CMS, PHP, three.js, JavaScript, CSS",
+		"link": "https://ahnen.in/"
+	},
+	{
+		"title": "Diggerfest website",
+		"client": "Diggerfest",
+		"year": "2022",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "Cockpit CMS, Next.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "HÄN Archive website",
+		"client": "HÄN Archive",
+		"year": "2022",
+		"type": "website",
+		"credits": "Ella Boucht (creative direction), Ester Mero (brand design), Marta Urbez (logotype)",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Stadium for the Future",
+		"client": "Idle Women",
+		"year": "2022",
+		"type": "website",
+		"credits": "Jazmin Morris (web design and concept)",
+		"role": "co-design, web development",
+		"tools": "Cockpit CMS, React.js, CSS"
+	},
+	{
+		"title": "Two Rocks Having a Conversation",
+		"client": "Louis Alderson-Bythell",
+		"year": "2022",
+		"type": "physical computing",
+		"credits": "Louis Alderson-Bythell (artist, concept, sculpture, creative lead), Dom Oliver (machine learning model), Rosehip Scapes (art assistance)",
+		"role": "UI/digital design and physical computing",
+		"tools": "React.js, CSS"
+	},
+	{
+		"title": "The Sentinel Self",
+		"client": "Sissel Marie Tonn",
+		"year": "2022",
+		"type": "website",
+		"status": "live!",
+		"credits": "Sissel Marie Tonn (3D modelling/rigging)",
+		"role": "web design, web development",
+		"tools": "Cockpit CMS, React.js, React Three Fiber, CSS",
+		"link": "https://thesentinelself.com/wiki"
+	},
+	{
+		"title": "Blatta o Plomo",
+		"client": "Lack of Guidance",
+		"year": "2023",
+		"type": "website",
+		"credits": "Lack of Guidance (design direction), ??? (3D animation)",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "Bog Magazine: The Issue of Work",
+		"client": "Bog Magazine",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development, production",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS",
+		"link": "https://work.bog.life/"
+	},
+	{
+		"title": "The Gairloch Pattern article microsite",
+		"client": "Bog Magazine",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "Char Morrin website",
+		"client": "Char Morrin",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "Caico online shop",
+		"client": "My Caico",
+		"year": "2023",
+		"type": "website",
+		"status": "archived",
+		"role": "web design, web development, 3D modelling",
+		"link": "https://caico.vercel.app/"
+	},
+	{
+		"title": "Space Black website",
+		"client": "Space Black",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"credits": "Dan Bara (menu design)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS",
+		"link": "https://spaceblack.co.uk/"
+	},
+	{
+		"title": "Olivia Ezechukwu portfolio",
+		"client": "Olivia Ezechukwu",
+		"year": "2024",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "rearc institute Symposium 2.0 visuals",
+		"client": "rearc institute",
+		"year": "2024",
+		"type": "digital tool",
+		"status": "live!",
+		"role": "glsl shaders, motion design, web development, tool creation",
+		"tools": "Next.js, React Three Fiber, GLSL shaders"
+	},
+	{
+		"title": "Offie Magazine website",
+		"client": "Off Licence Magazine",
+		"year": "2024",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "Shopping Cart Chaos",
+		"client": "Phil Rosenbloom",
+		"year": "2023",
+		"type": "website",
+		"credits": "Ash Jones (3D modelling), Dan Bara (logo design), Richard Higham (model), Felix Higham (photographer), Char Morrin (photography assistant)",
+		"role": "web design, web development, asset creation",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, PhotoShop, CSS"
+	},
+	{
+		"title": "Dolly XR Collective website",
+		"client": "Dolly Collective",
+		"year": "2022",
+		"type": "website",
+		"role": "web design, web development, 3D modelling/rigging",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, Blender, CSS"
+	},
+	{
+		"title": "NFP Garden",
+		"client": "Cyrus Clarke",
+		"year": "2024",
+		"type": "website",
+		"credits": "Chris Golden (3D modelling)",
+		"role": "web design, web development",
+		"tools": "Cockpit CMS, React.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "M&C Saatchi Sport&Entertainment portfolio",
+		"client": "M&C Saatchi",
+		"year": "2024",
+		"type": "website",
+		"credits": "Heaven Conti (art direction), Pointless Illustrations James (branding and logo design)",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "Cute Guide",
+		"client": "Somerset House",
+		"year": "2024",
+		"type": "website",
+		"credits": "Graphic Thought Facility (branding)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "A Digital Resting Point",
+		"client": "Converse",
+		"year": "2024",
+		"type": "website",
+		"credits": "Amplify (set design, AV)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "Telescope Agency",
+		"client": "Telescope Agency",
+		"year": "2024",
+		"type": "website",
+		"credits": "Jess Mae (design)",
+		"role": "web development, interaction design",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "Seven Career Coaching",
+		"client": "Seven Career Coaching",
+		"year": "2019",
+		"type": "website",
+		"status": "updated since",
+		"credits": "Jess Mae (design), Chris Collicott (design)",
+		"role": "web development",
+		"agency": "Madalena Studio",
+		"tools": "WordPress (PHP), CSS, JavaScript"
+	},
+	{
+		"title": "Kinship Press bespoke invitation customiser webshop",
+		"client": "Kinship Press",
+		"year": "2022",
+		"type": "website",
+		"credits": "Jess Mae (design), Naomi Howarth (illustration)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript, WooCommerce"
+	},
+	{
+		"title": "Earth Orchestra website",
+		"client": "Universal Music",
+		"year": "2020",
+		"type": "website",
+		"status": "live!",
+		"credits": "Jess Mae (design)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), CSS, JavaScript, three.js",
+		"link": "https://theearthorchestra.com/"
+	},
+	{
+		"title": "Madalena Studio website",
+		"client": "Madalena Studio",
+		"year": "2019",
+		"type": "website",
+		"status": "archived",
+		"credits": "Jess Mae (design)",
+		"role": "web development",
+		"agency": "Madalena Studio"
+	},
+	{
+		"title": "Maharishi",
+		"client": "Transcendental Meditation",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"credits": "Made Thought (design)",
+		"role": "web development",
+		"agency": "DXR Zone, Made Thought",
+		"tools": "Next.js, Sanity CMS, CSS"
+	},
+	{
+		"title": "Freedom For All Seder website",
+		"client": "Freedom For All Seder",
+		"year": "2024",
+		"type": "website",
+		"status": "live!",
+		"credits": "Elicia Epstein (illustration)",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, CSS, MapBox"
+	},
+	{
+		"title": "Freedom For All Seder Haggadah",
+		"client": "Freedom For All Seder",
+		"year": "2024",
+		"type": "book",
+		"status": "live!",
+		"credits": "Elicia Epstein (illustration)",
+		"role": "book design",
+		"tools": "InDesign"
+	},
+	{
+		"title": "Jess Mae website",
+		"client": "Jess Mae",
+		"year": "2024",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "Waking Life 2025 website",
+		"client": "Waking Life Festival",
+		"year": "2024",
+		"type": "website",
+		"status": "archived",
+		"credits": "Tom Furse (illustration, sound design)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "Off Chance website",
+		"client": "Off Chance Mag",
+		"year": "2024",
+		"type": "website",
+		"status": "archived",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS",
+		"link": "https://off-chance.vercel.app/"
+	},
+	{
+		"title": "Normform online shop",
+		"client": "Normform",
+		"year": "2024",
+		"type": "website",
+		"status": "live!",
+		"credits": "Jack Sachs (3D modelling and logo design)",
+		"role": "web design, web development, model rigging",
+		"tools": "Shopify Headless, Sanity CMS, Next.js, Blender, React Three Fiber, CSS",
+		"link": "https://normform.world/, https://normform2024.vercel.app/"
+	},
+	{
+		"title": "Glass Animals ILYSFM",
+		"client": "Polydor",
+		"year": "2024",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, Tailwind CSS",
+		"link": "https://glass-animals-ilysfm.vercel.app/"
+	},
+	{
+		"title": "Space Shift",
+		"client": "Space Black",
+		"year": "2024",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "Pajaro’s Floods",
+		"client": "Rowan Ings and Jierui Fang, the Brown Institute for Media Innovation",
+		"year": "2024",
+		"type": "website",
+		"credits": "Dan Bara (design)",
+		"role": "interaction design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "Mother Earth",
+		"client": "Earthrise Studio, Google Arts and Culture",
+		"year": "2024",
+		"type": "website",
+		"credits": "Earthrise Studio (design), Set Snail (web development)",
+		"role": "web development, interaction design",
+		"tools": "Next.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "Visa Level Up campaign",
+		"client": "Visa",
+		"year": "2024",
+		"type": "commercial",
+		"role": "actor",
+		"agency": "Vayner Media, Something Inc"
+	},
+	{
+		"title": "Fire Chai Club",
+		"client": "Idle Women",
+		"year": "2024",
+		"type": "website",
+		"role": "web design, web development",
+		"tools": "Next.js, React Three Fiber, GLSL shaders, CSS"
+	},
+	{
+		"title": "HTML sweet HTML",
+		"client": "personal",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "HTML, CSS, JavaScript"
+	},
+	{
+		"title": "Hello (3D) world",
+		"client": "personal",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "HTML, CSS, JavaScript, three.js"
+	},
+	{
+		"title": "Section HQ microsite",
+		"client": "Section",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"credits": "Connor Ward (YouTube capture and user account functionality)",
+		"role": "web design, web development, lettering design",
+		"tools": "Sanity CMS, Next.js, PhotoShop, React Three Fiber, GLSL"
+	},
+	{
+		"title": "A New Plane website",
+		"client": "A New Plane",
+		"year": "2024",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development, typeface design",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Restless Egg",
+		"client": "Restless Egg",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS, React Three Fiber, GLSL shaders"
+	},
+	{
+		"title": "Restless Egg Open Call 01",
+		"client": "Restless Egg",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS, React Three Fiber, GLSL shaders"
+	},
+	{
+		"title": "The City Speaks",
+		"client": "Lizzie Reid",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"credits": "Lizzie Reid (design, direction)",
+		"role": "web development",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Worms Magazine Issue 10 illustrations",
+		"client": "Worms Magazine",
+		"year": "2025",
+		"type": "illustration",
+		"status": "live!",
+		"role": "illustration",
+		"tools": "pen, PhotoShop"
+	},
+	{
+		"title": "Cute Communications website",
+		"client": "Cute Communications",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, Tailwind CSS"
+	},
+	{
+		"title": "Group Project microsite",
+		"client": "Group Project",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, Tailwind CSS"
+	},
+	{
+		"title": "Nature Kwentour ",
+		"client": "ESEA Green Lions",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"credits": "Studio Bisita (production, creative direction), Izzy Wharton (production), Mika Tohmon (brand design, asset creation)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, Tailwind CSS"
+	},
+	{
+		"title": "The Dream Radio",
+		"client": "Somerset House",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"credits": "Adam Sinclair (CGI)",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Paolina Russo online shop",
+		"client": "Paolina Russo",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"credits": "Georgia Canning (design)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, Tailwind CSS"
+	},
+	{
+		"title": "Technical Problems",
+		"client": "Technical Problems",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, Tailwind CSS"
+	},
+	{
+		"title": "Technical Problems motion graphics tool",
+		"client": "Technical Problems",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, React Three Fiber, GLSL shaders, Tailwind CSS"
+	},
+	{
+		"title": "The Charged microsite",
+		"client": "The Charged",
+		"year": "2020",
+		"type": "website",
+		"status": "gone",
+		"credits": "Charlotte-Maeva Perrett (design)",
+		"role": "web development"
+	},
+	{
+		"title": "Tools for Transition website and digital installation",
+		"client": "The Design Museum",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, Tailwind CSS, Firebase"
+	},
+	{
+		"title": "NEMA microsite",
+		"client": "Gharage",
+		"year": "2026",
+		"type": "website",
+		"status": "live!",
+		"credits": "Pitch Studios (design, concept), Observatory Studio (research), Morbo (3D modelling)",
+		"role": "web development, interaction design",
+		"agency": "Pitch Studios, Observatory Studio",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, Tailwind CSS"
+	},
+	{
+		"title": "BBCake website",
+		"client": "BBCake",
+		"year": "2026",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, Tailwind CSS"
+	},
+	{
+		"title": "New Narratives art",
+		"client": "Kim Lê Boutin",
+		"year": "2025",
+		"type": "website",
+		"status": "unlaunched",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL shaders, Tailwind CSS"
+	},
+	{
+		"title": "rifke.world self-hosted website",
+		"year": "2026",
+		"type": "physical computing",
+		"status": "live!",
+		"role": "web design, web development, server setup, 3D modelling, circuit design",
+		"tools": "Node.js, socket-io, Raspberry Pi, Blender, 3D printer"
+	},
+	{
+		"title": "Place Oddities",
+		"client": "Neil McQuillian",
+		"year": "2026",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "React.js, React Three Fiber, GLSL shaders, Cockpit CMS"
+	},
+	{
+		"title": "Quil",
+		"client": "Neil McQuillian",
+		"year": "2026",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS"
+	},
+	{
+		"title": "Graces Mews website",
+		"client": "Graces Mews",
+		"year": "2026",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS"
+	},
+	{
+		"title": "The 119",
+		"client": "The 119",
+		"year": "2020",
+		"type": "website",
+		"status": "archived",
+		"credits": "Jess Mae (design)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "WordPress (PHP), JavaScript, CSS, three.js",
+		"link": "https://the119studio.rifke.space/"
+	},
+	{
+		"title": "Idle Women Web Ring",
+		"client": "Idle Women",
+		"year": "2026",
+		"type": "website",
+		"status": "unlaunched",
+		"credits": "Jazmin Morris (web design, planning, ideation), Charmian Griffin (production, ideation)",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS, GLSL shaders, React Three Fiber",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "Phlenjo",
+		"client": "Phlenjo",
+		"year": "2026",
+		"type": "website",
+		"status": "unlaunched",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "Iwa-Do",
+		"client": "Idle Women, Ashima Shiraishi",
+		"year": "2026",
+		"type": "website",
+		"status": "unlaunched",
+		"credits": "Ashima Shiraishi (concept), Charmian Griffin (production)",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "GLHF",
+		"client": "GLHF",
+		"year": "2026",
+		"type": "website",
+		"status": "unlaunched",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "Wanderer",
+		"client": "Kristina Pulejkova",
+		"year": "2021",
+		"type": "website",
+		"status": "live!",
+		"credits": "Kristina Pulejkova (direction, concept, design)",
+		"role": "UI design, web development",
+		"tools": "HTML, CSS, JavaScript, three.js",
+		"link": "https://wandererai.com/"
+	},
+	{
+		"title": "AI Justice Matrix",
+		"client": "Yasmine Boudiaf",
+		"year": "2021",
+		"type": "website",
+		"status": "live, missing content",
+		"role": "web design, web development",
+		"link": "https://aijusticematrix.com/"
+	},
+	{
+		"title": "Waking Life 2026",
+		"client": "Waking Life",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS, Airtable"
+	},
+	{
+		"title": "Scorpia",
+		"client": "Abigail Fleming",
+		"year": "2026",
+		"type": "website",
+		"status": "unlaunched",
+		"role": "web design, web development",
+		"tools": "Next.js, Sanity CMS, Tailwind CSS",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "Happy Logidays",
+		"client": "Logitech",
+		"year": "2025",
+		"type": "website",
+		"status": "archived",
+		"role": "web development",
+		"agency": "Something Inc.",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "The Shipping Forecast",
+		"client": "Ruby Wight",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"credits": "Ruby Wight (design)",
+		"role": "web development and interaction design",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL, CSS"
+	},
+	{
+		"title": "Stoke Newington Sauna",
+		"client": "Stoke Newington Sauna",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Muro",
+		"client": "Muro",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Pay It Back UK",
+		"client": "Pay It Back UK",
+		"year": "2020",
+		"type": "website",
+		"status": "live!",
+		"credits": "James Papper (logo design and branding)",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Club Sol",
+		"client": "Club S0l",
+		"year": "2025",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Rife and Stride",
+		"client": "Rife and Stride",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, Shopify headless, CSS"
+	},
+	{
+		"title": "Phil Rosenbloom",
+		"client": "Phil Rosenbloom",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL, CSS"
+	},
+	{
+		"title": "Na’amod",
+		"client": "Na’amod",
+		"year": "2026",
+		"type": "website",
+		"status": "unlaunched",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "Creative Foraging Digital Textiles exercise",
+		"client": "Louis Alderson-Bythell",
+		"year": "2023",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, React Three Fiber, GLSL, CSS",
+		"link": "https://creativeforaging.vercel.app/"
+	},
+	{
+		"title": "Selfridges Open House 2021",
+		"client": "Selfridges",
+		"year": "2021",
+		"type": "website",
+		"status": "gone",
+		"credits": "Dan Bara (design)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "Cockpit CMS, React.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "Selfridges Open House 2022",
+		"client": "Selfridges",
+		"year": "2022",
+		"type": "website",
+		"status": "gone",
+		"credits": "Dan Bara (design)",
+		"role": "web development",
+		"agency": "DXR Zone",
+		"tools": "Cockpit CMS, React.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "Public Learning Workshop",
+		"client": "Public Learning Workshop",
+		"year": "2022",
+		"type": "website",
+		"status": "archived, missing content",
+		"role": "web design, web development",
+		"agency": "DXR Zone",
+		"tools": "Cockpit CMS, React.js, React Three Fiber, CSS"
+	},
+	{
+		"title": "And Rising website",
+		"client": "And Rising",
+		"year": "2022",
+		"type": "website",
+		"credits": "George (web development) Darius Rodrigues (creative direction)",
+		"role": "web development",
+		"agency": "And Rising",
+		"tools": "Cockpit CMS, React.js, Next.js, React Three Fiber, CSS",
+		"link": "https://public-learning-workshop-nextjs.vercel.app/"
+	},
+	{
+		"title": "Middle Distance online shop",
+		"client": "Middle Distance",
+		"year": "2021",
+		"type": "website",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Thornbury Eye Centre",
+		"client": "Thornbury Eye Centre",
+		"year": "2022",
+		"type": "website",
+		"status": "live!",
+		"role": "web design, web development",
+		"tools": "Sanity CMS, Next.js, CSS"
+	},
+	{
+		"title": "Samuel Iliffe holding page",
+		"client": "Samuel Iliffe",
+		"year": "2023",
+		"type": "website",
+		"status": "gone",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Odilia",
+		"client": "Ben Ditto",
+		"year": "2020",
+		"type": "website",
+		"status": "gone",
+		"role": "web development"
+	},
+	{
+		"title": "selfcreativestudio",
+		"client": "Selfridges",
+		"year": "2020",
+		"type": "website",
+		"status": "gone",
+		"credits": "Selfridges (design)",
+		"role": "web development"
+	},
+	{
+		"title": "Care",
+		"client": "Rana Toofanian and Alex Carl",
+		"year": "2020",
+		"type": "website",
+		"credits": "Patrick Savile (logo design), Dan Bara (design)",
+		"role": "web design, web development"
+	},
+	{
+		"title": "Post-Hereafter",
+		"client": "Oliver Dickson and Georg Stamenov",
+		"year": "2020",
+		"type": "website",
+		"credits": "Oliver Dickson (design)",
+		"role": "web development",
+		"hidden": "TRUE"
+	},
+	{
+		"title": "Jack Garratt",
+		"client": "Universal Music",
+		"year": "2020",
+		"type": "website",
+		"role": "web development",
+		"tools": "WordPress (PHP), CSS, jQuery"
+	},
+	{
+		"title": "Marc Sethi portfolio",
+		"client": "Marc Sethi",
+		"year": "2017",
+		"type": "website",
+		"credits": "All Purpose Studio (design)",
+		"role": "web development",
+		"agency": "All Purpose Studio",
+		"tools": "WordPress (PHP), CSS, jQuery"
+	},
+	{
+		"title": "DAU",
+		"client": "Phenom Films",
+		"year": "2018",
+		"type": "website",
+		"role": "web development",
+		"link": "dau.xxx"
+	},
+	{
+		"title": "Big Top PR",
+		"client": "Big Top PR",
+		"year": "2018",
+		"credits": "Corin Kennington (design)",
+		"role": "web development",
+		"link": "bigtop-pr.co.uk"
+	}
+];

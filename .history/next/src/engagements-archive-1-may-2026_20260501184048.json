@@ -1,0 +1,172 @@
+[
+  {
+    "title": "Kingston School of Art",
+    "year": "2018",
+    "type": "talk"
+  },
+  {
+    "title": "RCA, guest assistant lecturer on The Parallax View by Joel Gethin-Lewis creative coding elective",
+    "year": "2019",
+    "type": "guest lecture",
+    "organiser": "RCA, Joel Gethin-Lewis"
+  },
+  {
+    "title": "Take Note exhibition, Bene Culture, Birmingham",
+    "year": "2019",
+    "type": "exhibition",
+    "organiser": "WYS Studio"
+  },
+  {
+    "title": "Creative Coding Days exhibition, Nijemirdum, Netherlands",
+    "year": "2019",
+    "type": "residency and exhibition",
+    "organiser": "Ria Stroes"
+  },
+  {
+    "title": "Digital Garden Workshop, FAT Studio",
+    "year": "2019",
+    "type": "workshop",
+    "organiser": "F.A.T Studio",
+    "collaborators": "Jack Wild, Olly Bromham, Seamus White, Dan Bara"
+  },
+  {
+    "title": "Ctrl Your Future workshop: Introduction to Creative Coding",
+    "year": "2019",
+    "type": "workshop",
+    "organiser": "Digi-Gxl and Institute of Coding",
+    "collaborators": "Dan Bara"
+  },
+  {
+    "title": "Converse Twisted SS20 Campaign",
+    "year": "2020",
+    "type": "ad campaign",
+    "organiser": "Converse, Anyways Creative"
+  },
+  {
+    "title": "Avoiding Imposter Syndrome at the Intersection of Art and Technology",
+    "year": "2020",
+    "type": "talk",
+    "organiser": "London Creative Coding"
+  },
+  {
+    "title": "Viscom Brighton Panel and Talk",
+    "year": "2020",
+    "type": "panel and talk",
+    "organiser": "University of Brighton"
+  },
+  {
+    "title": "Talk about Excellent Quarantine Ideas and tips on learning to code",
+    "year": "2020",
+    "type": "livestream",
+    "organiser": "Live Talk From"
+  },
+  {
+    "title": "NotNotSmiling Episode 2 interview",
+    "year": "2020",
+    "type": "interview",
+    "organiser": "Design Studio"
+  },
+  {
+    "title": "The Digital Garden",
+    "year": "2021",
+    "type": "workshop",
+    "organiser": "Peckham Digital",
+    "collaborators": "Simon Rogers, Daniel Powell, Jack Wild, Felix Williams, Kevin Beck, Dan Bara, Seamus White, Lily Weinbrand"
+  },
+  {
+    "title": "Iterations talk, Amsterdam",
+    "year": "2021",
+    "type": "talk",
+    "organiser": "Iterations"
+  },
+  {
+    "title": "Introduction to Creative Coding talk for Falmouth University",
+    "year": "2021",
+    "type": "online lecture",
+    "organiser": "Falmouth University"
+  },
+  {
+    "title": "DXR talk at University of East London",
+    "year": "2022",
+    "type": "talk",
+    "organiser": "University of East London"
+  },
+  {
+    "title": "Talk at Plymouth Uni i-DAT",
+    "year": "2022",
+    "type": "talk",
+    "organiser": "University of Plymouth i-DAT"
+  },
+  {
+    "title": "Talk and panel at Softer Digital Futures",
+    "year": "2022",
+    "type": "talk, panel",
+    "organiser": "Softer Digital Futures"
+  },
+  {
+    "title": "Softer Year in Tech Panel, panel host",
+    "year": "2023",
+    "type": "panel",
+    "organiser": "Softer Digital Futures"
+  },
+  {
+    "title": "Converse London New Edge",
+    "year": "2023",
+    "type": "exhibition",
+    "organiser": "Converse"
+  },
+  {
+    "title": "Interface: a discussion on digital space making, RCA Kensington Campus",
+    "year": "2024",
+    "type": "panel",
+    "organiser": "Tom & Tom"
+  },
+  {
+    "title": "LCF BA Fashion Communication panel discussion",
+    "year": "2024",
+    "type": "panel",
+    "organiser": "UAL LCF"
+  },
+  {
+    "title": "Creative Coding workshop",
+    "year": "2024",
+    "type": "workshop",
+    "organiser": "Bow Arts"
+  },
+  {
+    "title": "Women In Design",
+    "year": "2025",
+    "type": "panel",
+    "organiser": "Nothing"
+  },
+  {
+    "title": "FORM",
+    "year": "2025",
+    "type": "talk, panel",
+    "organiser": "University of Greenwich"
+  },
+  {
+    "title": "Softer Roundtable",
+    "year": "2025",
+    "type": "talk, roundtable",
+    "organiser": "Softer Digital Futures"
+  },
+  {
+    "title": "Live Laugh Love and LLM",
+    "year": "2025",
+    "type": "Article",
+    "organiser": "And-Ors Magazine"
+  },
+  {
+    "title": "Live Laugh Love and LLM: talk and discussion at Softer Lab",
+    "year": "2025",
+    "type": "talk",
+    "organiser": "And-Ors Magazine"
+  },
+  {
+    "title": "AI and Friction at Big Things",
+    "year": "2026",
+    "type": "talk",
+    "organiser": "Graphic Design Educators Network (GDEN)"
+  }
+]

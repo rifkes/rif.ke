@@ -1,0 +1,144 @@
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
+  name: 'homePage',
+  title: 'Home Page',
+  type: 'document',
+  groups: [
+    {
+      name: 'content',
+      title: 'Content',
+      default: true,
+    },
+  ],
+  fields: [
+    defineField({
+      name: 'items',
+      title: 'Items',
+      type: 'array',
+      of: [
+        defineField({
+          type: 'object',
+          name: 'item',
+          title: 'Item',
+					fields: [
+						defineField({
+							name: 'title',
+							title: 'Title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'client',
+							title: 'Client',
+							type: 'string',
+						}),
+						defineField({
+							name: 'year',
+							title: 'Year',
+							type: 'number',
+						}),
+						defineField({
+							name: 'description',
+							title: 'Description',
+							type: 'text',
+							rows: 2,
+						}),
+						defineField({
+							name: 'agency',
+							title: 'Agency',
+							type: 'string',
+						}),
+						defineField({
+							name: 'type',
+							title: 'Type',
+							type: 'string',
+							initialValue: 'website',
+						}),
+						defineField({
+							name: 'role',
+							title: 'Role',
+							type: 'string',
+						}),
+						defineField({
+							name: 'credits',
+							title: 'Credits',
+							type: 'array',
+							of: [
+								defineField({
+									name: 'credit',
+									title: 'Credit',
+									type: 'object',
+									fields: [
+										defineField({
+											name: 'person',
+											title: 'Person',
+											type: 'string',
+										}),
+										defineField({
+											name: 'role',
+											title: 'Role',
+											type: 'string',
+										}),
+									],
+								}),
+							],
+						}),
+						defineField({
+							name: 'url',
+							title: 'URL',
+							type: 'url',
+						}),
+          ],
+          preview: {
+            select: {
+              title: 'item.title',
+              subtitle: 'item.client',
+              media: 'item.backgroundImage',
+            },
+            prepare(selection) {
+              return {
+                ...selection,
+                icon: () => '🐌',
+              };
+            }
+          },
+        }),
+        defineField({
+          type: 'object',
+          name: 'textSection',
+          title: 'Text',
+          fields: [
+            defineField({
+              type: 'text',
+              name: 'textSectionText',
+              title: 'Text',
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'textSectionText',
+            },
+            prepare(selection) {
+              return {
+                ...selection,
+                subtitle: 'Text',
+                icon: () => 'T',
+              };
+            }
+          },
+        }),
+      ],
+      group: 'content',
+    }),
+  ],
+  preview: {
+    select: {
+    },
+    prepare(selection) {
+      return {
+        ...selection,
+        title: 'Holding Page',
+      };
+    },
+  },
+});
