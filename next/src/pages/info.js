@@ -85,7 +85,8 @@ export default function Info({ globalData, archiveData, }) {
 			}
       <Seo { ...{ globalData, } } />
 			<SetGlobalProps {...{ globalData, }} />
-			<div className='fixed bottom-0 left-0 w-screen h-12 bg-white z-10'></div>
+			<div className='fixed bottom-0 left-0 w-screen h-12 bg-white z-10'/>
+			<div className='fixed top-0 left-0 w-screen h-12 bg-white z-10'/>
     </div>
   )
 }
