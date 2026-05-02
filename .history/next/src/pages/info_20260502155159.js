@@ -50,7 +50,7 @@ export default function Info({ globalData, archiveData, }) {
 						archiveData.pressAndAwards?.map((item, index) => (
 							<li className='' key={index}>
 								<p className='text-pretty'>{item.publication}{item.title ? `, ${item.title}` : ''}{item.year ? `, ${item.year}` : ''}
-									{item.url ? <span> <a href={item.url} target='_blank' rel='noopener noreferrer'>[visit]</a></span> : ''}
+									{item.url ? <span> <a href={item.url} target='_blank' rel='noopener noreferrer'>[link]</a></span> : ''}
 								</p>
 							</li>
 						))

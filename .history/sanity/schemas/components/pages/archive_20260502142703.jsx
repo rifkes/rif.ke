@@ -170,23 +170,24 @@ export default defineType({
 							type: 'url',
 						}),
 					],
-					preview: {
-						select: {
-							title: 'title',
-							year: 'year',
-							publication: 'publication',
-							url: 'url',
-						},
-						prepare({ title, year, publication, url }) {
-							return {
-								title: `${title}, ${year}`,
-								subtitle: `${publication}, ${url}`,
-								media: () => '🗞️',
-							}
-						}
-					},
 				}),
 			],
+			preview: {
+				select: {
+					title: 'title',
+					year: 'year',
+					publication: 'publication',
+					url: 'url',
+				},
+			},
+			prepare({ title, year, publication, url }) {
+				return {
+					title: `${title}, ${year}`,
+					subtitle: `${publication}, ${url}`,
+					media: url,
+					icon: () => '🗞️',
+				}
+			}
 		}),
 		defineField({
 			name: 'engagements',
@@ -228,24 +229,24 @@ export default defineType({
 							type: 'string',
 						}),
 					],
-					preview: {
-						select: {
-							title: 'title',
-							year: 'year',
-							type: 'type',
-							organiser: 'organiser',
-							collaborators: 'collaborators',
-						},
-						prepare({ title, year, type, organiser, collaborators }) {
-							return {
-								title: `${title}, ${year}`,
-								subtitle: `${type}, ${organiser}, ${collaborators}`,
-								media: () => '🗣️',
-							}
-						}
-					},
 				}),
 			],
+			preview: {
+				select: {
+					title: 'title',
+					year: 'year',
+					type: 'type',
+					organiser: 'organiser',
+					collaborators: 'collaborators',
+				},
+			},
+			prepare({ title, year, type, organiser, collaborators }) {
+				return {
+					title: `${title}, ${year}`,
+					subtitle: `${type}, ${organiser}, ${collaborators}`,
+					media: () => '🗣️',
+				}
+			}
 		}),
 		defineField({
 			name: 'teaching',
@@ -287,24 +288,24 @@ export default defineType({
 							type: 'string',
 						}),
 					],
-					preview: {
-						select: {
-							course: 'course',
-							year: 'year',
-							institution: 'institution',
-							role: 'role',
-							collaborators: 'collaborators',
-						},
-						prepare({ course, year, institution, role, collaborators }) {
-							return {
-								title: `${course}, ${year}`,
-								subtitle: `${institution}, ${role}, ${collaborators}`,
-								media: () => '🎓',
-							}
-						}
-					},
 				}),
 			],
+			preview: {
+				select: {
+					course: 'course',
+					year: 'year',
+					institution: 'institution',
+					role: 'role',
+					collaborators: 'collaborators',
+				},
+			},
+			prepare({ course, year, institution, role, collaborators }) {
+				return {
+					title: `${course}, ${year}`,
+					subtitle: `${institution}, ${role}, ${collaborators}`,
+					media: () => '🎓',
+				}
+			}
 		}),
   ],
   preview: {
