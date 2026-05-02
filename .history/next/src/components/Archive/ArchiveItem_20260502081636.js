@@ -1,9 +1,18 @@
 import { useState } from 'react';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 
-const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }) => {
+const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, }) => {
 	const { windowWidth, } = useSiteGlobals();
+	const [expanded, setExpanded] = useState(false);
 	const [hovered, setHovered] = useState(false);
+
+	useEffect(() => {
+		if (activeProjectIndex === index) {
+			setExpanded(true);
+		} else {
+			setExpanded(false);
+		}
+	}, [activeProjectIndex, index,]);
 	
 	if (!item) return null;
 	
@@ -20,7 +29,7 @@ const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 			style={{
-				color: hovered || activeProjectIndex === index ? 'hotpink' : undefined,
+				color: hovered || expanded ? 'hotpink' : undefined,
 			}}
 		>
 			{
@@ -40,12 +49,12 @@ const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }
 			<div className='flex justify-between gap-4 pr-4'>
 				<p>{item.year}</p>
 				<span className='block'>
-					{activeProjectIndex === index ? '–' : '+'}
+					{expanded ? '–' : '+'}
 				</span>
 			</div>
 
 			{
-				activeProjectIndex === index &&
+				expanded &&
 				<div className='pl-4 w-full col-span-3 md:col-span-4'>
 					{
 						item.type?.length > 0 &&

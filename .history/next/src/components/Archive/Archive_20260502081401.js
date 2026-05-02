@@ -8,7 +8,6 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 	const { windowWidth, } = useSiteGlobals();
 
 	const [showFilters, setShowFilters] = useState(true);
-	const [ activeProjectIndex, setActiveProjectIndex ] = useState(null);
 
 	useEffect(() => {
 		if (windowWidth < 1200) {
@@ -156,22 +155,22 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 						</div>
 					</>
 				}
-				<div className='flex justify-start items-start gap-4'>
+				<div className='flex justify-between gap-4'>
 					<button
 						className='border border-black px-1 hover:bg-black hover:text-white cursor-pointer'
 						onClick={() => setShowFilters(!showFilters)}
 					>{showFilters ? 'hide' : 'show'} filters</button>
 					{
 						!showFilters &&
-						<p className=''>
-							{
-								activeTypes?.length > 0 &&
-								<span className='inline-block'>{activeTypes.join(', ')}</span>
-							}
-							{
-								activeYears?.length > 0 &&
-								<span className='inline-block ml-4'>{activeYears.join(', ')}</span>
-							}
+						<p>
+								{
+									activeTypes?.length > 0 &&
+									<span className='block'>{activeTypes.join(', ')}</span>
+								}
+								{
+									activeYears?.length > 0 &&
+									<span className='block'>{activeYears.join(', ')}</span>
+								}
 						</p>
 					}
 				</div>
@@ -245,7 +244,7 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 			<div className='flex flex-col mt-4'>
 				{
 					filteredArchiveData?.map((item, index) => (
-						<ArchiveItem key={index} item={item} activeProjectIndex={activeProjectIndex} setActiveProjectIndex={setActiveProjectIndex} index={index} />
+						<ArchiveItem key={index} item={item} />
 					))
 				}
 			</div>

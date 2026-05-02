@@ -8,7 +8,6 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 	const { windowWidth, } = useSiteGlobals();
 
 	const [showFilters, setShowFilters] = useState(true);
-	const [ activeProjectIndex, setActiveProjectIndex ] = useState(null);
 
 	useEffect(() => {
 		if (windowWidth < 1200) {
@@ -164,14 +163,14 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 					{
 						!showFilters &&
 						<p className=''>
-							{
-								activeTypes?.length > 0 &&
-								<span className='inline-block'>{activeTypes.join(', ')}</span>
-							}
-							{
-								activeYears?.length > 0 &&
-								<span className='inline-block ml-4'>{activeYears.join(', ')}</span>
-							}
+								{
+									activeTypes?.length > 0 &&
+									<span className='inline-block'>{activeTypes.join(', ')}</span>
+								}
+								{
+									activeYears?.length > 0 &&
+									<span className='inline-block'>{activeYears.join(', ')}</span>
+								}
 						</p>
 					}
 				</div>
@@ -245,7 +244,7 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 			<div className='flex flex-col mt-4'>
 				{
 					filteredArchiveData?.map((item, index) => (
-						<ArchiveItem key={index} item={item} activeProjectIndex={activeProjectIndex} setActiveProjectIndex={setActiveProjectIndex} index={index} />
+						<ArchiveItem key={index} item={item} />
 					))
 				}
 			</div>

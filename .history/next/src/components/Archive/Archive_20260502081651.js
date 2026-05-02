@@ -245,7 +245,7 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 			<div className='flex flex-col mt-4'>
 				{
 					filteredArchiveData?.map((item, index) => (
-						<ArchiveItem key={index} item={item} activeProjectIndex={activeProjectIndex} setActiveProjectIndex={setActiveProjectIndex} index={index} />
+						<ArchiveItem key={index} item={item} activeProjectIndex={activeProjectIndex} setActiveProjectIndex={setActiveProjectIndex} />
 					))
 				}
 			</div>
