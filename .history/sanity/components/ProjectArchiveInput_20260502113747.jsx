@@ -1,0 +1,86 @@
+import React, { useState, useEffect } from 'react';
+
+const ProjectArchiveInput = ({ document, path, value, type, }) => {
+	return (
+		<div>
+			<style>
+				{
+					`
+					.table-header {
+						font-weight: bold;
+						display: grid;
+						grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+						width: 100%;
+						gap: 0.5rem;
+						border-bottom: 1px solid black;
+					}
+						.table-header p {
+							margin: 0;
+							font-size: 0.8rem;
+						}
+					.table-row {
+						display: grid;
+						grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+						gap: 0.5rem;
+						width: 100%;
+					}
+					.table-cell {
+						column-span: 1;
+					}
+					.table-cell input:not([type="checkbox"]) {
+						width: 100%;
+						border: none;
+						border-bottom: 1px solid black;
+					}
+					`
+				}
+			</style>
+			<header className='table-header'>
+				<p>Title</p>
+				<p>Client</p>
+				<p>Year</p>
+				<p>Type</p>
+				<p>Status</p>
+				<p>Hidden</p>
+			</header>
+			{
+				value?.map((item, index) => (
+					<div key={index} className='table-row'>
+						<div className='table-cell'>
+							<input type="text" value={ item.title } onChange={ (e) => {
+								setValue(index, { ...item, title: e.target.value });
+							}} />
+						</div>
+						<div className='table-cell'>
+							<input type="text" value={ item.client } onChange={ (e) => {
+								setValue(index, { ...item, client: e.target.value });
+							}} />
+						</div>
+						<div className='table-cell'>
+							<input type="number" value={item.year} onChange={(e) => {
+								setValue(index, { ...item, year: e.target.value });
+							}} />
+						</div>
+						<div className='table-cell'>
+							<input type="text" value={ item.type } onChange={ (e) => {
+								setValue(index, { ...item, type: e.target.value });
+							}} />
+						</div>
+						<div className='table-cell'>
+							<input type="text" value={ item.status } onChange={ (e) => {
+								setValue(index, { ...item, status: e.target.value });
+							}} />
+						</div>
+						<div className='table-cell'>
+							<input type="checkbox" checked={ item.hidden } onChange={ (e) => {
+								setValue(index, { ...item, hidden: e.target.checked });
+							}} />
+						</div>
+					</div>
+				))
+			}
+		</div>
+	)
+}
+
+export default ProjectArchiveInput;
