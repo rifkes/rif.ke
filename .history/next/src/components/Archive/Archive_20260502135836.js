@@ -188,7 +188,7 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 					{
 						!showFilters &&
 						<p className=''>
-							{searchQuery?.length > 0 && <span className='inline-block'>{searchQuery}</span>}
+								{searchQuery?.length > 0 && <span className='inline-block'>{searchQuery}</span>}
 							{
 								activeTypes?.length > 0 &&
 								<span className='inline-block'>{activeTypes.join(', ')}</span>
