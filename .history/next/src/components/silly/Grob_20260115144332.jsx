@@ -137,12 +137,10 @@ const Grob = () => {
     const draw = () => {
       // ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.globalCompositeOperation = 'source-over';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       drawGrob();
       currentOpacity.current = lerp(currentOpacity.current, targetOpacity.current, 0.1);
-			ctx.fillStyle = `rgba(255, 255, 255, ${1 - currentOpacity.current})`;
-			ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = `rgba(255, 255, 255, ${ 1 - currentOpacity.current })`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       raf = requestAnimationFrame(draw);
     };

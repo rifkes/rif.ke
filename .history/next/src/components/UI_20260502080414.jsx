@@ -37,7 +37,7 @@ const UI = () => {
 						setSillyName(infoSillyNames[ Math.floor(Math.random() * infoSillyNames.length) ]);
 					}
         } }
-        className='select-none fixed top-0 right-0 p-2 uppercase ui-text z-[999] cursor-pointer'
+        className='select-none fixed top-0 right-0 p-2 uppercase ui-text z-[999]'
       >
         ♡
       </button>

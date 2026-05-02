@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 export const SiteGlobalsContext = createContext({
   siteGlobals: undefined,
@@ -16,7 +16,18 @@ export const SiteGlobalsContext = createContext({
   infoIsActive: false,
   setInfoIsActive: async (infoIsActive) => null,
   itemInfoIsActive: false,
-  setItemInfoIsActive: async (itemInfoIsActive) => null,
+	setItemInfoIsActive: async (itemInfoIsActive) => null,
+	infoSillyNames: [],
+	setInfoSillyNames: async (infoSillyNames) => null,
+	sillyName: '',
+	setSillyName: async (sillyName) => null,
+	initialSillyNames: [],
+	setInitialSillyNames: async (initialSillyNames) => null,
+	sillyNames: [],
+	windowWidth: 0,
+	setWindowWidth: async (windowWidth) => null,
+	windowHeight: 0,
+	setWindowHeight: async (windowHeight) => null,
 });
 
 export const useSiteGlobals = () => useContext(SiteGlobalsContext)
@@ -46,7 +57,12 @@ export const SiteGlobalsProvider = ({ children }) => {
     'distorted text',
     'grob',
     // 'eraser',
-  ]);
+	]);
+	const [ infoSillyNames ] = useState([
+		'flip horizontal',
+		'flip vertical',
+		'grob',
+	]);
 	const [sillyName, setSillyName] = useState('');
 	const [ windowWidth, setWindowWidth ] = useState(0);
 	const [windowHeight, setWindowHeight] = useState(0);
@@ -74,7 +90,7 @@ export const SiteGlobalsProvider = ({ children }) => {
         activeItem, setActiveItem,
         infoIsActive, setInfoIsActive,
         itemInfoIsActive, setItemInfoIsActive,
-				sillyNames, initialSillyNames, sillyName, setSillyName,
+				sillyNames, initialSillyNames, sillyName, setSillyName, infoSillyNames,
       } }
     >{ children }</SiteGlobalsContext.Provider>
   );

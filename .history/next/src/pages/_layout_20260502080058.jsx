@@ -88,7 +88,7 @@ const Layout = ({ children }) => {
       }
       {
         sillyName === 'grob' &&
-        <div className='w-full h-screen fixed top-0 left-0 overflow-hidden pointer-events-none z-[9999]'>
+        <div className='w-full h-screen fixed top-0 left-0 overflow-hidden pointer-evets-none'>
           <Grob />
         </div>
       }

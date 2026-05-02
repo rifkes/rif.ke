@@ -109,7 +109,7 @@ const Archive = ({ archiveData, scrollContainerRef, }) => {
 		if (scrollContainerRef.current) {
 			scrollContainerRef.current.scrollTop = 0;
 		}
-	}, [scrollContainerRef, filteredArchiveData?.length, orderBy, orderDirection, activeTypes, activeStatuses, activeYears, ]);
+	}, [scrollContainerRef, filteredArchiveData?.length, orderBy, orderDirection,]);
 
 	return (
 		<div className='pb-12'>

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const UI = () => {
-	const { titleText, windowWidth, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName, siteGlobals, infoSillyNames, setInfoSillyNames, } = useSiteGlobals();
+	const { titleText, windowWidth, activeItem, infoIsActive, setInfoIsActive, itemInfoIsActive, setItemInfoIsActive, sillyNames, setSillyName, siteGlobals, } = useSiteGlobals();
 	
 	const router = useRouter();
 
@@ -33,11 +33,9 @@ const UI = () => {
 				onClick={() => {
 					if (router.pathname !== '/info') {
 						setSillyName(sillyNames[ Math.floor(Math.random() * sillyNames.length) ]);
-					} else {
-						setSillyName(infoSillyNames[ Math.floor(Math.random() * infoSillyNames.length) ]);
 					}
         } }
-        className='select-none fixed top-0 right-0 p-2 uppercase ui-text z-[999] cursor-pointer'
+        className='select-none fixed top-0 right-0 p-2 uppercase ui-text z-[999]'
       >
         ♡
       </button>
