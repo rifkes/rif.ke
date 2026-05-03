@@ -106,6 +106,17 @@ const ProjectArchiveInput = (props) => {
 		},
 	];
 
+	const itemsWithoutVideoOrImage = useMemo(() => {
+		const items = [];
+		for (let i = 0; i < value.length; i++) {
+			const item = value[i];
+			if ((!item?.video?._ref && !item?.thumbnailTypeIsVideo) || (!item?.image?.url && !item?.thumbnailTypeIsVideo)) {
+				items.push(item?.title);
+			}
+		}
+		return items;
+	}, [value, showItemsWithoutVideoOrImage]);
+
 	return (
 		<div>
 			<style>
@@ -190,14 +201,17 @@ const ProjectArchiveInput = (props) => {
 				<button onClick={() => setSearch('')}>Clear</button>
 			</div>
 
-			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Show all items' : 'Show only items without video or image'}</button>
+			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Hide' : 'Show'} items without video or image</button>
+
+			{
+				showItemsWithoutVideoOrImage &&
+				<div style={{ fontSize: '11px', }}>{itemsWithoutVideoOrImage.join(', ')} ({itemsWithoutVideoOrImage.length})</div>
+			}
 
 			<div className='table-container'>
 			{
 					value?.map((item, index) => (
 					(item.title?.toLowerCase().includes(search?.toLowerCase()) || item.client?.toLowerCase().includes(search?.toLowerCase()) || item.year?.toString().includes(search) || item.agency?.toLowerCase().includes(search?.toLowerCase()) || item.type?.toLowerCase().includes(search?.toLowerCase()) || item.status?.toLowerCase().includes(search?.toLowerCase()) || item.hidden?.toString().includes(search) || item.tools?.toLowerCase().includes(search?.toLowerCase()) || item.link?.toLowerCase().includes(search?.toLowerCase()) || item.description?.toLowerCase().includes(search?.toLowerCase()) || item.role?.toLowerCase().includes(search?.toLowerCase()) || item.credits?.toLowerCase().includes(search?.toLowerCase()) || item.url?.toLowerCase().includes(search?.toLowerCase())) &&
-					
-					((showItemsWithoutVideoOrImage && ((!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.url && !item?.thumbnailTypeIsVideo))) || !showItemsWithoutVideoOrImage) &&	
 					<ProjectArchiveItemInput
 						key={index}
 						{ ...props }

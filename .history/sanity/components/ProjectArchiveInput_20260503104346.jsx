@@ -190,7 +190,7 @@ const ProjectArchiveInput = (props) => {
 				<button onClick={() => setSearch('')}>Clear</button>
 			</div>
 
-			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Show all items' : 'Show only items without video or image'}</button>
+			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Show all' : 'Show items without video or image'}</button>
 
 			<div className='table-container'>
 			{
