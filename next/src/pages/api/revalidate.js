@@ -63,7 +63,7 @@ export default async function revalidate(req, res) {
     }
 
     // Compute and revalidate the affected routes
-    const staleRoutes = ['/']
+    const staleRoutes = ['/','/info']
     await Promise.all(staleRoutes.map((route) => res.revalidate(route)))
 
     const updatedRoutes = `Updated routes: ${staleRoutes.join(', ')}`
