@@ -9,7 +9,7 @@ import { muxInput } from 'sanity-plugin-mux-input';
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 // Define the singleton document types
-const singletonTypes = new Set(['settings', 'archive', 'homePage', 'mux.videoAsset',]);
+const singletonTypes = new Set(['settings', 'archive', 'video asset',]);
 
 
 export default defineConfig({
@@ -29,10 +29,6 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
-		templates: (templates) =>
-			templates.filter(({ schemaType }) => {
-				return !singletonTypes.has(schemaType)
-			}),
   },
 
 	document: {

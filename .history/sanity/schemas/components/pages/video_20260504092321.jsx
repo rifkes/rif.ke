@@ -22,12 +22,12 @@ export default defineType({
 			title: 'title',
 			video: 'video.asset.playbackId',
 		},
-		prepare({ title, video, }) {
+		prepare({ title, video }) {
 			return {
 				title,
 				subtitle: video ?? 'No upload',
 				media: video?.asset?.thumbnail,
-				media: () => '🎥',
+				icon: () => '🎥',
 			};
 		},
 	},

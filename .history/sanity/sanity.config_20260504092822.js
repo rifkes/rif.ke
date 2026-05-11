@@ -31,7 +31,8 @@ export default defineConfig({
     types: schemaTypes,
 		templates: (templates) =>
 			templates.filter(({ schemaType }) => {
-				return !singletonTypes.has(schemaType)
+				console.log(schemaType)
+				return !singletonTypes.has(schemaType) || schemaType === 'mux.videoAsset'
 			}),
   },
 

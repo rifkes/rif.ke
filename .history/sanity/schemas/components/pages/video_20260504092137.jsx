@@ -20,14 +20,14 @@ export default defineType({
 	preview: {
 		select: {
 			title: 'title',
-			video: 'video.asset.playbackId',
+			video: 'video',
 		},
-		prepare({ title, video, }) {
+		prepare({ title, video }) {
 			return {
 				title,
-				subtitle: video ?? 'No upload',
+				subtitle: video?.asset?.playbackId ?? 'No upload',
 				media: video?.asset?.thumbnail,
-				media: () => '🎥',
+				icon: () => '🎥',
 			};
 		},
 	},

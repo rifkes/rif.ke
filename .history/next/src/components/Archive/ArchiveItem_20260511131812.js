@@ -91,7 +91,7 @@ const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }
 								</div>
 								:
 								item?.image?.url &&
-								<div className='w-full my-4 max-w-[420px]'>
+								<div className='w-full my-4'>
 									<img
 										src={getImageUrl({ src: item?.image?.url, width: Math.min(2500, item?.image?.width) })}
 										alt={item.title}

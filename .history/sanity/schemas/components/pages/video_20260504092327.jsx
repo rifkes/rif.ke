@@ -27,7 +27,7 @@ export default defineType({
 				title,
 				subtitle: video ?? 'No upload',
 				media: video?.asset?.thumbnail,
-				media: () => '🎥',
+				icon: () => '🎥',
 			};
 		},
 	},

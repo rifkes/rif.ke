@@ -9,7 +9,14 @@ import { muxInput } from 'sanity-plugin-mux-input';
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 // Define the singleton document types
-const singletonTypes = new Set(['settings', 'archive', 'homePage', 'mux.videoAsset',]);
+const singletonTypes = new Set(['settings', 'home', 'terms', 'privacy', 'projectsPage', 'about', 'contact', 'shop', ]);
+
+
+// Define the actions that should be available for singleton documents
+const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
+
+// Define the singleton document types
+const singletonTypes = new Set(['settings', 'home', 'terms', 'privacy', 'projectsPage', 'about', 'contact', 'shop', ]);
 
 
 export default defineConfig({
@@ -29,18 +36,5 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
-		templates: (templates) =>
-			templates.filter(({ schemaType }) => {
-				return !singletonTypes.has(schemaType)
-			}),
-  },
-
-	document: {
-    // For singleton types, filter out actions that are not explicitly included
-    // in the `singletonActions` list defined above
-    actions: (input, context) =>
-      singletonTypes.has(context.schemaType)
-        ? input.filter(({ action }) => action && singletonActions.has(action))
-        : input,
   },
 })
