@@ -10,6 +10,7 @@ const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }
 	if (!item) return null;
 	
 	return (
+		<div className='w-full'>
 		<button
 			className='grid grid-cols-3 sm:grid-cols-4 gap-x-4 w-full px-2 !cursor-pointer text-left font-inherit'
 			onClick={() => {
@@ -45,7 +46,8 @@ const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }
 					{activeProjectIndex === index ? '–' : '+'}
 				</span>
 			</div>
-
+		</button>
+		<div className='grid grid-cols-3 sm:grid-cols-4 gap-x-4 w-full px-2 !cursor-pointer text-left font-inherit'>
 			{
 				activeProjectIndex === index &&
 				<div className='pl-4 w-full col-span-3 md:col-span-4'>
@@ -98,10 +100,11 @@ const ArchiveItem = ({ item, activeProjectIndex, setActiveProjectIndex, index, }
 										className='h-auto max-w-full max-h-full block'
 									/>
 								</div>
-					}	
-				</div>
-			}
-		</button>
+						}	
+					</div>
+				}
+			</div>
+		</div>
 	)
 };
 

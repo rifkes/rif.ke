@@ -16,6 +16,9 @@ export const ARCHIVE = groq`
 			},
 			'video': video->video {
 				// ...,
+				// 'asset': asset -> {
+				// 	...,
+				// },
 				'assetId': asset->id,
 				'videoUrl': 'https://stream.mux.com/' + asset->playbackId + '/low.mp4',
 				'videoUrlHigh': 'https://stream.mux.com/' + asset->playbackId + '/high.mp4',

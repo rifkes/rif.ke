@@ -12,6 +12,7 @@ const MuxVideoPlayer = (props) => {
 	const videoRef = useRef(null);
 	const [currentTime, setCurrentTime] = useState(0);
 	const [duration, setDuration] = useState(0);
+	const [ muted, setMuted ] = useState(true);
 
 	const [ userHasInteracted, setUserHasInteracted ] = useState(false);
 
@@ -23,6 +24,8 @@ const MuxVideoPlayer = (props) => {
 	const [ scrubberIsVisible, setScrubberIsVisible ] = useState(false);
 	
 	const scrubVisualiser = useRef(null);
+
+	console.log(value)
 
 	useEffect(() => {
 		const intersectionObserver = new IntersectionObserver((entries) => {
@@ -188,13 +191,28 @@ const MuxVideoPlayer = (props) => {
 		}
 	};
 
-	console.log(value)
-
 	return (
 		<div
 			className='w-full h-full top-0 bg-black relative group'
 			style={{
 				aspectRatio: `${value?.width} / ${value?.height}`,
+			}}
+			onMouseEnter={() => {
+				setScrubberIsVisible(true);
+				clearTimeout(idleTimeoutRef.current);
+				idleTimeoutRef.current = setTimeout(() => {
+					setScrubberIsVisible(false);
+				}, 1000);
+			}}
+			onMouseMove={() => {
+				setScrubberIsVisible(true);
+				clearTimeout(idleTimeoutRef.current);
+				idleTimeoutRef.current = setTimeout(() => {
+					setScrubberIsVisible(false);
+				}, 1000);
+			}}
+			onMouseLeave={() => {
+				setScrubberIsVisible(false);
 			}}
 		>
 			<div
@@ -213,7 +231,7 @@ const MuxVideoPlayer = (props) => {
 					playsInline
 					loop
 					autoPlay
-					muted
+					muted={muted}
 					onCanPlay={ () => setCanPlay(true) }
 					onPlay={ () => setIsPlaying(true) }
 					onPause={ () => setIsPlaying(false) }
@@ -232,23 +250,6 @@ const MuxVideoPlayer = (props) => {
 						step={0.01}
 						value={currentTime}
 						onChange={handleScrub}
-						onMouseEnter={() => {
-							setScrubberIsVisible(true);
-							clearTimeout(idleTimeoutRef.current);
-							idleTimeoutRef.current = setTimeout(() => {
-								setScrubberIsVisible(false);
-							}, 1000);
-						}}
-						onMouseMove={() => {
-							setScrubberIsVisible(true);
-							clearTimeout(idleTimeoutRef.current);
-							idleTimeoutRef.current = setTimeout(() => {
-								setScrubberIsVisible(false);
-							}, 1000);
-						}}
-						onMouseLeave={() => {
-							setScrubberIsVisible(false);
-						}}
 						onMouseDown={handleStartScrub}
 						onMouseUp={handleEndScrub}
 						onTouchStart={(e) => {
@@ -279,6 +280,15 @@ const MuxVideoPlayer = (props) => {
 					transformOrigin: 'top left',
 				}}
 			/>
+			<button
+				className='absolute top-4 right-4 z-[99] border border-black bg-white text-black px-1 hover:bg-black hover:text-white cursor-pointer'
+				onClick={() => setMuted(!muted)}
+				style={{
+					opacity: scrubberIsVisible ? 1 : 0,
+				}}
+			>
+				{muted ? 'unmute' : 'mute'}
+			</button>
 		</div>
 	);
 }
