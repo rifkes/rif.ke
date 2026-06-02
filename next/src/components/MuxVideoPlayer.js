@@ -25,8 +25,6 @@ const MuxVideoPlayer = (props) => {
 	
 	const scrubVisualiser = useRef(null);
 
-	console.log(value)
-
 	useEffect(() => {
 		const intersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
