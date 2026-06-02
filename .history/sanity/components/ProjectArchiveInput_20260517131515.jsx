@@ -219,7 +219,7 @@ const ProjectArchiveInput = (props) => {
 				<button onClick={() => setShowItemMediaType('all')} style={{ backgroundColor: showItemMediaType === 'all' ? 'rgb(0,255,0)' : undefined, }}>all items</button>
 			</div>
 			
-			<p>{itemCount} items</p>
+			<p>{showItemMediaType === 'image' ? value?.filter((item) => (!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.asset?._ref && !item?.thumbnailTypeIsVideo)).length : value?.length} items</p>
 			<div className='table-container'>
 			{
 					value?.map((item, index) => (

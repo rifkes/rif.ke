@@ -1,5 +1,6 @@
 import Seo from '@/utils/Seo';
 import getGlobalProps from '@/utils/getGlobalProps';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import client from '@/hooks/useSanityQuery';
@@ -81,6 +82,10 @@ export default function Info({ globalData, archiveData, }) {
 					}
 				</ul>
 			</div>
+			{
+				globalData?.settings?.gaMeasurementId &&
+				<GoogleAnalytics trackPageViews gaMeasurementId={ globalData.settings.gaMeasurementId } />
+			}
       <Seo { ...{ globalData, } } />
 			<SetGlobalProps {...{ globalData, }} />
 			<div className='fixed bottom-0 left-0 w-screen h-12 bg-white z-10'/>

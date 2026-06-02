@@ -3,6 +3,7 @@ import Seo from '@/utils/Seo';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import getGlobalProps from '@/utils/getGlobalProps';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { motion } from 'framer-motion';
 import { fadeInOutVariants } from '@/utils/framerMotionVariants';
 import GoogleAnalyticsAndCookies from '@/components/GoogleAnalyticsAndCookies';

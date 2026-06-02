@@ -6,6 +6,7 @@ import CustomMuxReference from './CustomMuxReference';
 const ProjectArchiveItemInput = (props) => {
 	const { fields, item, index, setValue, removeItem, expandedIndex, setExpandedIndex, onItemExpand, members, member, } = props;
 
+	console.log(item)
 
 	return (
 		<div className='item-container'

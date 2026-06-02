@@ -1,5 +1,6 @@
 import Seo from '@/utils/Seo';
 import getGlobalProps from '@/utils/getGlobalProps';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import SetGlobalProps from '@/utils/SetGlobalProps';
 import client from '@/hooks/useSanityQuery';

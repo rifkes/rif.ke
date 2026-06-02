@@ -24,6 +24,7 @@ const ProjectArchiveItemInput = (props) => {
 			{
 				expandedIndex === index &&
 				<div className='table-row'>
+	{console.log(item)}
 					{
 						fields.map((field, fieldIndex) => (
 							<div

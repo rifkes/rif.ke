@@ -214,12 +214,12 @@ const ProjectArchiveInput = (props) => {
 			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Show items with and without media' : 'Show only items without video or image'}</button>
 
 			<div style={{ display: 'flex', gap: '1rem', paddingTop: '1rem', }}>
-				<button onClick={() => setShowItemMediaType('video')} style={{ backgroundColor: showItemMediaType === 'video' ? 'rgb(0,255,0)' : undefined, }}>video items only</button>
-				<button onClick={() => setShowItemMediaType('image')} style={{ backgroundColor: showItemMediaType === 'image' ? 'rgb(0,255,0)' : undefined, }}>image items only</button>
-				<button onClick={() => setShowItemMediaType('all')} style={{ backgroundColor: showItemMediaType === 'all' ? 'rgb(0,255,0)' : undefined, }}>all items</button>
+				<button onClick={() => setShowItemMediaType('video')} style={{ backgroundColor: showItemMediaType === 'video' ? 'rgb(0,255,0)' : 'white', }}>video items only</button>
+				<button onClick={() => setShowItemMediaType('image')} style={{ backgroundColor: showItemMediaType === 'image' ? 'rgb(0,255,0)' : 'white', }}>image items only</button>
+				<button onClick={() => setShowItemMediaType('all')} style={{ backgroundColor: showItemMediaType === 'all' ? 'rgb(0,255,0)' : 'white', }}>all items</button>
 			</div>
 			
-			<p>{itemCount} items</p>
+			<p>{showItemMediaType === 'image' ? value?.filter((item) => (!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.asset?._ref && !item?.thumbnailTypeIsVideo)).length : value?.length} items</p>
 			<div className='table-container'>
 			{
 					value?.map((item, index) => (

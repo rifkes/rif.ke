@@ -8,24 +8,7 @@ const ProjectArchiveInput = (props) => {
 
 	const [expandedIndex, setExpandedIndex] = useState(null);
 	const [ showItemsWithoutVideoOrImage, setShowItemsWithoutVideoOrImage ] = useState(false);
-	const [search, setSearch] = useState('');
-	const [showItemMediaType, setShowItemMediaType] = useState('all');
-
-	const itemCount = useMemo(() => {
-		let items = value;
-		
-		if (showItemMediaType === 'video') {
-			items = items.filter((item) => (item?.thumbnailTypeIsVideo));
-		} else if (showItemMediaType === 'image') {
-			items = items.filter((item) => (!item?.thumbnailTypeIsVideo));
-		}
-
-		if (showItemsWithoutVideoOrImage) {
-			items = items.filter((item) => (!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.asset?._ref && !item?.thumbnailTypeIsVideo));
-		}
-
-		return items?.length;
-	}, [value, showItemMediaType, showItemsWithoutVideoOrImage,]);
+	const [ search, setSearch ] = useState('');
 
 	const setValue = (index, itemValue) => {
 		const newValues = [...value];
@@ -185,10 +168,6 @@ const ProjectArchiveInput = (props) => {
 						font-size: 11px;
 						font-weight: bold;
 					}
-
-					.search-container {
-						margin-bottom: 1rem;
-					}
 					`
 				}
 			</style>
@@ -211,26 +190,21 @@ const ProjectArchiveInput = (props) => {
 				<button onClick={() => setSearch('')}>Clear</button>
 			</div>
 
-			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Show items with and without media' : 'Show only items without video or image'}</button>
+			<button onClick={() => setShowItemsWithoutVideoOrImage(!showItemsWithoutVideoOrImage)}>{showItemsWithoutVideoOrImage ? 'Show all items' : 'Show only items without video or image'}</button>
 
-			<div style={{ display: 'flex', gap: '1rem', paddingTop: '1rem', }}>
-				<button onClick={() => setShowItemMediaType('video')} style={{ backgroundColor: showItemMediaType === 'video' ? 'rgb(0,255,0)' : undefined, }}>video items only</button>
-				<button onClick={() => setShowItemMediaType('image')} style={{ backgroundColor: showItemMediaType === 'image' ? 'rgb(0,255,0)' : undefined, }}>image items only</button>
-				<button onClick={() => setShowItemMediaType('all')} style={{ backgroundColor: showItemMediaType === 'all' ? 'rgb(0,255,0)' : undefined, }}>all items</button>
+			<div style={{ display: 'flex', gap: '1rem' }}>
+				<button onClick={() => setShowItemMediaType('video')}>Show only items with video</button>
+				<button onClick={() => setShowItemMediaType('image')}>Show only items with image</button>
+				<button onClick={() => setShowItemMediaType('all')}>Show all items</button>
 			</div>
 			
-			<p>{itemCount} items</p>
+			<p>{showItemsWithoutVideoOrImage ? value?.filter((item) => (!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.asset?._ref && !item?.thumbnailTypeIsVideo)).length : value?.length} items</p>
 			<div className='table-container'>
 			{
 					value?.map((item, index) => (
 					(item.title?.toLowerCase().includes(search?.toLowerCase()) || item.client?.toLowerCase().includes(search?.toLowerCase()) || item.year?.toString().includes(search) || item.agency?.toLowerCase().includes(search?.toLowerCase()) || item.type?.toLowerCase().includes(search?.toLowerCase()) || item.status?.toLowerCase().includes(search?.toLowerCase()) || item.hidden?.toString().includes(search) || item.tools?.toLowerCase().includes(search?.toLowerCase()) || item.link?.toLowerCase().includes(search?.toLowerCase()) || item.description?.toLowerCase().includes(search?.toLowerCase()) || item.role?.toLowerCase().includes(search?.toLowerCase()) || item.credits?.toLowerCase().includes(search?.toLowerCase()) || item.url?.toLowerCase().includes(search?.toLowerCase())) &&
 					
-						((showItemsWithoutVideoOrImage && ((!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.asset?._ref && !item?.thumbnailTypeIsVideo))) || !showItemsWithoutVideoOrImage) &&
-						
-						((showItemMediaType === 'all') ||
-							(showItemMediaType === 'video' && (item?.thumbnailTypeIsVideo)) ||
-							(showItemMediaType === 'image' && (!item?.thumbnailTypeIsVideo))
-						) &&
+					((showItemsWithoutVideoOrImage && ((!item?.video?._ref && item?.thumbnailTypeIsVideo) || (!item?.image?.asset?._ref && !item?.thumbnailTypeIsVideo))) || !showItemsWithoutVideoOrImage) &&	
 					<ProjectArchiveItemInput
 						key={index}
 						{ ...props }
