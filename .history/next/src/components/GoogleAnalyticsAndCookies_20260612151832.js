@@ -97,7 +97,7 @@ const GoogleAnalyticsAndCookies = ({ globalData, }) => {
 							page_path: window.location.pathname,
 						});
 					`}
-				</Script>
+					</Script>
 				
 				<AnimatePresence>
 					{

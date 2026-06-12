@@ -1,24 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
-import Script from 'next/script';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useEffect, useState } from 'react';
 
 const GoogleAnalyticsAndCookies = ({ globalData, }) => {
 	const [cookiesAreAccepted, setCookiesAreAccepted] = useState(false);
 	const [cookiesAreDenied, setCookiesAreDenied] = useState(false);
-	const [hasCheckedStorage, setHasCheckedStorage] = useState(false);
-	
-	const gaId = globalData?.settings?.gaMeasurementId;
+	const [ hasCheckedStorage, setHasCheckedStorage ] = useState(false);
 	
 	useEffect(() => {
 		const cookieConsent = localStorage.getItem('cookieConsent');
 		if (cookieConsent) {
 			setCookiesAreAccepted(true);
-			setCookiesAreDenied(false);
+			setShowBanner(false);
 		}
 
-		// 1. Initialize the default 'Denied' state for Consent Mode v2 right away
+		// 1. Initialize the default "Denied" state for Consent Mode v2 right away
     if (typeof window !== 'undefined') {
       window.dataLayer = window.dataLayer || [];
       function gtag() { window.dataLayer.push(arguments); }
@@ -68,37 +65,7 @@ const GoogleAnalyticsAndCookies = ({ globalData, }) => {
 	if (globalData?.settings?.gaMeasurementId?.length > 0) {
 		return (
 			<>
-
-				<Script id='ga-consent-default' strategy='beforeInteractive'>
-					{`
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						
-						// Check localStorage synchronously right in the head to prevent the race condition
-						var consent = localStorage.getItem('cookieConsent');
-						
-						gtag('consent', 'default', {
-							'analytics_storage': consent === 'true' ? 'granted' : 'denied',
-							'ad_storage': consent === 'true' ? 'granted' : 'denied',
-							'ad_user_data': consent === 'true' ? 'granted' : 'denied',
-							'ad_personalization': consent === 'true' ? 'granted' : 'denied'
-						});
-					`}
-				</Script>
-
-				<Script
-					src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-					strategy='afterInteractive'
-				/>
-				<Script id='ga-config' strategy='afterInteractive'>
-					{`
-						gtag('js', new Date());
-						gtag('config', '${gaId}', {
-							page_path: window.location.pathname,
-						});
-					`}
-				</Script>
-				
+				<GoogleAnalytics trackPageViews gaMeasurementId={globalData?.settings?.gaMeasurementId} />
 				<AnimatePresence>
 					{
 						hasCheckedStorage &&

@@ -29,7 +29,6 @@
     "react": "^19.2.3",
     "react-dom": "19.2.3",
     "react-player": "^3.4.0",
-    "tailwindcss": "4.1.18",
     "three": "^0.182.0"
   },
   "devDependencies": {
