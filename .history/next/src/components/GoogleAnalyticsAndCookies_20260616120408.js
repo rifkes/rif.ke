@@ -1,11 +1,11 @@
-import { useSiteGlobals } from '@/utils/SiteGlobalsContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
 const GoogleAnalyticsAndCookies = ({ globalData, }) => {
-	const { cookiesAreAccepted, setCookiesAreAccepted, cookiesAreDenied, setCookiesAreDenied, } = useSiteGlobals();
+	const [cookiesAreAccepted, setCookiesAreAccepted] = useState(false);
+	const [cookiesAreDenied, setCookiesAreDenied] = useState(false);
 	const [hasCheckedStorage, setHasCheckedStorage] = useState(false);
 	
 	const gaId = globalData?.settings?.gaMeasurementId;

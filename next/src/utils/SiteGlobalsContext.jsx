@@ -28,6 +28,10 @@ export const SiteGlobalsContext = createContext({
 	setWindowWidth: async (windowWidth) => null,
 	windowHeight: 0,
 	setWindowHeight: async (windowHeight) => null,
+	cookiesAreAccepted: false,
+	setCookiesAreAccepted: async (cookiesAreAccepted) => null,
+	cookiesAreDenied: false,
+	setCookiesAreDenied: async (cookiesAreAccepted) => null,
 });
 
 export const useSiteGlobals = () => useContext(SiteGlobalsContext)
@@ -66,6 +70,9 @@ export const SiteGlobalsProvider = ({ children }) => {
 		'',
 	]);
 	const [sillyName, setSillyName] = useState('');
+	const [cookiesAreAccepted, setCookiesAreAccepted] = useState(false);
+	const [cookiesAreDenied, setCookiesAreDenied] = useState(false);
+
 	const [ windowWidth, setWindowWidth ] = useState(0);
 	const [windowHeight, setWindowHeight] = useState(0);
 	
@@ -93,6 +100,8 @@ export const SiteGlobalsProvider = ({ children }) => {
         infoIsActive, setInfoIsActive,
         itemInfoIsActive, setItemInfoIsActive,
 				sillyNames, initialSillyNames, sillyName, setSillyName, infoSillyNames,
+				cookiesAreAccepted, setCookiesAreAccepted,
+				cookiesAreDenied, setCookiesAreDenied,
       } }
     >{ children }</SiteGlobalsContext.Provider>
   );
