@@ -5,9 +5,9 @@ const Seo = (props) => {
 
   return (
     <Head>
-      <title>{ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` }</title>
-      <meta property='og:title' content={ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
-      <meta property='twitter:title' content={ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke' }${ title ? ` | ${ title }` : '' }` } />
+      <title>{ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke Sadleir' }${ title ? ` | ${ title }` : '' }` }</title>
+      <meta property='og:title' content={ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke Sadleir' }${ title ? ` | ${ title }` : '' }` } />
+      <meta property='twitter:title' content={ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke Sadleir' }${ title ? ` | ${ title }` : '' }` } />
       
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="description" content={ seoDescription ?? globalData?.settings?.seoDescription } />
