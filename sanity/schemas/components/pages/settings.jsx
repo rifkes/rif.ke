@@ -78,6 +78,18 @@ export default defineType({
       title: 'SEO Description',
       type: 'text',
       rows: 2,
+			components: {
+				input: (props) => (
+					<>
+						{props.renderDefault(props)}
+						<p
+							style={{
+								color: props?.value?.length < 120 ? 'slategrey' : props?.value?.length <= 160 ? 'green' : 'red',
+							}}
+						>{props.value?.length}</p>
+					</>
+				)
+			},
     }),
     defineField({
       name: 'seoImage',

@@ -6,6 +6,29 @@ export default defineType({
   title: 'Archive',
   type: 'document',
   fields: [
+		defineField({
+			name: 'information',
+			type: 'richTextSimple',
+			title: 'Information',
+		}),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+      rows: 2,
+			components: {
+				input: (props) => (
+					<>
+						{props.renderDefault(props)}
+						<p
+							style={{
+								color: props?.value?.length < 120 ? 'slategrey' : props?.value?.length <= 160 ? 'green' : 'red',
+							}}
+						>{props.value?.length}</p>
+					</>
+				)
+			},
+    }),
     defineField({
       name: 'items',
       title: 'Items',
@@ -241,6 +264,58 @@ export default defineType({
 								title: `${title}, ${year}`,
 								subtitle: `${type}, ${organiser}, ${collaborators}`,
 								media: () => '🗣️',
+							}
+						}
+					},
+				}),
+			],
+		}),
+		defineField({
+			name: 'writing',
+			title: 'Writing',
+			type: 'array',
+			options: {
+				collapsible: true,
+				collapsed: true,
+			},
+			of: [
+				defineField({
+					type: 'object',
+					name: 'article',
+					title: 'Article',
+					fields: [
+						defineField({
+							name: 'title',
+							title: 'Title',
+							type: 'string',
+						}),
+						defineField({
+							name: 'year',
+							title: 'Year',
+							type: 'number',
+						}),
+						defineField({
+							name: 'publication',
+							title: 'Publication',
+							type: 'string',
+						}),
+						defineField({
+							name: 'link',
+							title: 'Link',
+							type: 'url',
+						}),
+					],
+					preview: {
+						select: {
+							title: 'title',
+							year: 'year',
+							publication: 'publication',
+						},
+						prepare({ title, year, publication, }) {
+							return {
+								title: `${title}, ${year}`,
+								subtitle: `${publication}`,
+								media: () => '🗞️',
 							}
 						}
 					},

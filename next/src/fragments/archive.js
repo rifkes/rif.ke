@@ -1,8 +1,13 @@
 import groq from 'groq';
 import { IMAGE } from './utils/image';
+import { PORTABLE_TEXT } from './utils/portableText';
 
 export const ARCHIVE = groq`
   *[_type == 'archive'][0] {
+		information[] {
+			${PORTABLE_TEXT}
+		},
+		seoDescription,
 		'items': items[ hidden != true ] {
 			title,
 			client,
@@ -15,10 +20,6 @@ export const ARCHIVE = groq`
 				${IMAGE}
 			},
 			'video': video->video {
-				// ...,
-				// 'asset': asset -> {
-				// 	...,
-				// },
 				'assetId': asset->id,
 				'videoUrl': 'https://stream.mux.com/' + asset->playbackId + '/low.mp4',
 				'videoUrlHigh': 'https://stream.mux.com/' + asset->playbackId + '/high.mp4',
@@ -43,6 +44,12 @@ export const ARCHIVE = groq`
 			year,
 			type,
 			organiser,
+		},
+		'writing': writing[] {
+			title,
+			year,
+			link,
+			publication,
 		},
 		'teaching': teaching[] {
 			course,

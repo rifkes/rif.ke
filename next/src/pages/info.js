@@ -7,6 +7,7 @@ import { ARCHIVE } from '@/fragments/archive';
 import Archive from '@/components/Archive/Archive';
 import { useRef } from 'react';
 import GoogleAnalyticsAndCookies from '@/components/GoogleAnalyticsAndCookies';
+import PortableTextBlocks from '@/components/blocks/PortableTextBlocks';
 
 export default function Info({ globalData, archiveData, }) {
 
@@ -35,58 +36,85 @@ export default function Info({ globalData, archiveData, }) {
 	// }, []);
 
 	return (
-		<div
-			ref={ scrollContainerRef }
-      className='fixed top-0 left-0 w-screen h-screen overflow-y-scroll pb-12'
-			style={{
-				height: `${ windowHeight }px`,
-      } }
-		>
-			<Archive archiveData={ archiveData?.items } scrollContainerRef={ scrollContainerRef } />
-			<div className='my-4 px-2'>
-				<h2 className='uppercase mb-2'>Press and Awards</h2>
-				<ul className='list-none'>
-					{
-						archiveData.pressAndAwards?.map((item, index) => (
-							<li className='' key={index}>
-								<p className='text-pretty'>{item.publication}{item.title ? `, ${item.title}` : ''}{item.year ? `, ${item.year}` : ''}
-									{item.url ? <span> <a href={item.url} target='_blank' rel='noopener noreferrer'>[visit]</a></span> : ''}
-								</p>
-							</li>
-						))
-					}
-				</ul>
+		<>
+			<div
+				ref={ scrollContainerRef }
+				className='fixed top-0 left-0 w-screen h-screen overflow-y-scroll pb-12'
+				style={{
+					height: `${ windowHeight }px`,
+				} }
+			>
+				{
+					archiveData?.information?.length > 0 &&
+					<div className='mt-12 px-2 max-w-2xl'>
+						<PortableTextBlocks value={archiveData.information} />
+					</div>
+				}
+				<Archive archiveData={ archiveData?.items } scrollContainerRef={ scrollContainerRef } />
+				<div className='my-4 px-2'>
+					<h2 className='uppercase mb-2'>Press and Awards</h2>
+					<ul className='list-none'>
+						{
+							archiveData.pressAndAwards?.map((item, index) => (
+								<li className='' key={index}>
+									<p className='text-pretty'>{item.publication}{item.title ? `, ${item.title}` : ''}{item.year ? `, ${item.year}` : ''}
+										{item.url ? <span> <a href={item.url} target='_blank' rel='noopener noreferrer'>[visit]</a></span> : ''}
+									</p>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<div className='my-4 px-2'>
+					<h2 className='uppercase mb-2'>Engagements</h2>
+					<ul className='list-none'>
+						{
+							archiveData.engagements?.map((item, index) => (
+								<li className='' key={ index }>
+									<p className='text-pretty'>{item.title}{ item.year ? `, ${item.year}` : '' }{ item.type ? `, ${item.type}` : '' }{ item.organiser ? `, organised by ${item.organiser}` : '' }{ item.collaborators ? `, with ${item.collaborators}` : '' }</p>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<div className='my-4 px-2'>
+					<h2 className='uppercase mb-2'>Writing</h2>
+					<ul className='list-none'>
+						{
+							archiveData.writing?.map((item, index) => (
+								<li className='' key={ index }>
+									{
+										!item?.link || item?.link?.length === 0 ?
+										<p className='text-pretty'>{item.title}{ item.year ? `, ${item.year}` : '' }{ item.publication ? `, ${item.publication}` : '' }</p>
+										:
+										<a rel='noopener noreferrer' target='_blank' className='hover:text-[hotpink]' href={item.link}>
+											<p className='text-pretty'>{item.title}{ item.year ? `, ${item.year}` : '' }{ item.publication ? `, ${item.publication}` : '' }</p>
+										</a>
+									}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<div className='my-4 px-2'>
+					<h2 className='uppercase mb-2'>Teaching</h2>
+					<ul className='list-none'>
+						{
+							archiveData.teaching?.map((item, index) => (
+								<li className='' key={ index }>
+									<p className='text-pretty'>{item.institution}{item.course ? `, ${item.course}` : ''}{item.year ? `, ${item.year}` : ''}{ item.role ? `, ${item.role}` : '' }{ item.collaborators ? `, with ${item.collaborators}` : '' }</p>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<Seo { ...{ globalData, } } />
+				<SetGlobalProps {...{ globalData, ...archiveData, }} />
+				<div className='fixed bottom-0 left-0 w-screen h-12 bg-white z-10'/>
+				<div className='fixed top-0 left-0 w-screen h-12 bg-white z-10' />
 			</div>
-			<div className='my-4 px-2'>
-				<h2 className='uppercase mb-2'>Engagements</h2>
-				<ul className='list-none'>
-					{
-						archiveData.engagements?.map((item, index) => (
-							<li className='' key={ index }>
-								<p className='text-pretty'>{item.title}{ item.year ? `, ${item.year}` : '' }{ item.type ? `, ${item.type}` : '' }{ item.organiser ? `, organised by ${item.organiser}` : '' }{ item.collaborators ? `, with ${item.collaborators}` : '' }</p>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-			<div className='my-4 px-2'>
-				<h2 className='uppercase mb-2'>Teaching</h2>
-				<ul className='list-none'>
-					{
-						archiveData.teaching?.map((item, index) => (
-							<li className='' key={ index }>
-								<p className='text-pretty'>{item.institution}{item.course ? `, ${item.course}` : ''}{item.year ? `, ${item.year}` : ''}{ item.role ? `, ${item.role}` : '' }{ item.collaborators ? `, with ${item.collaborators}` : '' }</p>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-      <Seo { ...{ globalData, } } />
-			<SetGlobalProps {...{ globalData, }} />
-			<div className='fixed bottom-0 left-0 w-screen h-12 bg-white z-10'/>
-			<div className='fixed top-0 left-0 w-screen h-12 bg-white z-10' />
 			<GoogleAnalyticsAndCookies { ...{ globalData, } } />
-    </div>
+		</>
   )
 }
 
