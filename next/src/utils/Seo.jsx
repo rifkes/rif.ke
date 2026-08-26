@@ -3,6 +3,8 @@ import Head from 'next/head';
 const Seo = (props) => {
   const { seoImage, title, image, seoDescription, globalData, } = props;
 
+	const imageUrl = seoImage?.url ?? image?.url ?? globalData?.settings?.seoImage?.url;
+
   return (
     <Head>
       <title>{ `${ globalData?.settings?.siteTitle ? globalData.settings.siteTitle : 'Rifke Sadleir' }${ title ? ` | ${ title }` : '' }` }</title>
@@ -14,28 +16,11 @@ const Seo = (props) => {
       <meta property='og:description' content={ seoDescription ?? globalData?.settings?.seoDescription } />
       <meta property='twitter:description' content={ seoDescription ?? globalData?.settings?.seoDescription } />
       {
-        seoImage?.url ?
-          <meta property="og:image" content={ seoImage.url } />
-          :
-        image?.url ?
-          <meta property="og:image" content={ image.url } />
-          :
-        globalData?.settings?.seoImage?.url ?
-          <meta property="og:image" content={ globalData?.settings?.seoImage.url } />
-          :
-        <></>
-      }
-      {
-        seoImage?.url ?
-          <meta property="twitter:image" content={ seoImage.url } />
-          :
-        image?.url ?
-          <meta property="twitter:image" content={ image.url } />
-          :
-        globalData?.settings?.seoImage?.url ?
-          <meta property="twitter:image" content={ globalData?.settings?.seoImage.url } />
-          :
-        <></>
+				imageUrl &&
+				<>
+					<meta property="og:image" content={ imageUrl } />
+					<meta property="twitter:image" content={ imageUrl } />
+				</>
       }
       <meta property="og:url" content="https://rif.ke/" />
       {
