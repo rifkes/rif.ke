@@ -1,6 +1,5 @@
-# rif.ke llms.txt
-
-> Rifke Sadleir is a technologist, web developer/designer, artist and educator based in London. She has 10+ years of experience coding websites and 7+ years experience of lecturing and facilitating workshops across both universities and non-institutional educational spaces.
+# Rifke Sadleir
+> Rifke Sadleir is a technologist, web developer/designer, artist and educator based in London.
 
 - [Rifke Portfolio](https://rif.ke/info): Showcase artist's projects, collaborations, and creative portfolio.
 - [Rifke Showcase](https://rif.ke): Showcase Rifke's content with interactive multimedia features.
