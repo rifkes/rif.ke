@@ -35,6 +35,8 @@ export default function Info({ globalData, archiveData, }) {
 	// 	return () => window.removeEventListener('click', handleClick);
 	// }, []);
 
+	console.log(archiveData)
+
 	return (
 		<>
 			<div
@@ -108,8 +110,8 @@ export default function Info({ globalData, archiveData, }) {
 						}
 					</ul>
 				</div>
-				<Seo { ...{ globalData, } } />
-				<SetGlobalProps {...{ globalData, ...archiveData, }} />
+				<Seo { ...{ globalData, ...archiveData, } } />
+				<SetGlobalProps {...{ globalData, }} />
 				<div className='fixed bottom-0 left-0 w-screen h-12 bg-white z-10'/>
 				<div className='fixed top-0 left-0 w-screen h-12 bg-white z-10' />
 			</div>
