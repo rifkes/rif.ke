@@ -22,6 +22,11 @@ export default defineType({
         }),
       ],
     }),
+		defineField({
+			name: 'cookieConsentText',
+			title: 'Cookie Consent text',
+			type: 'string',
+		}),
     defineField({
       name: 'info',
       title: 'Info',

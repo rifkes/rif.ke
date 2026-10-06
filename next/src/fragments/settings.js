@@ -34,6 +34,7 @@ export const SETTINGS = groq`
     seoImage {
       ${IMAGE}
     },
+		cookieConsentText,
     seoTags[],
     seoDescription,
     gaMeasurementId,
